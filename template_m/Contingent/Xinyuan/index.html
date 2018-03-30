@@ -1,0 +1,103 @@
+<include file="Index@Common:top" />
+<include file="Index@Common:top_script" />
+<include file="Index@Common:menu" />
+<link rel='stylesheet' href='__INDEX_M__Common/css/show.css' media='screen' />
+<script src="__INDEX_M__Common/js/jquery.min.js"></script>
+<!--[if lt IE 9]>
+<script src="__INDEX_M__Common/js/html5.js"></script>
+<![endif]-->
+<script src="__INDEX_M__Common/js/blocksit.min.js"></script>
+<script>
+$(document).ready(function() {
+
+	//blocksit define
+	$(window).load( function() {
+		$('#container').BlocksIt({
+			numOfCol: 2,
+			offsetX: 8,
+			offsetY: 8
+		});
+	});
+	
+	//window resize
+	var currentWidth = '100%';
+	$(window).resize(function() {
+		var winWidth = $(window).width();
+		var conWidth;
+		if(winWidth < 660) {
+			conWidth = 550;
+			col = 2
+		} else if(winWidth < 880) {
+			conWidth = 770;
+			col = 2
+		} else if(winWidth < 1200) {
+			conWidth = 1100;
+			col = 2;
+		} else if(winWidth < 1200) {
+			conWidth = 1100;
+			col = 4;
+		} else if(winWidth < 1300) {
+			conWidth = 1200;
+			col = 4;
+		} else if(winWidth < 1400) {
+			conWidth = 1300;
+			col = 5;
+		} else if(winWidth < 1500) {
+			conWidth = 1400;
+			col = 5;
+		} else if(winWidth < 1600) {
+			conWidth = 1500;
+			col = 5;
+		} else if(winWidth < 1700) {
+			conWidth = 1600;
+			col = 5;
+		} else if(winWidth < 1800) {
+			conWidth = 1700;
+			col = 6;
+		} else if(winWidth < 1900) {
+			conWidth = 1800;
+			col = 6;
+		} else if(winWidth < 2000) {
+			conWidth = 1900;
+			col = 6;
+		} else {
+			conWidth = '100%';
+			col = 2;
+		}
+		
+		if(conWidth != currentWidth) {
+			currentWidth = conWidth;
+			$('#container').width(conWidth);
+			$('#container').BlocksIt({
+				numOfCol: col,
+				offsetX: 8,
+				offsetY: 8
+			});
+		}
+	});
+});
+</script>
+<div class="banner"></div>
+<div class="clear"></div>
+ <div id="container">
+	
+    
+    <foreach name="list" item="lt">
+    <div class="grid">
+		<div class="imgholder">
+			<a href="{$lt.pic}" data-lightbox="example-set" data-title="{$lt.dream}"><img src="{$lt.pic}" /></a>
+		</div>
+		<strong>{$lt.name}</strong>
+		<strong>{$lt.age}-{$lt.city}</strong>
+		<span>{$lt.dream}</span>
+        <strong style="padding:0px;"></strong>
+		<div class="meta"><span><a onclick="post_xinyuan({$lt['id']})"><p class="xinyuan_bottom">支 持</p></a></span></div>
+	</div>
+    </foreach>
+   
+	
+</div>
+
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />

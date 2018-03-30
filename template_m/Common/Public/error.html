@@ -1,0 +1,40 @@
+﻿<php>
+  $page_head_info=array(
+      "title"       =>  "错误",
+      "back_ico"    => true,
+      "back_url"    =>  "",
+  );
+</php>
+<include file="IndexWechat@Common:top" />
+<include file="IndexWechat@Common:menu" />
+<style>
+
+</style>
+<div class="wrap" style=" width:100%;height:100%; position:absolute; left:0; text-align:center;">
+  <div id="" style="width:8em; height:8em; position:absolute; top:35%; left:50%; margin:-4em 0 0 -4em; font-size:14px; line-height:28px;">
+    <h2>操作失败！</h2>
+    <div class="error_cont">
+      <ul>
+        <li style="color:#F00"><?php if(isset($message)){?><p class="success"><?php echo($message); ?></p><?php }else{?><p class="error"><?php echo($error); ?></p>
+<?php }?>
+<p class="jump">
+页面自动 <a id="href" href="<?php echo($jumpUrl); ?>">跳转</a><br />等待时间： <b id="wait"><?php echo($waitSecond); ?></b>
+</p></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script src="__ROOT__/statics/js/common.js"></script>
+<script>
+href = document.referrer;
+var close_timeout=setTimeout(function(){
+	history.go(-1);
+},3000);
+
+function close_app(){
+	clearTimeout(close_timeout);
+	parent.close_current_app();
+}
+</script>
+<include file="Common:foot" />
+<include file="Common:bottom" />

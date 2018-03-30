@@ -1,0 +1,122 @@
+<include file="Index@Common:top" />
+<div class="logo12"></div>
+
+<style type="text/css">
+.huig{
+		width: 94%;
+		margin: 20px auto 0;
+	}
+	.hg_ti{
+		color: #ca192b;
+		font-size: 1rem;
+		margin-bottom: 15px;
+		position: relative;
+	}
+	.hg_ti img{
+		vertical-align: middle;
+		margin-right: 10px;
+	}
+	.hg_box{
+		margin-bottom: 22px;
+	}
+	.hg_box div{
+		line-height: 0;
+		position: relative;
+	}
+	.hg_box div span{
+	    width: 100%;
+	    position: absolute;
+	    left: 0;
+	    bottom: 0;
+	    height: 48px;
+	    text-align: center;
+	    line-height: 48px;
+	    color: #fff;
+	    font-size: 0.93rem;
+	    overflow: hidden;
+	    background: rgba(0,0,0,0.6);
+	}
+	.hg_box h4{
+		color: #333;
+		font-size: 0.93rem;
+		margin-top: 14px;
+		text-align: center;
+	}
+	.hg_more{
+		width: 100%;
+		height: 49px;
+		line-height: 49px;
+		background: #ca192b;
+		text-align: center;
+	}
+	.hg_more a{
+		color: #fff;
+		font-size: 0.93rem;
+	}
+	.s_top span{
+		float: right;
+		font-size: 0.93rem;
+		margin-right: 14px;
+	}
+	.hg_o{
+		margin-top: 56px;
+	}
+	.gdj{
+		display: none;
+		width: 100%;
+		position: fixed;
+		top: 44px;
+		left: 0;
+		background: #fff;
+		z-index: 32;
+	}
+	.gdj li{
+	 	height: 30px;
+	    line-height: 30px;
+	    padding: 0 30px;
+	    border-bottom: 1px solid #f0f0f0;
+	}
+	.gdj li a{
+		font-size: 0.75rem;
+	}
+</style>
+
+<div class="st_box"><div class="s_top">其他精彩表演<span><if condition="$_GET['location_id'] eq ''">城市</if><foreach name="location_list" item="v">
+			<if condition="$_GET['location_id'] eq $v['id']">筛选:{$v.name}</if>
+			</foreach></span></div>
+
+<ul class="gdj">
+	<foreach name="location_list" item="v">
+	<li <eq name="_GET['location_id']" value="$v['id']">class="active"</eq>><a href="{:U('huigu',array('location_id'=>$v['id']))}">{$v.name}</a></li>
+	</foreach>
+
+</ul>
+
+<div class="huig">
+	<div class="hg_o">
+		<ul class="hg_list">
+		<foreach name="list" item="v">
+			<li class="hg_box">
+			<a href="{:U('Index/Huigu/show',array('id'=>$v['id']))}">
+				<div>
+					<img src="{$v.pic}" width="100%" height="250" />
+				</div>
+				<h4>{$v.show_name}</h4></a>
+			</li>
+		</foreach>
+		</ul>
+	</div>
+	<div class="page">{$page}</div>
+</div>
+
+<script>
+	$(document).ready(function(){
+		$(".s_top span").click(function(){
+			$(".gdj").slideToggle();
+		});
+	});
+</script>
+
+<include file="Common:foot" />
+<include file="Common:city_navigation" />
+<include file="Common:bottom" />

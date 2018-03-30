@@ -1,0 +1,47 @@
+<include file="Admin@Public:page_head" />
+<html:editor type="UEDITOR_BEGIN"></html:editor>
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Archives/ArctypeChannel/index')}">模型管理</a></li>
+			<li class="active"><a href="{:U('Archives/ArctypeChannel/add')}">添加模型</a></li>
+	    </ul>
+		<form class="form-horizontal J_ajaxForm" name="myform" id="myform" action="{:u('ArctypeChannel/insert')}" method="post">
+			<div class="tabbable">
+		        <div class="tab-content">
+		          <div class="tab-pane active" id="A">
+		          		<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+								<tr>
+									<td width="150">模型名称:</td>
+								  <td><input type="text" class="input" name="name" value="" /><span class="must_red">*</span></td>
+							  </tr>
+								<tr>
+									<td>模型表:</td>
+									<td>{:C('DB_PREFIX')}archives_<input name="channel_table" type="text" value=""  /><span class="must_red">*</span></td>
+								</tr>
+								<tr>
+									<td>默认栏目封面模板:</td>
+									<td>{:C('FOLDER_TEMPLET')}{:C('FOLDER_TEMPLET_ARCHIVES_INDEX')}<input name="template_index" type="text" value=""  /></td>
+								</tr>
+								<tr>
+									<td>默认栏目列表模板:</td>
+									<td>{:C('FOLDER_TEMPLET')}{:C('FOLDER_TEMPLET_ARCHIVES_LIST')}<input name="template_list" type="text" value=""  /></td>
+								</tr>
+								<tr>
+									<td>默认栏目文章模板:</td>
+									<td>{:C('FOLDER_TEMPLET')}{:C('FOLDER_TEMPLET_ARCHIVES_ARTICLE')}<input name="template_article" type="text" value=""  /></td>
+								</tr>
+							</tbody>
+						</table>
+		          </div>
+		          
+		        </div>
+		    </div>
+		     <div class="form-actions">
+		           <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+		      		<a class="btn" href="{:U('ArctypeChannel/index')}">返回</a>
+		      </div>
+		</form>
+	</div>
+
+<include file="Admin@Public:page_foot" />

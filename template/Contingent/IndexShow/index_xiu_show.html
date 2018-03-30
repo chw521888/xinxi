@@ -1,0 +1,40 @@
+<include file="Index@Common:top" />
+<script language="javascript" src="__INDEX__Common/html5media/html5media.min.js"></script>
+<include file="Index@Common:top_logo" />
+<!--<div class="logo4" style="background: url('{$info.pic_banner}') center no-repeat;"></div>-->
+<include file="Index@Common:menu" />
+<div class="main">
+    <div>
+        <ul class="border-bottom">
+            <li class="fy1">当前位置：<a href="/">首页</a> &gt; <a href="#">详情</a> <span>&lt;<a href="javascript:history.go(-1);">返回列表</a></span></li>
+            <li class="fy-title">{$info.title}</li>
+            <li class="fy-date">{$info.time|turn_time=1}</li>
+        </ul>
+    </div>
+    <div>
+        <!--<ul class="dx"><img src="{$info.pic}" alt=""/></ul>-->
+        <ul class="border-bottom">
+          <li class="fz14">{$info.content|htmlspecialchars_decode}
+          <if condition="$info['jianjie'] neq ''">
+          <div style="width: 100%; text-align: center;">
+          <video width="640" height="600" controls autobuffer>
+		    <source src="{$info.jianjie}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></source>
+		</video>
+		</div>
+		</if>
+</li>
+        </ul>
+        <ul class="dx"><li><div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></li></ul>
+    </div>
+</div>
+
+
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />
+<script>
+    $("#nav li").hover(function(){
+        $(this).find(".second_nav").slideToggle();
+    })
+</script>

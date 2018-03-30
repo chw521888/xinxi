@@ -1,0 +1,30 @@
+<include file="Admin@Public:page_head" />
+
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Admin/Admin/index')}">管理员管理</a></li>
+			<li class="active"><a href="{:U('Admin/Admin/index_auth_group')}">管理员分组</a></li>
+			<li><a href="{:U('Admin/Admin/add_auth_group')}">添加分组</a></li>
+		</ul>
+        <form method="post" class="J_ajaxForm" action="#">
+                    <html:list
+                        id="dataTable"
+                        style="table table-hover table-bordered table-list"
+                        name="list"
+                        checkbox="true"
+                        action="true"
+                        title="上线项目"
+                        datasource="list"
+                        pagelist="{$page}"
+                        show="id:{$Think.lang.ID}
+		,title:名称"
+                        actionlist="edit:修改:id:edit_auth_group, foreverdel:删除" />
+            <include file="Admin@Public:page" />
+		</form>
+</div>
+<!--高级搜索-->
+
+
+
+<include file="Public:page_foot" />
+

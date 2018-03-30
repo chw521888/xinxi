@@ -1,0 +1,88 @@
+<include file="Admin@Public:page_head" />
+
+<html:editor type="UEDITOR_BEGIN"></html:editor>
+
+<style type="text/css">
+
+.col-auto { overflow: auto; _zoom: 1;_float: left;}
+
+.col-right { float: right; width: 210px; overflow: hidden; margin-left: 6px; }
+
+.table th, .table td {vertical-align: middle;}
+
+.picList li{margin-bottom: 5px;}
+
+</style>
+
+<div class="wrap J_check_wrap">
+
+          <ul class="nav nav-tabs">
+
+		<ul class="nav nav-tabs">
+
+      <li><a href="{:U('Huihua/Huihua/index')}">绘画赛管理</a></li>
+			<li class="active"><a href="#this">审核绘画赛</a></li>
+
+
+		</ul>
+
+          </ul>
+
+  <form name="myform" id="myform" action="{:U('Huihua/Huihua/update')}" method="post" class="form-horizontal J_ajaxForms" enctype="multipart/form-data">
+
+  <input name="id" type="hidden" value="{$info.id}" />
+  <input name="user_id" type="hidden" value="{$info.user_id}" />
+
+  <div class="col-auto">
+
+    <div class="table_full">
+
+      <table class="table table-bordered">
+            <tr>
+              <th width="80">图片1 </th>
+              <td><img src="{$info.pic}"></td>
+            </tr>
+            <tr>
+              <th width="80">修改图片1 </th>
+              <td><img src="{$info.pic_edit}"></td>
+            </tr>
+            <tr>
+              <th width="80">审核 </th>
+              <td><label><input name="is_effect" type="radio" value="1" <eq name="info['is_effect']" value="1">checked</eq> />是 </label><input name="is_effect" type="radio" value="0" <eq name="info['is_effect']" value="0">checked</eq> />否 </label></td>
+            </tr>
+            <tr>
+              <th width="80">是否晋级 </th>
+              <td><label><input name="is_hpf" type="radio" value="1" <eq name="info['is_hpf']" value="1">checked</eq> />是 </label><input name="is_hpf" type="radio" value="0" <eq name="info['is_hpf']" value="0">checked</eq> />否 </label></td>
+            </tr>
+            <tr>
+              <th width="80">展示票数 </th>
+              <td><input name="num_view" type="text" value="{$info.num_view}" class="input input_hd J_title_color" /></td>
+            </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+
+        <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+
+        <a class="btn" href="{:U('Huihua/Huihua/index')}">返回</a>
+
+  </div>
+
+ </form>
+
+</div>
+
+<script type="text/javascript" src="__TMPL__Common/js/common.js"></script>
+
+<script type="text/javascript" src="__TMPL__Common/js/content_addtop.js"></script>
+
+
+
+<include file="Admin@Public:page_foot" />

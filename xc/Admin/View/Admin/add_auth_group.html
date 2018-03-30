@@ -1,0 +1,38 @@
+<include file="Admin@Public:page_head" />
+
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Admin/Admin/index')}">管理员管理</a></li>
+			<li><a href="{:U('Admin/Admin/index_auth_group')}">管理员分组</a></li>
+			<li class="active"><a href="{:U('Admin/Admin/add_auth_group')}">添加分组</a></li>
+		</ul>
+		</ul>
+		<form class="form-horizontal J_ajaxForm" name="myform" id="myform" action="{:U('Admin/insert_auth_group')}" method="post">
+			<div class="tabbable">
+		        <div class="tab-content">
+		          		<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+								<tr>
+									<td width="150">名称:</td>
+								  <td><input name="title" type="text" class="form-control" placeholder="" required></td>
+							  </tr>
+								<tr>
+									<td width="150">权限:</td>
+								  <td><foreach name="auth_rule_list" item="arl"> 
+                              <label><input type="checkbox" name="rules[]" value="{$arl.id}" />&nbsp;{$arl.title}</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            </foreach></td>
+							  </tr>
+							</tbody>
+						</table>
+                  
+		        </div>
+		    </div>
+		     <div class="form-actions">
+		           <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+		      		<a class="btn" href="{:U('Admin/Admin/index_auth_group')}">返回</a>
+		      </div>
+		</form>
+	</div>
+
+<include file="Admin@Public:page_foot" />

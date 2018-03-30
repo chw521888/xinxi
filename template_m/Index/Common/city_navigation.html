@@ -1,0 +1,15 @@
+
+<div class="base">
+    <ul style="margin-top: -20px;">
+        <li class="base-li1" style="background: #ca192b;"><a><span style="color: #fff;">赛区</span></a> </li>
+        <foreach name="city_list" item="vo">
+        <li class="base-li2">
+            <p><a style="color:#333;">{$vo.name}</a></p>
+            <p><a <if condition="$vo['shequ'] == 1">href="index.php?m=Contingent&c=IndexShow&a=index_shequ&location_id={$vo.id}" style="color:red;font-size:1rem;"</if>>推荐赛</a></p>
+            <p><a <if condition="$vo['is_effect'] == 1">href="index.php?m=Contingent&c=IndexShow&a=index_street&location_id={$vo.id}"style="color:red; font-size:1rem;"</if>>初级赛</a></p>
+            <p><a <if condition="$vo['status'] == 1">href="index.php?m=Contingent&c=IndexShow&a=index_city&location_id={$vo.id}" style="color:red;font-size:1rem;"</if>>城市赛</a></p>
+            </li>
+        </foreach>
+    </ul>
+</div>
+<div class="mb"></div>

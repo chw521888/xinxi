@@ -1,0 +1,62 @@
+<include file="Index@Common:new_top" />
+  
+<include file="Index@Common:new_banner" />
+        
+<include file="Index@Common:new_menu" />
+        
+        
+        <div class="warp">
+            <div class="crumbs">当前位置：<a href="/">首页</a> &gt; <a href="#">{$info.typename}</a></div>
+
+            <div class="stroy_details">
+                <div class="title">{$info.title}</div>
+                <div class="audio">
+                    <p class="weixinAudio">
+                        <audio src="{$info.uploadfile}" id="media" width="1" height="1" preload=""></audio>
+                        <span id="audio_area" class="db audio_area">
+                          <span class="audio_wrp db">
+                            <span class="audio_play_area">
+                              <i class="icon_audio_default"></i>
+                              <i class="icon_audio_playing"></i>
+                            </span>
+                            
+                            <span class="db audio_info_area">
+                              <strong class="db audio_title">{$info.title}</strong>
+                              <span class="audio_source tips_global">{$info.title}</span>
+                              <span class="audio_progress_box">
+                                <span class="playBall" id="audio_playBall"></span>
+                                <span id="audio_progress" class="progress_bar" ></span>
+                              </span>
+
+                              <span class="audio_length_box">
+                                <span id="audio_timenow" class="audio_time_now tips_global">00:00</span>
+                                <span id="audio_length" class="audio_length tips_global">00:30</span>
+                              </span>
+                            </span>
+
+                          </span>
+                        </span>
+                    </p>
+                </div>
+                <div class="txt">{$info.content|htmlspecialchars_decode}</div>  
+            </div>
+
+        </div>
+
+
+
+        <include file="Index@Common:foot" />
+    </body>
+</html>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/jquery.newsticker.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/weixinAudio.js"></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/Audio.js"></script>
+<script>
+    $("#nav li").hover(function(){
+        $(this).find(".second_nav").slideToggle();
+    })
+    
+</script>

@@ -1,0 +1,121 @@
+<include file="Admin@Public:page_head" />
+<html:editor type="UEDITOR_BEGIN"></html:editor>
+<script>
+function checked_location(){
+	location_id = $('select[name=location_id]').val();
+	if(!location_id || location==""){
+		alert('请选择对应的街道！');
+		document.getElementById('location_id').options[0].selected = true;
+		return false;
+		}
+	}
+</script>
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Contingent/index')}">队伍管理</a></li>
+			<li class="active"><a href="">修改队伍</a></li>
+	    </ul>
+		<form class="form-horizontal" name="myform" id="myform" action="{:U('Contingent/update')}" method="post">
+        <input name="id" type="hidden" value="{$info.id}" />
+			<div class="tabbable">
+		        <div class="tab-content">
+		          <div class="tab-pane active">
+		          		<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+								<tr>
+									<td width="150">上级分类:</td>
+								  <td><select name="location_id" id="location_id" onchange="return checked_location()">
+								    <option value="">---请选择----</option>
+                                  <foreach name="location_list" item="vo">
+								    <option value="">{$vo.name}</option>
+                                  <foreach name="vo.value" item="v">
+								    <option value="{$v.id}" <eq name="v['id']" value="$info['location_id']">selected</eq>>　┝ {$v.name}</option>
+                                    </foreach>
+                                    </foreach>
+								  </select></td>
+							  </tr>
+								<tr>
+									<td width="150">队伍名称:</td>
+								  <td><input type="text" class="input" name="name" value="{$info.name}" required="required" /></td>
+							  </tr>
+								<tr>
+									<td width="150">社区名称:</td>
+								  <td><input type="text" class="input" name="community_name" value="{$info.community_name}" /></td>
+							  </tr>
+								<tr>
+									<td width="150">参赛人数:</td>
+								  <td><input type="text" class="input" name="num_competition" value="{$info.num_competition}" /></td>
+							  </tr>
+								<tr>
+									<td width="150">平均年龄:</td>
+								  <td><input type="text" class="input" name="age" value="{$info.age}" /></td>
+							  </tr>
+								<tr>
+									<td width="150">描述:</td>
+								  <td><textarea name="resume" rows="3" class="input">{$info.resume}</textarea></td>
+							  </tr>
+								<!--<tr>
+									<td width="150">成长经历:</td>
+								    <td><html:imgUpload name='content_pic_1' id="content_pic_1" value="{$info.content_pic_1}" /></td>
+							  </tr>
+								<tr>
+									<td width="150">描述:</td>
+								  <td><textarea name="content_1" rows="3" class="input">{$info.content_1}</textarea></td>
+							  </tr>
+								<tr>
+									<td width="150">团队成员:</td>
+								    <td><html:imgUpload name='content_pic_2' id="content_pic_2" value="{$info.content_pic_2}" /></td>
+							  </tr>
+								<tr>
+									<td width="150">描述:</td>
+								  <td><textarea name="content_2" rows="3" class="input">{$info.content_2}</textarea></td>
+							  </tr>
+								<tr>
+									<td width="150">获得奖项:</td>
+								    <td><html:imgUpload name='content_pic_3' id="content_pic_3" value="{$info.content_pic_3}" /></td>
+							  </tr>
+								<tr>
+									<td width="150">描述:</td>
+								  <td><textarea name="content_3" rows="3" class="input">{$info.content_3}</textarea></td>
+							  </tr>
+								<tr>
+									<td width="150">参与重大活动与比赛:</td>
+								    <td><html:imgUpload name='content_pic_4' id="content_pic_4" value="{$info.content_pic_4}" /></td>
+							  </tr>
+								<tr>
+									<td width="150">描述:</td>
+								  <td><textarea name="content_4" rows="3" class="input">{$info.content_4}</textarea></td>
+							  </tr>
+								<tr>
+									<td width="150">节目创作故事:</td>
+								    <td><html:imgUpload name='content_pic_5' id="content_pic_5" value="{$info.content_pic_5}" /></td>
+							  </tr>
+								<tr>
+									<td width="150">描述:</td>
+								  <td><textarea name="content_5" rows="3" class="input">{$info.content_5}</textarea></td>
+							  </tr>-->
+							  <tr>
+									<td width="150">比赛组别:</td>
+							    <td>
+                                  <label><input type="radio" name="is_child" value="0" <if condition="$info['is_child'] eq 0"> checked="checked"</if> />&nbsp;成人组&nbsp;&nbsp;</label>
+                                  <label><input name="is_child" type="radio" value="1" <if condition="$info['is_child'] eq 1"> checked="checked"</if> />&nbsp;儿童组</label>                               
+                                  </td>
+						      </tr>
+                               <tr>
+									<td width="150">是否有效:</td>
+							    <td>
+                                  <label><input type="radio" name="is_effect" value="1" <if condition="$info['is_effect'] eq 1"> checked="checked"</if> />&nbsp;是&nbsp;&nbsp;</label>
+                                  <label><input name="is_effect" type="radio" value="0"  <if condition="$info['is_effect'] eq 0"> checked="checked"</if> />&nbsp;否</label>                               
+                                  </td>
+						      </tr>
+							</tbody>
+						</table>
+		          </div>
+		     <div class="form-actions">
+		           <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+		      		<a class="btn" href="{:U('Contingent/index')}">返回</a>
+		      </div>
+		</form>
+	</div>
+
+<include file="Admin@Public:page_foot" />

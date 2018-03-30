@@ -1,0 +1,51 @@
+<include file="Admin@Public:page_head" />
+<html:editor type="UEDITOR_BEGIN"></html:editor>
+<style type="text/css">
+.col-auto { overflow: auto; _zoom: 1;_float: left;}
+.col-right { float: right; width: 210px; overflow: hidden; margin-left: 6px; }
+.table th, .table td {vertical-align: middle;}
+.picList li{margin-bottom: 5px;}
+</style>
+<div class="wrap J_check_wrap">
+          <ul class="nav nav-tabs">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('AdImages/AdImages/tt_index')}">广告位管理</a></li>
+			<li class="active"><a href="{:U('AdImages/AdImages/tt_index_add')}">添加广告位</a></li>
+		</ul>
+          </ul>
+  <form name="myform" id="myform" action="{:U('AdImages/AdImages/tt_insert')}" method="post" class="form-horizontal J_ajaxForms" enctype="multipart/form-data">
+  <div class="col-right">
+    <div class="table_full">
+    </div>
+  </div>
+  <div class="col-auto">
+    <div class="table_full">
+      <table class="table table-bordered">
+              <input name="category_id" type="hidden" value="0" />
+            <tr>
+              <th width="80">标题 </th>
+              <td>
+              	<input type="text" style="width:400px;" name="title" id="title"  required value="" class="input input_hd J_title_color" placeholder="请输入标题" onkeyup="strlen_verify(this, 'title_len', 160)" />
+              	<span class="must_red">*</span>
+              </td>
+            </tr>
+            <tr>
+              <th width="80">内容</th>
+              <td><div id='content_tip'></div>
+              <html:editor id="arcticle_content" name="content" type="UEDITOR"  style="width:100%; height:250px;" ></html:editor>
+				</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="form-actions">
+        <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+        <a class="btn" href="{:U('AdImages/AdImages/tt_index')}">返回</a>
+  </div>
+ </form>
+</div>
+<script type="text/javascript" src="__TMPL__Common/js/common.js"></script>
+<script type="text/javascript" src="__TMPL__Common/js/content_addtop.js"></script>
+
+<include file="Admin@Public:page_foot" />

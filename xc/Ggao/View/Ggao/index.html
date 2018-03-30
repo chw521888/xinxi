@@ -1,0 +1,107 @@
+<include file="Admin@Public:page_head" />
+
+<div class="wrap J_check_wrap">
+
+		<ul class="nav nav-tabs">
+
+			<li class="active"><a href="{:U('Ggao/Ggao/index')}">广告管理</a></li>
+
+		</ul>
+
+		<form method="post" class="J_ajaxForm" action="{:U('Ggao/Ggao/update_sort')}">
+
+		<div class="table-actions">
+
+					<!-- <button class="btn btn-primary btn-small" type="button" onclick="foreverdel();" data-action="{:U('Ggao/Ggao/foreverdelete')}" data-subcheck="true">删除</button> 
+
+
+
+        			<button type="submit" class="btn btn-primary btn-small btn_submit J_ajax_submit_btn">排序</button>-->
+			</div>
+
+
+
+            <html:list  id="dataTable"
+                        style="table table-hover table-bordered table-list"
+
+
+                        name="list"
+
+
+
+                        checkbox="true"
+
+
+
+                        action="true"
+
+
+
+                        title="上线项目"
+
+
+
+                        datasource="list"
+
+
+
+                        pagelist="{$page}"
+
+
+
+           show="id:ID
+
+
+
+          		,pic|show_img:缩略图
+
+
+
+          		,title:标题
+
+
+
+          		,url:链接"
+
+
+
+                actionlist="edit:修改"/>
+
+
+
+		<div class="table-actions">
+
+
+
+					<!-- <button class="btn btn-primary btn-small" type="button" onclick="foreverdel();" data-action="{:U('Ggao/Ggao/foreverdelete')}" data-subcheck="true">删除</button>
+
+
+
+        			<button type="submit" class="btn btn-primary btn-small btn_submit J_ajax_submit_btn">排序</button> -->
+
+
+
+			</div>
+
+
+
+            <include file="Admin@Public:page" />
+
+
+
+		</form>
+
+
+
+	</div>
+
+
+
+
+
+
+
+<include file="Admin@Public:page_foot" />
+
+
+

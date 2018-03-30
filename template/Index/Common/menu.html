@@ -1,0 +1,27 @@
+<!--导航              开始-->
+        <div class="menu">
+            <ul class="warp" id="nav">
+                <li><a href="/">首页</a></li>
+                <php>
+                   $menu_list=get_menu_channel(array('limit'=>8));
+                </php>
+                <foreach name="menu_list" item="ml" key="key">
+                <li><a <if condition="$key neq 0">href="{$ml.url}"</if>>{$ml.typename}</a>
+                    <if condition="$key eq 0">
+                        <ul class="second_nav">
+                        <foreach name="city_list" item="vo">
+                            <li>
+                                <a href="#this" style="cursor:initial;">{$vo.name}</a>
+                                <a <if condition="$vo['shequ'] == 1">href="index.php?m=Contingent&c=IndexShow&a=index_shequ&location_id={$vo.id}" style="color:red"</if>>推荐赛</a>
+                                <a <if condition="$vo['is_effect'] == 1">href="index.php?m=Contingent&c=IndexShow&a=index_street&location_id={$vo.id}" style="color:red"</if>>初级赛</a>
+                                <a <if condition="$vo['status'] == 1">href="index.php?m=Contingent&c=IndexShow&a=index_city&location_id={$vo.id}" style="color:red"</if>>市级赛</a>
+                            </li>
+                        </foreach>
+                            <div><a <if condition="C('IS_START_COUNTRY') eq 1">href="{:U('Contingent/IndexShow/index_finals')}"</if>>总决赛</a></div>
+                        </ul>
+                    </if>
+                </li>
+                </foreach>
+            </ul>
+        </div>
+        <!--导航              End-->

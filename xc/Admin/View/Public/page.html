@@ -1,0 +1,14 @@
+<div class="mypager">
+    <div class="btn-group dropdown">
+        <button class="btn  btn-default dropdown-toggle" data-toggle="dropdown">
+            {$listRows}&nbsp;<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <foreach name="listRowsList" item="lrl">
+				<li><a  href="javascript:void(0);" onclick="javascript:turm_listRows({$lrl});">{$lrl}</a></li>
+			</foreach>
+        </ul>
+    </div>
+    <div class="total" style=" float:left;height:52px; line-height:52px; padding-left:10px;">共 {$listcount} 条数据</div>
+    <div class="pagination">{$page}</div>
+</div>

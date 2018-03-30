@@ -1,0 +1,57 @@
+<include file="Admin@Public:page_head" />
+<div class="wrap jj">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Contingent/index')}">队伍管理</a></li>
+			<li><a href="{:U('Contingent/add')}">添加队伍</a></li>
+		</ul>
+        <form class="well form-search" method="get" action="__APP__">
+        
+            <input type="hidden" value="{$Think.const.MODULE_NAME}" name="m" />
+            <input type="hidden" value="{$Think.const.CONTROLLER_NAME}" name="c" />
+            <input type="hidden" value="<php>echo ACTION_NAME;</php>" name="a" />
+            <input type="hidden" value="{$channeltype_id}" name="channeltype_id" />
+			<div class="search_type cc mb10">
+				<div class="mb10">
+					<span class="mr20">街道： 
+						<select name="location_id" style="width: 200px;">
+                        <foreach name="location_list" item="vo">
+						  <option value="{$vo.id}">{$vo.name}</option>
+                        <foreach name="vo.value" item="v">
+						  <option value="{$v.id}" <eq name="v['id']" value="$_GET['location_id']">selected</eq>>　 ┝ {$v.name}</option>
+                          </foreach>
+                          </foreach>
+						</select>
+                        &nbsp; &nbsp;关键字： 
+					<input type="text" name="keywords" style="width: 200px;" value="<php>echo $_GET['keywords']</php>" placeholder="请输入关键字...">
+						<input type="submit" class="btn btn-primary" value="搜索" />
+					</span>
+				</div>
+			</div>
+		</form>
+		<form method="post" class="J_ajaxForm" action="{:U('Contingent/Contingent/update_sort')}">
+			<div class="table-actions">
+				<!--<button type="submit" class="btn btn-primary btn-small btn_submit J_ajax_submit_btn">排序</button>-->
+			</div>
+			<html:list  id="dataTable"
+                        style="table table-hover table-bordered table-list"
+                        name="list"
+                        checkbox="false"
+                        action="true"
+                        title="上线项目"
+                        datasource="list"
+                        pagelist="{$page}"
+           show="id:ID
+          		,location_id|show_l2_name:城市及街道
+          		,name:队伍名称
+          		,community_name:社区名称
+          		,num_competition:参赛人数
+          		,age:平均年龄
+                ,time|turn_time:添加时间"
+                actionlist="edit:修改, del:删除:id:foreverdelete"/>
+			<div class="table-actions">
+				<!--<button type="submit" class="btn btn-primary btn-small btn_submit J_ajax_submit_btn">排序</button>-->
+			</div>
+            <include file="Admin@Public:page" />
+		</form>
+	</div>
+<include file="Admin@Public:page_foot" />

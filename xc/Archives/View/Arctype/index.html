@@ -1,0 +1,50 @@
+<include file="Admin@Public:page_head" />
+<div class="wrap jj">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Archives/Arctype/index')}">分类管理</a></li>
+			<li><a href="{:U('Archives/Arctype/add')}">添加分类</a></li>
+		</ul>
+		<form method="post" class="J_ajaxForm" action="{:U('Archives/Arctype/update_sort')}">
+			<div class="table-actions">
+				<button type="submit" class="btn btn-primary btn-small btn_submit J_ajax_submit_btn">排序</button>
+			</div>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="50">ID</th>
+						<th width="50">排序</th>
+						<th>分类名称</th>
+						<th>分类类型</th>
+						<th>是否显示</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+                    <foreach name="list" item="vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.sort|set_sort_input=$vo['id']}</td>
+					  <td>{$vo.full_typename}</td>
+						<td>{$vo.channeltype_name}</td>
+						<td>{$vo.is_effect|check_effect}</td>
+						<td><a href="{:U('Archives/Arctype/edit',array('id'=>$vo['id']))}">修改</a><if condition="(C('SYSTEM_DEBUG') eq true)or($vo['is_system'] eq 0)">&nbsp;&nbsp;&nbsp;&nbsp;<a href="{:U('Archives/Arctype/foreverdelete',array('id'=>$vo['id']))}">删除</a></if></td>
+                    </tr>
+				   </foreach>
+                </tbody>
+				<tfoot>
+					<tr>
+						<th width="50">排序</th>
+						<th width="50">ID</th>
+						<th>分类名称</th>
+						<th>分类类型</th>
+						<th>是否显示</th>
+						<th>操作</th>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="table-actions">
+				<button type="submit" class="btn btn-primary btn-small btn_submit J_ajax_submit_btn">排序</button>
+			</div>
+		</form>
+	</div>
+<include file="Admin@Public:page_foot" />

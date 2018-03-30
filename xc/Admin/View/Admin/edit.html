@@ -1,0 +1,67 @@
+<include file="Admin@Public:page_head" />
+
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Admin/Admin/index')}">管理员管理</a></li>
+			<li class="active"><a href="#">修改管理员</a></li>
+		</ul>
+		<form class="form-horizontal J_ajaxForm" name="myform" id="myform" action="{:U('Admin/update')}" method="post">
+        <input type="hidden" name="id"  value="{$info.id}" />
+			<div class="tabbable">
+		        <div class="tab-content">
+		          		<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+								<tr>
+									<td width="150">上级分类:</td>
+								  <td><html:select options="auth_group_array" name="auth_group_id" selected="info['auth_group_id']" /></td>
+							  </tr>
+								<tr>
+									<td width="150">账号:</td>
+								  <td><input type="text" class="input" name="login_name" value="{$info.login_name}" required /><span class="must_red">*</span></td>
+							  </tr>
+								<tr>
+									<td width="150">中文姓名:</td>
+								  <td><input type="text" class="input" name="chinese_name" value="{$info.chinese_name}" /></td>
+							  </tr>
+								<tr>
+									<td width="150">密码:</td>
+								  <td><input type="password" class="input" name="login_pass" value="" placeholder="如不需要修改请留空" /></td>
+							  </tr>
+								<tr>
+									<td width="150">确认密码:</td>
+								  <td><input type="password" class="input" name="login_pass2" value="" /></td>
+							  </tr>
+								<tr>
+									<td width="150">电话:</td>
+								  <td><input type="text" class="input" name="tel" value="{$info.tel}" /></td>
+							  </tr>
+								<tr>
+									<td width="150">QQ:</td>
+								  <td><input type="text" class="input" name="qq" value="{$info.qq}" /></td>
+							  </tr>
+								<tr>
+									<td width="150">E-mail:</td>
+								  <td><input type="text" class="input" name="email" value="{$info.email}" /></td>
+							  </tr>
+								<tr>
+									<td width="150">住址:</td>
+								  <td><textarea name="address" class="input">{$info.address}</textarea></td>
+							  </tr>
+								<tr>
+									<td width="150">是否有效:</td>
+								    <td><input name="is_effect" type="checkbox" value="1" checked="checked" /></td>
+							  </tr>
+                              
+							</tbody>
+						</table>
+                  
+		        </div>
+		    </div>
+		     <div class="form-actions">
+		           <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+		      		<a class="btn" href="{:U('Admin/index')}">返回</a>
+		      </div>
+		</form>
+	</div>
+
+<include file="Admin@Public:page_foot" />

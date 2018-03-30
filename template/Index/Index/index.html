@@ -1,0 +1,431 @@
+﻿<include file="Index@Common:new_top" />
+<style>
+    .event .map{
+        position: relative;
+    }
+    .event .map .jing_city{
+        position: absolute;
+        width: 50px;
+    }
+    .event .map .jing_city a{
+        display: block;
+        color: #333;
+    }
+    .event .map .jing_city a:hover{
+        color: #333;
+    }
+    .event .map .jing_city img{
+        width: 100%;
+    }
+    .event .map .jing_city1{
+        top: 118px;
+        right: 92px;
+    }
+    .event .map .jing_city2{
+        top: 301px;
+        right: 247px;
+    }
+    .event .map .jing_city3{
+        top: 171px;
+        right: 191px;
+    }
+    .event .map .jing_city4{
+        top: 224px;
+        right: 101px;
+    }
+    .event .map .jing_city5{
+        top: 69px;
+        right: 88px;
+    }
+    .event .map .jing_city6{
+        top: 180px;
+        right: 67px;
+    }
+    .event .map .jing_city7{
+        top: 338px;
+        right: 134px;
+    }
+    .event .map .jing_city8{
+        bottom: 73px;
+        left: 249px;
+    }
+    .event .map .jing_city9{
+        bottom: 259px;
+        left: 434px;
+    }
+    .event .map .jing_city10{
+        bottom: 203px;
+        left: 365px;
+    }
+    .event .map .jing_city span {
+        position: absolute;
+        display: inline-block;
+        width: 54px;
+        left: 38px;
+        font-size: 14px;
+        line-height: 30px;
+           margin-top: 6px;
+        text-align: center;
+    }
+
+    .event .map .jing_city span.cityRed{
+        color: #fff;
+        background: url(__INDEX__NewCommon/images/bg.png) no-repeat; 
+        background-size: 100% 100%;
+    }
+</style>
+<php>
+$list_69 = get_article(array('arctype_id'=>'69','limit'=>'3,10'));
+
+$list_2_69 = get_article(array('arctype_id'=>'69','limit'=>'0,3'));
+
+$list_10 = get_article(array('arctype_id'=>'10','limit'=>'1,5'));
+
+$list_2_10 = get_article(array('arctype_id'=>'10','where'=>'Archives.pic!=""','limit'=>'1'));
+
+$list_68 = get_article(array('arctype_id'=>'68','limit'=>'9'));
+
+$list_54 = get_article(array('arctype_id'=>'54','limit'=>'1,3'));
+
+$list_2_54 = get_article(array('arctype_id'=>'54','where'=>'Archives.pic!=""','limit'=>'1'));
+
+$list_70 = get_article(array('arctype_id'=>'70','limit'=>'5'));
+
+</php>
+<include file="Index@Common:new_banner" />
+
+<include file="Index@Common:new_menu" />
+
+        <div class="warp">
+            <!--赛事公告          开始-->
+            <div class="event clearfix">
+                <div class="map pull-left">
+                    <img src="__INDEX__NewCommon/images/map.gif"/>
+                    <foreach name="city_list" item="v">
+                    <if condition="$key lt 11">
+                    <php>
+                        $href = "#this";
+                        $yx_num = 0;
+                        if($v['shequ'] == 1){
+                            $href = U('Contingent/IndexShow/index_shequ',array('location_id'=>$v['id']));
+                            $yx_num = 1;
+                        }
+                        if($v['is_effect'] == 1){
+                            $href = U('Contingent/IndexShow/index_street',array('location_id'=>$v['id']));
+                            $yx_num = 1;
+                        }
+                        if($v['status'] == 1){
+                            $href = U('Contingent/IndexShow/index_city',array('location_id'=>$v['id']));
+                            $yx_num = 1;
+                        }
+                    </php>
+                    <div class="jing_city jing_city{$key+1}">
+                        <a href="{$href}">
+                        <img src="__INDEX__NewCommon/images/yaoxiang{$yx_num}.gif" alt=""><span <if condition="$yx_num gt 0">class="cityRed"</if>>{$v.name}</span>
+                        </a>
+                    </div>
+                    </if>
+                    </foreach>
+                </div>
+                
+                <div class="notice pull-right">
+                    
+                    <!--栏目标题       开始-->
+                    <div class="ind_title">
+                        <span>赛事公告</span> /
+                        <i>Event announcement</i>
+                        <a href="{:U('archives/index_arctype/index',array('t_id'=>69))}">更多&gt;&gt;</a>
+                    </div>
+                    <!--栏目标题       End-->
+                    
+                    <!--通知公告       开始-->
+                    <div class="newsticker">
+                        <ul class="newsticker-list">
+                        <foreach name="list_2_69" item="vo">
+                            <li class="newsticker-item">
+                                <a href="{$vo.url}">{$vo.title}</a>
+                            </li>
+                        </foreach>
+                        </ul>
+                    </div>
+                    <!--通知公告       End-->
+                    
+                    <ul class="news_style">
+                        <foreach name="list_69" item="vo">
+                            <li><a href="{$vo.url}">{$vo.title}</a></li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+            <!--赛事公告          End-->
+            
+            <php>
+                $map3['id'] = array('in',array(2,3,5));
+                $list_gg_3 = M('Ggao')->where($map3)->select();
+            </php>
+            <!--广告位               开始-->
+            <div class="ad">
+                <div class="bx_slider_1">
+                <foreach name="list_gg_3" item="v">
+                    <a href="{$v.url}"><img src="{$v.pic}" alt="" /></a>
+                </foreach>
+                </div>
+            </div>
+            <!--广告位               End-->
+            
+            
+            <!--新闻资讯           开始-->
+            <div class="ind_news_box clearfix">
+                
+                <div class="ind_news pull-left">
+                    
+                    <!--栏目标题       开始-->
+                    <div class="ind_title">
+                        <span>新闻资讯</span> /
+                        <i>News</i>
+                        <a href="{:U('archives/index_arctype/index',array('t_id'=>10))}">更多&gt;&gt;</a>
+                    </div>
+                    <!--栏目标题       End-->
+                    
+                    <div class="news_recommend clearfix">
+                        <div class="thumb pull-left"><a href="{$list_2_10.0.url}"><img src="{$list_2_10.0.pic}"/></a></div>
+                        <dl class="pull-right">
+                            <dt><a href="{$list_2_10.0.url}">{$list_2_10.0.title}</a></dt>
+                            <dd>{$list_2_10.0.jianjie}</dd>
+                        </dl>
+                    </div>
+                    
+                    <ul class="news_style">
+                    <foreach name="list_10" item="vo">
+                        <li><a href="{$vo.url}"><span>{$vo.pubdate}</span> <div>{$vo.title}</div></a></li>
+                    </foreach>
+                    </ul>
+                </div>
+                
+                
+                <!--中医药小故事         开始-->
+                <div class="story pull-right">
+                    <div class="ind_lt">中医药<span>小故事</span></div>
+                    <ul>
+                    <foreach name="list_68" item="vo">
+                        <li>
+                            <a href="{$vo.url}">
+                                <div><img src="{$vo.pic}" alt="" /></div>
+                                <p>{$vo.title}</p>
+                            </a>
+                        </li>
+                    </foreach>
+                    </ul>
+                </div>
+                <!--中医药小故事         End-->
+            </div>
+            <!--新闻资讯           End-->
+            
+            
+            <!--养生知识            开始-->
+            <div class="ind_health clearfix">
+                
+                <div class="ind_news pull-left">
+                    
+                    <!--栏目标题       开始-->
+                    <div class="ind_title">
+                        <span>养生知识</span> /
+                        <i>Health knowledge</i>
+                        <a href="{:U('archives/index_arctype/index',array('t_id'=>54))}">更多&gt;&gt;</a>
+                    </div>
+                    <!--栏目标题       End-->
+                    
+                    <div class="news_recommend clearfix">
+                        <div class="thumb pull-left"><a href="{$list_2_54.0.url}"><img src="{$list_2_54.0.pic}"/></a></div>
+                        <dl class="pull-right">
+                            <dt><a href="{$list_2_54.0.url}">{$list_2_54.0.title}</a></dt>
+                            <dd>{$list_2_54.0.jianjie}</dd>
+                        </dl>
+                    </div>
+                    
+                    <ul class="news_style">
+                    <foreach name="list_54" item="vo">
+                        <li><a href="{$vo.url}"><span>{$vo.pubdate}</span> <div>{$vo.title}</div></a></li>
+                    </foreach>
+                    </ul>
+                </div>
+                
+                
+                <!--中医体质测试         开始-->
+                <div class="test pull-right">
+                    <div class="ind_lt">中医体质<span>测试</span></div>
+                    
+                    <ul class="test_news clearfix">
+                        <li class="thumb pull-left"><a href="{:U('Index/Dati/index')}"><img src="__INDEX__NewCommon/images/index_img_9.jpg"/></a></li>
+                        <li class="txt pull-right"><a href="{:U('Index/Dati/index')}">在北京的昌平区、朝阳区、丰台区……连续5天，都有演员们身着华丽服饰、画着精致妆容，在舞台上大秀才艺。</a></li>
+                    </ul>
+                    
+                    
+                    <ul class="news_style">
+                    <foreach name="list_70" item="vo">
+                        <li><a href="{$vo.url}">{$vo.title}</a></li>
+                    </foreach>
+                    </ul>
+                    
+                </div>
+                <!--中医体质测试         End-->
+            </div>
+            <!--养生知识            End-->
+            
+            <php>
+                $map4['id'] = array('in',array(6,7,8));
+                $list_gg_4 = M('Ggao')->where($map4)->select();
+            </php>
+            <!--广告位               开始-->
+            <div class="ad">
+                <div class="bx_slider">
+                <foreach name="list_gg_4" item="v">
+                    <a href="{$v.url}"><img src="{$v.pic}" alt="" /></a>
+                </foreach>
+                </div>
+            </div>
+            <!--广告位               End-->
+            
+            
+            <div class="show_area clearfix">
+                <!--秀场专区             开始-->
+                <div class="show_box pull-left">
+                    
+                    <div class="show_city">
+                        <php>
+                            $info_67 = get_arctype_info(67);
+                            $info_66 = get_arctype_info(66);
+                            $info_71 = get_arctype_info(71);
+                        </php>
+                        <!--栏目标题       开始-->
+                        <div class="ind_title">
+                            <span>秀场专区</span> /
+                            <i>Show area</i>
+                            <a href="{$info_67.url}">更多&gt;&gt;</a>
+                        </div>
+                        <!--栏目标题       End-->
+                        
+                        
+                        <ul class="show_tab clearfix">
+                            <li class="active">{$info_67.typename}</li>
+                            <li>{$info_66.typename}</li>
+                            <li>{$info_71.typename}</li>
+                        </ul>
+                        
+                        <div class="show_city_content">
+                            <ul class="show_city_list clearfix">
+                                <li><a href="{$info_67.url}"><img src="{$info_67.pic}" alt="" /></a></li>
+                            </ul>
+                            <ul class="show_city_list clearfix">
+                                <li><a href="{$info_66.url}"><img src="{$info_66.pic}" alt="" /></a></li>
+                                
+                            </ul>
+                            <ul class="show_city_list clearfix">
+                                <li><a href="{$info_71.url}"><img src="{$info_71.pic}" alt="" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    
+                                            
+                        
+                    <div  class="intro_box">
+                        <div class="intro">
+                        <php>
+                        $info_29 = get_arctype_info(29);
+                        </php>
+                            <h4>主办方介绍</h4>
+                            <a href="/jtjk/index.php?m=archives&c=index_arctype&a=index&t_id=29"><img src="{$info_29.pic}" width="340" height="92" alt="" /></a>
+                            <p>{$info_29.resume}...<a style="font-weight: bold;" href="/jtjk/index.php?m=archives&c=index_arctype&a=index&t_id=29">【了解详情】</a></p>
+                        </div>
+                        <div class="intro">
+                        <php>
+                        $info_33 = get_arctype_info(33);
+                        </php>
+                            <h4>项目介绍</h4>
+                            <a href="/jtjk/index.php?m=archives&c=index_arctype&a=index&t_id=33"><img src="{$info_33.pic}" width="340" height="92" alt="" /></a>
+                            <p>{$info_33.resume}...<a style="font-weight: bold;" href="/jtjk/index.php?m=archives&c=index_arctype&a=index&t_id=33">【了解详情】</a></p>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <!--秀场专区             End-->
+                <php>
+                    $map2['location_id'] = 0;
+                    $location_list = M('Location2')->where($map2)->select();
+                    $location_ids  = implode(',',make_one_array($location_list,'id'));
+                    $map['location_id'] = array('in',$location_ids.",".$location_id);
+                    $show_2017 = D('Show2')->where($map)->limit(6)->select();
+                </php>
+                <!--往期回顾             开始-->
+                <div class="review pull-right">
+                    
+                    <div class="title"><img src="__INDEX__NewCommon/images/index_img_3.png"/></div>
+                    
+                    <div class="year"><a href="{:U('Index/Huigu/huigu2')}">更多&gt;&gt;</a>2017年精彩视频</div>
+                    
+                    <ul class="clearfix">
+                    <foreach name="show_2017" item="v">
+                        <li>
+                            <a href="{:U('Index/Huigu/show2',array('id'=>$v['id']))}">
+                                <div><img src="{$v.pic}" alt="" /></div>
+                                <p>{$v.show_name}</p>
+                            </a>
+                        </li>
+                    </foreach>
+                    </ul>
+                    
+                    <php>
+                        $map2['location_id'] = 0;
+                        $location_list = M('Location1')->where($map2)->select();
+                        $location_ids  = implode(',',make_one_array($location_list,'id'));
+                        $map['location_id'] = array('in',$location_ids.",".$location_id);
+                        $show_2016 = D('Show1')->where($map)->limit(6)->select();
+                    </php>
+                    <div class="year"><a href="{:U('Index/Huigu/huigu')}">更多&gt;&gt;</a>2016年精彩视频</div>
+                    
+                    <ul class="clearfix">
+                        <foreach name="show_2016" item="v">
+                        <li>
+                            <a href="{:U('Index/Huigu/show',array('id'=>$v['id']))}">
+                                <div><img src="{$v.pic}" alt="" /></div>
+                                <p>{$v.show_name}</p>
+                            </a>
+                        </li>
+                    </foreach>
+                    </ul>
+                </div>
+                <!--往期回顾             End-->
+                
+            </div>
+        </div>
+        
+        
+        <include file="Index@Common:foot" />
+    </body>
+</html>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/jquery.newsticker.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/jquery.bxslider.min.js" ></script>
+
+<script>
+    $(".show_tab li").hover(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+        $(".show_city_list").hide();
+        $(".show_city_list").eq($(this).index()).show();
+        
+    })
+</script>
+<script>
+    $("#nav li").hover(function(){
+        $(this).find(".second_nav").slideToggle();
+    })
+
+    $(".bx_slider , .bx_slider_1").bxSlider({
+        auto: true,
+        infiniteLoop: true
+    });
+</script>

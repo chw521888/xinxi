@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body style="margin:0;padding-left:50px; padding-right: 50px;">
+<style type="text/css">
+	.tab{
+		float: left; width:22%; line-height: 35px; text-align: center; border: 1px solid #cccccc;
+	}
+	.dtab{
+		margin-left:100px;
+	}
+</style>
+<foreach name="list" item="v">
+<div class="tab <if condition='in_array($key,$data)'>dtab</if>">{$v}</div>
+</foreach>
+
+</body>
+</html>

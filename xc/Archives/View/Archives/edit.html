@@ -1,0 +1,204 @@
+<include file="Admin@Public:page_head" />
+<html:editor type="UEDITOR_BEGIN"></html:editor>
+<style type="text/css">
+.col-auto { overflow: auto; _zoom: 1;_float: left;}
+.col-right { float: right; width: 210px; overflow: hidden; margin-left: 6px; }
+.table th, .table td {vertical-align: middle;}
+.picList li{margin-bottom: 5px;}
+</style>
+<div class="wrap J_check_wrap">
+          <ul class="nav nav-tabs">
+			<li><a href="{:U('Archives/Archives/index',array('channeltype_id'=>$channeltype_id))}">文章管理</a></li>
+			<li class="active"><a href="{:U('Archives/Archives/edit',array('id'=>$info['id'],'channeltype_id'=>$channeltype_id))}">修改文章</a></li>
+          </ul>
+  <form name="myform" id="myform" action="{:u('Archives/Archives/update')}" method="post" class="form-horizontal" enctype="multipart/form-data">
+  <input name="id" type="hidden" value="{$info.id}" />
+   <input type="hidden" name="channeltype_id" value="{$channeltype_id}" />
+  <div class="col-right">
+    <div class="table_full">
+      <table class="table table-bordered">
+         <tr>
+          <td><b>缩略图</b></td>
+        </tr>
+        <tr>
+          <td>
+          	<div  style="text-align: center;"><script>
+      //实例化编辑器
+	  var up_image_input="";
+      var o_ueditorupload_image_up = UE.getEditor("j_ueditorupload_image_up",
+      {
+        autoHeightEnabled:false
+      });
+      o_ueditorupload_image_up.ready(function ()
+      {
+	 
+	   o_ueditorupload_image_up.hide();//隐藏编辑器
+	   o_ueditorupload_image_up.execCommand("serverparam",{
+         "upload_type": 'other',
+         "upload_path_son": ''
+      });
+	
+	//监听图片上传
+	o_ueditorupload_image_up.addListener("beforeInsertImage", function (t,arg)
+	{
+          //alert("这是图片地址："+arg[0].src);
+		  document.getElementById(up_image_input).value=arg[0].src;
+		  document.getElementById('thumb_preview').src=arg[0].src;
+	});
+	
+      });
+      
+      //弹出图片上传的对话框
+      function upImage(input_name)
+      {
+	    up_image_input = input_name;
+        var myImage = o_ueditorupload_image_up.getDialog("insertimage");
+        myImage.open();
+      }
+    </script>
+	<script type="text/plain" id="j_ueditorupload_image_up" style="height:5px;display:none;" ></script>
+<input type='hidden' name='pic' id='image_up' value='{$info.pic}'><a href='javascript:void(0);' onClick="flashupload('thumb_images', '附件上传','thumb',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+            <if condition="empty($info['pic'])">
+				<img onClick="upImage('image_up')" src="__TMPL__Common/img/upload-pic.png" id='thumb_preview' width='135' height='113' style='cursor:hand' />
+			<else/>
+				<img onClick="upImage('image_up')" src="{$info.pic}" id='thumb_preview' width='135' height='113' style='cursor:hand' />
+			</if>
+            
+            </a>
+            <input type="button"  class="btn" onClick="$('#thumb_preview').attr('src','__TMPL__Common/img/upload-pic.png');$('#image_up').val('');return false;" value="取消图片">
+            </div>
+			</td>
+        </tr>
+          
+        <tr>
+          <td><b>文章日期</b></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="pubdate" id="pubdate" value="{$info.pubdate}" size="21" class="input length_3 J_date" style="width: 160px;"></td>
+        </tr>
+        <tr>
+          <td><b>发布时间</b></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="time" id="time" value="{$info.time|turn_time}" size="21" class="input length_3 J_datetime" style="width: 160px;"></td>
+        </tr>
+        <tr>
+          <td><b>显示截止时间</b></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="end_time" id="end_time"<neq name="info['end_time']" value="0"> value="{$info.end_time|turn_time}"</neq> placeholder="永久" size="21" class="input length_3 J_datetime" style="width: 160px;"></td>
+        </tr>
+        <tr>
+          <td><b>状态</b></td>
+        </tr>
+        <tr>
+          <td>
+          	<span class="switch_list cc">
+			<label class="radio"><input type="radio" name="is_effect" value="1" <if condition="$info['is_effect'] gt 0">checked</if>><span>审核通过</span></label>
+			<label class="radio"><input type="radio" name="is_effect" value="0" <if condition="$info['is_effect'] elt 0">checked</if>><span>待审核</span></label>
+		 	</span>
+		 </td>
+        </tr>
+       <tr>
+          <td><b>自定义属性</b></td>
+        </tr>
+        <tr>
+          <td><span class="switch_list cc">
+          <php>$att_array=explode(',',$info['att']);</php>
+          <html:checkbox checkboxes="ARCHIVES_ATT_ARRAY" name="att" selected="att_array" /></span>
+		 </td>
+        </tr>
+        
+          <tr>
+          <td><b>是否链接到外部</b></td>
+        </tr>
+        <tr>
+          <td>
+          <span class="switch_list cc">
+           <label><input type="checkbox" name="is_url" id="checkbox" value="1"  <if condition="$info['url'] neq ''">checked</if>/>链接到外部</label>
+           <div style="width:90%;"><input type='text' name='url' id='target_link' value='{$info.url}' style='width:100%'   class='input' placeholder='http://'></div>
+          </span>
+		  </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="col-auto">
+    <div class="table_full">
+      <table class="table table-bordered">
+            <tr>
+              <th width="80">栏目</th>
+              <td><html:select options="arctype_channel_array" name="arctype_id" change="check_channel_ids();" selected="info['arctype_id']" /></td>
+            </tr>
+            <tr>
+              <th width="80">标题 </th>
+              <td>
+              	<input type="text" style="width:400px;" name="title" id="title"  required value="{$info.title}" class="input input_hd J_title_color" placeholder="请输入标题" onkeyup="strlen_verify(this, 'title_len', 160)" />
+              	<span class="must_red">*</span>
+              </td>
+            </tr>
+            <tr>
+              <th width="80">文章来源</th>
+              <td><input type='text' name='source' id='source' value='{$info.source}' style='width:400px'   class='input' placeholder='请输入文章来源'></td>
+            </tr>
+            <tr>
+              <th width="80">SEO标题</th>
+              <td><input type='text' name='seo_title' id='seo_title' value='{$info.seo_title}' style='width:400px'   class='input' placeholder='请输入SEO标题'></td>
+            </tr>
+            <tr>
+              <th width="80">关键词</th>
+              <td><input type='text' name='keywords' id='keywords' value='{$info.keywords}' style='width:400px'   class='input' placeholder='请输入关键字'> 多关键词之间用空格或者英文逗号隔开</td>
+            </tr>
+            <tr>
+              <th width="80">描述</th>
+              <td><textarea name='resume' id='resume' style='width:98%;height:50px;' placeholder='请填写描述'>{$info.resume}</textarea><!--<span class="must_red">*</span>--></td>
+            </tr>
+            <tr>
+              <th width="80">排序</th>
+              <td><input type='text' name='sort' id='sort' value='{$info.sort}' style='width:100px'   class='input' placeholder='0'></td>
+            </tr>
+            <tr>
+              <th width="80">点击次数</th>
+              <td><input type='text' name='hits' id='hits' value='{$info.hits}' style='width:100px'   class='input' placeholder='0'></td>
+            </tr>
+            <include file="Admin@Public:form_group" />
+            <tr>
+              <th width="80">相册图集 </th>
+              <td>
+				<fieldset class="blue pad-10">
+                 <php>$value_array=json_decode($info['pic_list'],true);</php>
+				 <html:imgMultiUpload id='pic_list' name='pic_list' value="value_array"/>
+				</fieldset>
+			  </td>
+            </tr>
+                        
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="form-actions">
+        <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+        <a class="btn" href="{:U('Archives/Archives/index',array('channeltype_id'=>$channeltype_id))}">返回</a>
+  </div>
+ </form>
+</div>
+<script type="text/javascript">
+  var arctype_channel_ids={$arctype_channel_ids|json_encode};
+  
+  function check_channel_ids(){
+	    var now_select_arctype=$('select[name=arctype_id]').val();
+		for(var i=0;i<arctype_channel_ids.length;i++){
+		   if(now_select_arctype==arctype_channel_ids[i]){
+			   return true;
+		   }	
+		}
+		if($('select[name=arctype_id]').val()!=0){
+		  alert("选择的栏目与页面模型不一致，请重新选择栏目,或者更换栏目模型!");
+		  $('select[name=arctype_id]').val(0);
+		}
+		return false;
+  }
+</script>
+<script type="text/javascript" src="__TMPL__Common/js/common.js"></script>
+<script type="text/javascript" src="__TMPL__Common/js/content_addtop.js"></script>
+<include file="Admin@Public:page_foot" />

@@ -1,0 +1,32 @@
+<include file="Index@Common:top" />
+<include file="Index@Common:menu" />
+<!------------banner开始------------>
+<div class="banner">
+    <img src="__INDEX_M__Common/images/banner.jpg" width="100%" height="auto" style="float: left;">
+</div>
+<!------------banner结束------------>
+
+<!------------导航开始------------>
+<div class="nav1">
+    <ul>
+        <li class="active"><a href="index.php?m=Archives&c=IndexArctype&a=index&t_id=7"><img src="__INDEX_M__Common/images/fsq.png" width="15" height="18.5"><span>精彩视频</span></a> </li>
+        <li><a href="index.php?m=Archives&c=IndexArctype&a=index&t_id=5"><img src="__INDEX_M__Common/images/news-red.png" width="18" height="16"><span>新闻资讯</span></a> </li>
+        <li><a href="index.php?m=Archives&c=IndexArctype&a=index&t_id=28"><img src="__INDEX_M__Common/images/about-red.png" width="21" height="15"><span>关于我们</span></a> </li>
+    </ul>
+</div>
+<!------------导航结束------------>
+
+<!--<include file="Index@Common:menu_son" />-->
+
+<div class="counsel-whitebg">
+<foreach name="list" item="vo">
+    <a href="{$vo.url}"><ul class="counsel-ul">
+        <li><img src="{$vo.pic}" width="100%" height="60px"></li>
+        <li><p>{$vo.title}</p><span>{$vo.resume}</span></li>
+    </ul></a>
+    </foreach>
+</div>
+
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />

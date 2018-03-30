@@ -1,0 +1,22 @@
+<include file="Admin@Public:page_head" />
+
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#">单页管理</a></li>
+		</ul>
+            <html:list  id="dataTable"
+                        style="table table-hover table-bordered table-list"
+                        name="list"
+                        checkbox="true"
+                        action="true"
+                        title="上线项目"
+                        datasource="list"
+                        pagelist="{$page}"
+           show="id:ID
+          		,typename:标题"
+                actionlist="dk_edit:修改"/>
+            <include file="Admin@Public:page" />
+		</form>
+	</div>
+
+<include file="Admin@Public:page_foot" />

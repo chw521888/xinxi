@@ -1,0 +1,34 @@
+<include file="Admin@Public:page_head" />
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('AdImages/AdImages/index')}">图片集管理</a></li>
+			<li><a href="{:U('AdImages/AdImages/add')}">添加图片</a></li>
+			<li class="active"><a href="{:U('AdImages/AdImages/Category_index')}">分类管理</a></li>
+			<li><a href="{:U('AdImages/AdImages/Category_add',array('category_name'=>'AdImages'))}">添加分类</a></li>
+            
+		</ul>
+		<form method="post" class="J_ajaxForm" action="{:U('AdminPublic/Category/update_sort')}">
+		<div class="table-actions">
+        			<button type="submit" class="btn btn-primary btn-small btn_submit J_ajax_submit_btn">排序</button>
+			</div>
+
+            <html:list  id="dataTable"
+                        style="table table-hover table-bordered table-list"
+                        name="list"
+                        checkbox="true"
+                        action="true"
+                        title="上线项目"
+                        datasource="list"
+                        pagelist="{$page}"
+           show="id:ID|5%
+          		,sort|set_sort_input=$list['id']:排序号|5%
+          		,name:标题|70%"
+                actionlist="edit:修改:id:category_edit, category_foreverdel:删除"/>
+		<div class="table-actions">
+        			<button type="submit" class="btn btn-primary btn-small btn_submit J_ajax_submit_btn">排序</button>
+			</div>
+            <include file="Admin@Public:page" />
+		</form>
+	</div>
+
+<include file="Admin@Public:page_foot" />

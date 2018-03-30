@@ -1,0 +1,67 @@
+<include file="Admin@Public:page_head" />
+<html:editor type="UEDITOR_BEGIN"></html:editor>
+
+<div class="wrap J_check_wrap">
+          <ul class="nav nav-tabs">
+			<li><a href="{:U('Contingent/Show/index_stage_0')}">节目管理</a></li>
+			<li class="active"><a href="">修改节目</a></li>
+          </ul>
+  <form class="form-horizontal J_ajaxForm" name="myform" id="myform" action="{:U('Contingent/Show/update_show_stage_0')}" method="post">
+  <input name="id" type="hidden" value="{$info.id}" />
+			<div class="tabbable">
+		        <div class="tab-content">
+		          <div class="tab-pane active">
+		          		<table cellpadding="2" cellspacing="2" width="500" style="margin-bottom:20px; margin-right:20px; float:left;">
+							<tbody>
+								<tr>
+									<td>作品名称:</td>
+								  <td><input type="text" class="input" name="show_name" value="{$info.show_name}" required="required" /></td>
+							  </tr>
+							  <tr>
+									<td>视频地址:</td>
+								  <td><input type="text" class="input" name="video" value="{$info.video}" /></td>
+							  </tr>
+								<tr>
+									<td>乐视云ID:</td>
+								  <td><input type="text" class="input" name="video2" value="{$info.video2}" /></td>
+							  </tr>
+								<tr>
+									<td>缩略图:</td>
+								    <td><html:imgUpload name='pic' id="pic" value="{$info.pic}" /></td>
+							  </tr>
+								<tr>
+									<td>排序:</td>
+								  <td><input type="text" class="input" name="sort" value="{$info.sort}" /></td>
+							  </tr>
+								<tr>
+									<td>实际票数:</td>
+								  <td><input name="num_vote" type="text" disabled="disabled" class="input" value="{$info.num_vote}" readonly="readonly" /></td>
+							  </tr>
+								<tr>
+									<td>展示票数:</td>
+								  <td><input type="text" class="input" name="num_vote_show" value="{$info.num_vote_show}" /></td>
+							  </tr>
+                              <tr>
+									<td width="150">是否晋级:</td>
+							    <td>
+                                  <input type="radio" name="is_win" value="1" <if condition="$info['is_win'] eq 1"> checked="checked"</if>/>&nbsp;是&nbsp;&nbsp;
+                                  <input name="is_win" type="radio" value="0"  <if condition="$info['is_win'] eq 0"> checked="checked"</if> />&nbsp;否                               
+                                  </td>
+						      </tr>
+							</tbody>
+						</table>
+                        
+				</div>
+                  <div style="clear:both"></div>
+		     <div class="form-actions">
+		           <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+		      		<a class="btn" href="{:U('Contingent/Show/index_stage_0')}">返回</a>
+		      </div>
+		</form>
+</div>
+
+
+<script type="text/javascript" src="__TMPL__Common/js/common.js"></script>
+<script type="text/javascript" src="__TMPL__Common/js/content_addtop.js"></script>
+
+<include file="Admin@Public:page_foot" />

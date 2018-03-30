@@ -1,0 +1,44 @@
+    <script type="text/javascript">
+ 	var VAR_MODULE = "{:conf("VAR_MODULE")}";
+ 	var VAR_CONTROLLER = "{:conf("VAR_CONTROLLER")}";
+	var VAR_ACTION = "{:conf("VAR_ACTION")}";
+	
+	
+	var MODULE_NAME	=	'{$Think.const.MODULE_NAME}';
+	var CONTROLLER_NAME	=	'{$Think.const.CONTROLLER_NAME}';
+	var ACTION_NAME	=	'<php>echo ACTION_NAME;</php>';
+	var ROOT = '__APP__';
+	var ROOT_PATH = '<PHP>echo APP_ROOT;</PHP>';
+	var CURRENT_URL = '{:trim($_SERVER['REQUEST_URI'])}';
+	var INPUT_KEY_PLEASE = "{%INPUT_KEY_PLEASE}";
+	var TMPL = '__TMPL__';
+	var APP_ROOT = '<PHP>echo APP_ROOT;</PHP>';
+	
+	//alert(CURRENT_URL);
+	
+	
+</script>
+<script type="text/javascript">
+//全局变量
+var GV = {
+    DIMAUB: "",
+	JS_ROOT: "__PUBLICTEMPLATE__statics/js/",//js版本号
+    TOKEN: ""
+};
+</script>
+<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="__PUBLICTEMPLATE__statics/js/wind.js"></script>
+    <script src="__PUBLICTEMPLATE__statics/simpleboot/bootstrap/js/bootstrap.min.js"></script>
+
+
+<script src="__PUBLICTEMPLATE__statics/js/common.js"></script>
+
+
+<script src="__TMPL__Common/js/script.js"></script>
+<script src="__TMPL__Common/js/script_array.js"></script>
+<script src="__TMPL__Common/js/script_form.js"></script>
+<script src="__TMPL__Common/js/script_url.js"></script>
+</body>
+</html>

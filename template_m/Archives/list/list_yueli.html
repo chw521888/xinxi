@@ -1,0 +1,69 @@
+<include file="Index@Common:new_top" />
+<include file="Index@Common:banner" />
+		
+		
+
+		<!-- 内容     开始-->
+		<div class="warp">
+			
+			<div class="item">
+				<div class="item_name">月历</div>
+			</div>
+			<php>
+				if($_GET['a_id'] == ''){
+					$a_id = $list[0]['id'];
+				}else{
+					$a_id = $_GET['a_id'];
+				}
+				$info = get_article_info(array('a_id'=>$a_id));
+			</php>
+			<ul class="white_bg month clearfix">
+			<foreach name="list" item="v">
+				<li <if condition="$v['id'] eq $a_id">class="active"</if>><a href="{:U('',array('t_id'=>71,'a_id'=>$v['id']))}">{$v.title}</a></li>
+			</foreach>
+			</ul>
+			
+			<ul class="month_style clearfix">
+			<php>
+				$pic_list = json_decode($info['pic_list'],true);
+			</php>
+			<foreach name="pic_list" item="vv">
+				<li>
+					<a href="{$vv.url}">
+						<img src="{$vv.url}">
+						<span>{$vv.name}</span>
+					</a>
+				</li>
+			</foreach>
+			</ul>
+
+		</div>
+		<!-- 内容     End-->
+		
+
+
+		<!--底部         开始-->
+		<div class="footer">
+			@2016-2017 中国梦 家庭药箱进万家 版权所有 <br /> 技术支持：<a href="#">京橙科技</a>
+		</div>
+		<!--底部         End-->
+	</body>
+</html>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX_M__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX_M__NewCommon/js/jquery.newsticker.js" ></script>
+
+<script>
+	$(".show_tab li").hover(function(){
+		$(this).addClass("active").siblings().removeClass("active");
+		$(".show_city_list").hide();
+		$(".show_city_list").eq($(this).index()).show();
+		
+	})
+</script>
+<script>
+	$("#nav li").hover(function(){
+		$(this).find(".second_nav").slideToggle();
+	})
+</script>

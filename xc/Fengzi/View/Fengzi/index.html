@@ -1,0 +1,56 @@
+<include file="Admin@Public:page_head" />
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Fengzi/Fengzi/index')}">赛场风姿管理</a></li>
+			<!-- <li><a href="{:U('Fengzi/Fengzi/add')}">添加赛场风姿</a></li> -->
+		</ul>
+
+    <form class="well form-search" method="get" action="__APP__">
+        
+            <input type="hidden" value="{$Think.const.MODULE_NAME}" name="m" />
+            <input type="hidden" value="{$Think.const.CONTROLLER_NAME}" name="c" />
+            <input type="hidden" value="<php>echo ACTION_NAME;</php>" name="a" />
+      <div class="search_type cc mb10">
+        <div class="mb10">
+          <span class="mr20">ID： 
+            <input type="text" name="id" style="width: 200px;" value="<php>echo $_GET['id']</php>" placeholder="请输入ID">
+            <input type="submit" class="btn btn-primary" value="搜索" />
+          </span>
+        </div>
+      </div>
+    </form>
+
+		<form method="post" class="J_ajaxForm" action="{:U('Fengzi/Fengzi/update_sort')}">
+		<div class="table-actions">
+					<button class="btn btn-primary btn-small" type="button" onclick="foreverdel();" data-action="{:U('Fengzi/Fengzi/foreverdelete')}" data-subcheck="true">删除</button>
+          <button class="btn btn-primary btn-small" type="button" onclick="set_effect_ok();" data-action="{:U('Fengzi/Fengzi/set_effect')}" data-subcheck="true">批量审核</button>
+			</div>
+      <html:list  id="dataTable"
+                  style="table table-hover table-bordered table-list"
+                  name="list"
+                  checkbox="true"
+                  action="true"
+                  title="上线项目"
+                  datasource="list"
+                  pagelist="{$page}"
+            show="id:ID
+                ,user_name:姓名
+                ,user_phone:电话
+                ,pic|show_img:图片1
+                ,pic2|show_img:图片2
+                ,pic_edit|show_img:修改图片1
+            		,pic2_edit|show_img:修改图片2
+                ,num_vote:真实票数
+                ,num_view:展示票数
+                ,is_effect|check_effect=$list['id']:状态"
+                actionlist="edit:修改, foreverdel:删除"/>
+
+		<div class="table-actions">
+
+					<button class="btn btn-primary btn-small" type="button" onclick="foreverdel();" data-action="{:U('Fengzi/Fengzi/foreverdelete')}" data-subcheck="true">删除</button>
+          <button class="btn btn-primary btn-small" type="button" onclick="set_effect_ok();" data-action="{:U('Fengzi/Fengzi/set_effect')}" data-subcheck="true">批量审核</button>
+			</div>
+            <include file="Admin@Public:page" />
+		</form>
+	</div>
+<include file="Admin@Public:page_foot" />

@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>后台首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="css/cloud-admin.css">
+    <link rel="stylesheet" type="text/css" href="css/themes/graphite.css" id="skin-switcher">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <!-- STYLESHEETS -->
+    <!--[if lt IE 9]><script src="js/flot/excanvas.min.js"></script><script src="js/flot/html5.js"></script><script src="js/flot/css3-mediaqueries.js"></script><![endif]-->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="js/bootstrap-switch/bootstrap-switch.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/css.css">
+</head>
+<body>
+    <div id="content" class="container">
+        <div class="row">
+            <div class="well">
+                <form id="Form" class="form-horizontal" role="form" action="close.html" method="post">
+                    <fieldset>
+                        <legend>基本</legend>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-10">
+                                <input data-id="adm_login_name" type="text" class="form-control" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">姓名</label>
+                            <div class="col-sm-10">
+                                <input data-id="adm_chinese_name" type="text" class="form-control" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">设置密码</label>
+                            <div class="col-sm-10">
+                                <input data-id="adm_login_pass" type="password" class="form-control" placeholder="至少6位数字、字母或其他字符，不可为空格" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">确认密码</label>
+                            <div class="col-sm-10">
+                                <input data-id="adm_login_pass2" type="password" class="form-control" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">工号</label>
+                            <div class="col-sm-10">
+                                <input data-id="adm_login_pass2" type="text" class="form-control" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">身份证号</label>
+                            <div class="col-sm-10">
+                                <input data-id="adm_login_pass2" type="text" class="form-control" placeholder="" required>
+                            </div>
+                        </div>
+                        <legend>联系</legend>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">电话</label>
+                            <div class="col-sm-10">
+                                <input data-id="adm_login_pass" type="text" class="form-control" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">QQ</label>
+                            <div class="col-sm-10">
+                                <input data-id="adm_login_pass2" type="text" class="form-control" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input data-id="adm_login_pass2" type="text" class="form-control" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">住址</label>
+                            <div class="col-sm-10">
+                                <input data-id="adm_login_pass2" type="text" class="form-control" placeholder="" required>
+                            </div>
+                        </div>
+                        <legend>功能</legend>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">审核密码</label>
+                            <div class="col-sm-10">
+                                <input data-id="adm_login_pass" type="password" class="form-control" placeholder="至少6位数字、字母或其他字符，不可为空格" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">锁定</label>
+                            <div class="col-sm-10">
+                                <div class="make-switch switch-large" data-on="info" data-label-icon="" data-on-label="锁定" data-off-label="不锁定">
+                                    <input type="checkbox" checked>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">部门</label>
+                            <div class="col-sm-10">
+                                <div class="btn-group dropdown">
+                                    <button id="dd" class="btn  btn-default dropdown-toggle" data-toggle="dropdown">
+                                        销售部&nbsp;<span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dd">
+                                        <li>
+                                            <a href="javascript:void(0);">销售部</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">技术部</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">角色</label>
+                            <div class="col-sm-10">
+                                <div class="btn-group dropdown">
+                                    <button id="Button1" class="btn  btn-default dropdown-toggle" data-toggle="dropdown">
+                                        部门主管&nbsp;<span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dd">
+                                        <li>
+                                            <a href="javascript:void(0);">部门主管</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">职员</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group pull-right">
+                            <input type="button" class="btn btn-default" onclick="window.top.window.closeIframeModal();" value="取消" />
+                            <input id="Submit" type="button" class="btn btn-primary" value="确定" />
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery/jquery-2.0.3.min.js"></script>
+    <script src="bootstrap-dist/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-onhover/twitter-bootstrap-hover-dropdown.min.js"></script>
+    <script src="js/bootstrap-switch/bootstrap-switch.min.js"></script>
+    <script src="js/bootstrap-validate/bootstrap-validation.min.js"></script>
+    <script src="js/bootstrap-validate/jquery-form.js"></script>
+    <!-- COOKIE -->
+    <script type="text/javascript" src="js/jQuery-Cookie/jquery.cookie.min.js"></script>
+    <!-- CUSTOM SCRIPT -->
+    <script src="js/script.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

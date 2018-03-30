@@ -1,0 +1,29 @@
+<include file="Index@Common:top" />
+<include file="Index@Common:top_logo" />
+<!--<div class="logo7" style="background: url('{$info.pic_banner}') center no-repeat;"></div>-->
+<include file="Index@Common:menu" />
+<include file="Index@Common:menu_son" />
+<!-- 二级小导航结束-->
+<div class="z-rideo">
+    <ul>
+        <foreach name="list" item="vo">
+            <a href="{$vo.url}">
+                <li class="cl-current">
+                    <img src="{$vo.pic}" width="240" height="170" />
+                    <span>{$vo.title}</span>
+                </li>
+            </a>
+        </foreach>
+    </ul>
+</div>
+<div class="clear"></div>
+<div class="scott">{$page}</div>
+
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />
+<script>
+    $("#nav li").hover(function(){
+        $(this).find(".second_nav").slideToggle();
+    })
+</script>

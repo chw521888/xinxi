@@ -1,0 +1,22 @@
+<include file="Index@Common:top" />
+<include file="Index@Common:menu" />
+<!------------banner开始------------>
+<div class="banner">
+    <img src="__INDEX_M__Common/images/banner.jpg" width="100%" height="auto" style="float: left;">
+</div>
+<!------------banner结束------------>
+
+<!--<include file="Index@Common:menu_son" />-->
+
+<div class="counsel-whitebg">
+<foreach name="list" item="vo">
+    <a href="{$vo.pic}"><ul class="counsel-ul">
+        <li><img src="{$vo.pic}" width="100%" height="60px"></li>
+        <li><p>{$vo.title}</p><span>{$vo.resume}</span></li>
+    </ul></a>
+    </foreach>
+</div>
+<div class="scott">{$page}</div>
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />

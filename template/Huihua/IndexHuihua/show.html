@@ -1,0 +1,92 @@
+<include file="Index@Common:new_top" />
+  
+<!--banner    开始-->
+        <div class="warp">
+           	<if condition="$info['stage'] eq 1">
+			<div class="banner"><img src="{:C('HUIHUA_1_BANNER')}"></div>
+			</if>
+			<if condition="$stage eq 2">
+			<div class="banner"><img src="{:C('HUIHUA_2_BANNER')}"></div>
+			</if>
+			<if condition="$stage eq 3">
+			<div class="banner"><img src="{:C('HUIHUA_3_BANNER')}"></div>
+			</if>
+			<if condition="$stage eq 4">
+			<div class="banner"><img src="{:C('HUIHUA_4_BANNER')}"></div>
+			</if>
+        </div>
+        <!--banner    End-->
+        
+<include file="Index@Common:new_menu" />
+		
+		
+		<div class="warp">
+			<div class="crumbs"><a href="/">首页</a> &gt; <a href="#this">儿童绘画赛详情</a></div>
+
+			<div class="stroy_details">
+				<div class="title">{$info.title}</div>
+
+				<div class="details">
+					<span class="t"><img src="{$info.pic}" style="border-radius:18px;">{$info.user_name}</span>
+					<span>ID:{$info.id}</span>
+				</div>
+
+				<div class="img">
+					<img src="{$info.pic}">
+				</div>
+
+				<button class="btn" onclick="post_vote_huihua({$info.id});">为我投票({$info.num_view})</button>
+
+
+				<div class="share_box">
+					<div class="share">
+						<i>分享到：</i>
+						<div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1515477974044">
+							<a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+							<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+							<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+						</div>
+						<script>
+							window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+<script>
+			var post_vote_huihua=function(huihua_id,type){
+				var post_data={"huihua_id":huihua_id,"type":type};
+				//ajax 提交form
+		    $.ajax({
+		        url : "{:U('Huihua/IndexHuihua/post_vote')}",
+		        type : "POST",
+		        data : "huihua_id="+huihua_id+"&type="+type,
+		        success:function(data){
+		        	alert(data.info);
+		        	location.reload();
+		        },
+		        error:function(data){
+		        	alert("error!");
+		        }
+		        
+		    });
+			}
+		</script>
+
+
+		<include file="Index@Common:foot" />
+	</body>
+</html>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/jquery.newsticker.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/weixinAudio.js"></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/Audio.js"></script>
+
+<script>
+  $("#nav li").hover(function(){
+    $(this).find(".second_nav").slideToggle();
+  })
+  
+</script>

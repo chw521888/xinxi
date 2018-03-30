@@ -1,0 +1,170 @@
+/***************广场舞首页********************/
+.banner{width: 100%;height: auto;padding-top:5em;}
+.nav{width: 100%;height: 5em;background: #ca192b;overflow: hidden;}
+.nav ul li{width: 33%;height: 5em;float: left;font-size: 1rem;line-height: 3.3em;border-right: 1px solid #d85764;}
+.nav ul li a{color: #ffffff;}
+.nav ul li span{text-align: center;display: inline-block;}
+.nav ul li:nth-child(1) img{margin-left:13%;margin-right:13%;vertical-align: middle;}
+.nav ul li:nth-child(2) img{margin-left:13%;margin-right:13%;vertical-align: middle;}
+.nav ul li:nth-child(3) img{margin-left:13%;margin-right:13%;vertical-align: middle;}
+@media only screen and (max-width : 375px) {
+    .nav ul li:nth-child(1) img{margin-left:11%;margin-right:11%;}
+    .nav ul li:nth-child(2) img{margin-left:11%;margin-right:11%;}
+    .nav ul li:nth-child(3) img{margin-left:11%;margin-right:11%;}
+    }
+@media only screen and (max-width : 320px) {
+    .nav ul li:nth-child(1) img{margin-left:8%;margin-right:8%;}
+    .nav ul li:nth-child(2) img{margin-left:8%;margin-right:8%;}
+    .nav ul li:nth-child(3) img{margin-left:7%;margin-right:7%;}
+}
+.nav ul li:nth-child(3){border: none !important;}
+
+/******精彩视频当前页面导航*****/
+.nav1{width: 100%;height: 5em;background: #e5e5e5;overflow: hidden;float: left;margin-top: 0.1em;}
+.nav1 ul li{width: 33%;height: 5em;float: left;font-size: 1rem;line-height: 3.3em;border-right: 1px solid #eeeeee;}
+.nav1 ul li a{color: #4a4a4a;}
+.active{background: #ca192b;}
+.active a span{color: #ffffff;}
+.nav1 ul li span{text-align: center;display: inline-block;}
+.nav1 ul li:nth-child(1) img{margin-left:13%;margin-right:13%;vertical-align: middle;}
+.nav1 ul li:nth-child(2) img{margin-left:13%;margin-right:13%;vertical-align: middle;}
+.nav1 ul li:nth-child(3) img{margin-left:13%;margin-right:13%;vertical-align: middle;}
+.nav1 ul li:nth-child(3){border: none !important;padding-left: 0.11em;}
+
+@media only screen and (max-width : 375px) {
+    .nav1 ul li:nth-child(1) img{margin-left:11%;margin-right:11%;}
+    .nav1 ul li:nth-child(2) img{margin-left:11%;margin-right:11%;}
+    .nav1 ul li:nth-child(3) img{margin-left:11%;margin-right:11%;}
+}
+@media only screen and (max-width : 320px) {
+    .nav1 ul li:nth-child(1) img{margin-left:8%;margin-right:8%;}
+    .nav1 ul li:nth-child(2) img{margin-left:8%;margin-right:8%;}
+    .nav1 ul li:nth-child(3) img{margin-left:7%;margin-right:7%;}
+}
+
+/***************内容区域开始********************/
+
+.qgsp{padding-top: 0.7em;font-size: 1.3rem;color: #ca192b;text-align: center;}
+.djs{padding-top: 10px;font-size: 1.3rem;font-weight: bolder;color: #000000;}
+.djs>span{font-size: 3rem;margin: 0 0.5em;color: #ca192b;}
+.count{width: 100%;height: auto;background:#ffffff;text-align: center;padding-bottom: 1em;}
+.count>ul{width: 100%;padding-top: 9em;padding-bottom: 1em;overflow: hidden;}
+.count>ul li{width: 45%;float: left;margin-left: 3%;border: 1px solid #e6e6e6;margin-top: 10px;}
+.mb1{width:100%;height:30px;background: #000000;opacity: 0.7;color: #ffffff;font-size: 1rem;line-height:30px; position: relative;margin-top: -33px;}
+.count>ul li a p{width:100%;height:2.5em;background:#ca192b;line-height: 2.5em;color: #ffffff;font-size: 1rem;}
+.count>ul li a p img{vertical-align: top;margin-left:5px;margin-top: 10px;}
+.count>ul li a p span{padding-left:10px;}
+
+/*******城市赛******/
+.count1{width: 100%;height: auto;background:#ffffff;text-align: center;padding-bottom: 1em;}
+.count1>ul{width: 100%;padding-top: 1em;padding-bottom: 1em;overflow: hidden;}
+.count1>ul li{width: 45%;float: left;margin-left: 3%;border: 1px solid #e6e6e6;margin-top: 10px;}
+.count1>ul li a p{width:100%;height:2.5em;background:#ca192b;line-height: 2.5em;color: #ffffff;font-size: 1rem;}
+.count1>ul li a p img{vertical-align: top;margin-left:5px;margin-top: 10px;}
+.count1>ul li a p span{padding-left:10px;}
+
+
+
+/*******新闻资讯**********/
+.counsel{width: 100%;height: auto;padding-bottom: 3em;background: #f6f6f6;}
+.counsel-whitebg{width: 100%;height: auto;background: #ffffff;}
+.counsel-ul{width: 98%;margin-left: 2%;padding: 1em 0 0.7em;overflow: hidden;border-bottom: 1px solid #eeeeee;}
+.counsel-ul li:nth-child(1){width:25%;float: left;}
+.counsel-ul li:nth-child(2){width: 72%;font-size:0.8rem;float: left;color: #888888;margin-left: 2%;line-height: 1.6em;}
+.counsel-ul li:nth-child(2) p{font-size: 1rem;color: #333333;white-space: nowrap;overflow: hidden;text-overflow:ellipsis;}
+.counsel-ul li:nth-child(2) span{width: 100%;height:40px;overflow: hidden;display: block;color: #888888;margin-top: 0.2em;}
+/*******推荐视频**********/
+.frequency{width: 100%;height: auto;background:#ffffff;padding-bottom: 1em;}
+.frequency-graybg{width: 100%;height: auto;background:#f6f6f6;padding-bottom: 1em;margin-top: 1em;}
+.frequency-ul{width: 96%;margin: auto;padding: 1em 0;overflow: hidden;}
+.frequency-ul li{float: left;line-height: 1.7em;color: #888888;}
+.frequency-ul .img1{width: 26%;margin-left: 9%;}
+.frequency-ul .img1 img{width:105px;height:105px;border-radius: 50%;-webkit-border-radius: 50%;-khtml-border-radius:50%;-moz-border-radius: 50%;}
+@media only screen and (max-width : 320px) {
+    .frequency-ul .img1 img{width:85px;height:85px;}
+}
+.frequency-ul .font1{width: 65%;font-size:0.8rem;margin-top: 0.6em;text-align: right;}
+.frequency-ul .font1 p{width:100%; height:25px;font-size: 1rem;color: #333333;overflow: hidden;}
+.frequency-ul .font1 span{width:100%; height:60px;overflow: hidden;display: block;}
+
+
+.frequency-ul .img2{width: 26%;margin-right: 9%;}
+.frequency-ul .img2 img{width:105px;height:105px;border-radius: 50%;-webkit-border-radius: 50%;-khtml-border-radius:50%;-moz-border-radius: 50%;}
+@media only screen and (max-width : 320px) {
+    .frequency-ul .img2 img{width:85px;height:85px;}
+}
+.frequency-ul .font2{width: 65%;font-size:0.8rem;margin-top: 0.6em;text-align: left;}
+.frequency-ul .font2 p{width:100%; height:25px;font-size: 1rem;color: #333333;overflow: hidden;}
+.frequency-ul .font2 span{width:100%; height:60px;overflow: hidden;display: block;}
+
+/*******主办方介绍**********/
+.introduce{width: 100%;height: auto;background: url("../images/introduce.png") repeat;background-size: 100% auto;}
+.introduce ul{width: 96%;margin: auto;}
+.introduce-title{color: #ca192b;font-weight: bolder;font-size: 1.3rem;text-align: center;padding: 1em 0;}
+.introduce-del{color: #5f5c5c;font-size: 0.9rem;padding: 1em 0;line-height: 1.6em;}
+.introduce-del span{width: 100%;height: 90px;display:inline-block;overflow: hidden;}
+    /*******大赛须知**********/
+.metagame{width: 100%;height: auto;background: url("../images/metagame.png") repeat;background-size: 100% auto;margin-top: 2em;}
+.metagame ul{width: 96%;margin: auto;}
+
+
+/***************视频详情页面********************/
+.video{width: 100%;height: auto;padding-top:5em;background: #ffffff;border-bottom: 1px solid #e8e8e8;}
+.video p{width: 90%;margin:auto;font-size: 1.1rem;color: #565756;font-weight:bolder;padding: 1em 0;overflow: hidden;}
+.vote p{font-size: 1.1rem;padding-top: 0.5em;}
+.vote{width: 100%;height: auto;background: #ffffff;border-bottom: 1px solid #e8e8e8;border-top: 1px solid #e8e8e8;margin-top: 1em;}
+.vote ul{width: 90%;margin:auto;font-size: 1.1rem;color: #454545;padding: 0.5em 0;overflow: hidden;}
+.vote ul>li:nth-child(1){width: 60%;float: left;}
+.vote ul li p:nth-child(1){background: url("../images/adress.png") left bottom no-repeat;background-size:15px 19px;padding-left:14%;}
+.vote ul li p:nth-child(2){background: url("../images/community.png") left bottom no-repeat;background-size:18px 18px;padding-left:14%;}
+.vote ul li p:nth-child(3){background: url("../images/take.png") left no-repeat;background-size:18px 18px;padding-left:13%;}
+.vote ul .tp{width: 40%;height:2em;margin-top:0.5em;padding-top:8%;float: right; font-size:0.90rem;text-align: center;line-height: 2.2em;color: #ffffff;background: #ca192b;}
+.vote ul .praise{background: #ca192b url("../images/praise.png") no-repeat;background-position:50% 17%;background-size:18px 18px;}
+.team{width: 100%;height: auto;background: #ffffff;margin-top: 1em;border-bottom: 1px solid #eeeeee;border-top: 1px solid #eeeeee;}
+.team ul{width: 93%;margin:auto;padding: 1em 0;font-size: 1.4em;}
+.team ul li span{background:url("../images/team.png") left center no-repeat;background-size:5px 20px;padding-left:16px;color: #ff6600;font-size: 1.2rem;}
+.team ul li p{display: block;color: #7f7f7f;line-height: 1.7em;margin-top: 1em;font-size: 1rem;}
+
+
+
+/***************新闻资讯-详情页********************/
+.finals-top{padding-top: 5em;}
+.finals{width: 100%;height: auto;background:#ffffff;color: #888888;}
+.finals>p:nth-child(1){font-size: 1.2rem;color: #2b2b2b;text-align: center;padding: 1em 0 0.5em 0;}
+.finals>p:nth-child(2){font-size: 1rem;color: #9e9e9e;text-align: center;padding: 0.5em;}
+.finals ul{width: 94%;margin: auto;}
+.finals ul li{font-size: 1rem;line-height: 1.7em;padding: 1em 0;}
+
+/**********可滚动导航****/
+.roll-nav{width: 100%;overflow:hidden;height:50px;background: #f6f6f6; border: 1px solid #eeeeee;-webkit-overflow-scrolling : touch; }
+.nav-none{width: 98%;overflow:auto;height:150px;}
+.nav-none table{width:580px;height:50px;overflow:hidden;}
+.nav-none table tr td a{color: #747272;font-size: 0.97rem;margin-left: 0.5em;}
+.nav-none table tr td a:hover {color: #ca192b;}
+/*CSS scott style pagination*/
+DIV.scott {TEXT-ALIGN: center;display:block;padding:20px 0;width: 100%;margin: auto;  }
+DIV.scott .pagination{width: auto;_display: block;display: inline-block;}
+DIV.scott .pagination>li{float: left;margin: 0 0;width: 40px !important;}
+DIV.scott A {
+    background: #e9e9e9;color: #000000;float:left;margin-left: 5px;width: 37px;height: 40px;line-height: 40px;
+}
+DIV.scott span{float:left;}
+DIV.scott A:hover {
+    background: #ff0000;color: #000000;
+}
+DIV.scott A:active {
+    background: #ff8000;color: #000000;
+}
+DIV.scott .active a{background: #ff8000;color: #000000;}
+DIV.scott li.current {
+    background: #ff8000;
+    color: #000000;
+}
+/***返回页面****/
+.back { height:5em; position:absolute; top:0; left:1em;}
+.back img { width: 17px; height: 28px; float:left; margin-top:1.2em}
+.name{width: 80%;height:1.2em;color: #ffffff;text-align:center;line-height:1.2em;margin: 0.8em 10%;display: block; font-size: 1.2rem;overflow: hidden;}
+
+
+
+

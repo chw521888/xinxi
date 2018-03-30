@@ -1,0 +1,158 @@
+<include file="Index@Common:top" />
+<include file="Index@Common:top_logo" />
+<include file="Index@Common:menu" />
+<style type="text/css">
+	.w1002{
+	width: 1002px;
+	margin: 0 auto;
+}
+.hg_more{
+	text-align: right;
+	margin-bottom: 10px;
+}
+.s_prize_le{
+	margin: 40px auto;
+}
+.s_pt_title{
+	color: #ca192b;
+	font-size: 22px;
+	margin-bottom: 20px;
+}
+.s_pt_title img{
+	vertical-align: middle;
+	margin-right: 10px;
+}
+.s_prize_one{
+	float: left;
+	width: 676px;
+}
+.s_pt_plan{
+	position: relative;
+}
+.s_pt_plan span{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 1px;
+	font-size: 16px;
+	color: #fff;
+	height: 52px;
+	line-height: 52px;
+	text-align: center;
+	background: rgba(0,0,0,0.6);
+}
+.s_prize_two{
+	float: right;
+	width: 306px;
+}
+.s_p_name{
+	font-size: 16px;
+	color: #333;
+	margin: 12px 0 6px 0;
+	text-align: center;
+}
+.s_prize_three .s_pp_box{
+	width: 322px;
+	float: left;
+}
+.jn{
+	margin: 0 17px;
+}
+.s_prize_fine , .s_prize_three{
+	margin-top: 20px;
+}
+.s_prize_fine .s_pp_box{
+	float: left;
+	width: 237px;
+	margin-right: 18px;
+}
+.s_prize_fine .s_pp_box.n_jn{
+	margin: 0;
+}
+</style>
+<!-- 二级小导航结束-->
+<div class="z-content">
+  <div class="z-content-1">
+        <ul class="z-nav">
+        <php>
+            $REVIEW_TYPE = C('REVIEW_TYPE');
+        </php>
+        <foreach name="REVIEW_TYPE" item="v">
+            <li class="z-nav-l <eq name='review_type' value='$key'>active</eq>">
+                <a href="{:U('index',array('review_type'=>$key))}">{$v}</a>
+                <p></p>
+            </li>
+            </foreach>
+        </ul>
+    </div>
+</div>
+<div class="s_prize_le w1002">
+<php>
+    $review_type = $_GET['review_type'];
+    if($review_type == 2){
+        $url = U('huigu2');
+    }else{
+        $url = U('huigu');
+    }
+</php>
+	<div class="hg_more"><a href="{$url}">更多></a></div>
+            <div class="s_prize_top">
+                <div class="s_prize_one">
+                    <div class="s_pt_title"><img src="__INDEX__Common/images/s_hz_icon.png">第一名</div>
+                    <div class="s_pt_plan"><a href="{$list1.0.url}"><img src="{$list1.0.pic}" width="676" height="480"><span>{$list1.0.title}</span></a></div>
+                    <div class="s_p_name"><span>表演者：</span>{$list1.0.title_name}</div>
+                </div>
+                <div class="s_prize_two">
+                    <div class="s_pt_title"><img src="__INDEX__Common/images/s_hz_icon.png">第二名</div>
+                    <div class="s_pt_plan"><a href="{$list2.0.url}"><img src="{$list2.0.pic}"  width="306" height="218"><span>{$list2.0.title}</span></a></div>
+                    <div class="s_p_name"><span>表演者：</span>{$list2.0.title_name}</div>
+                    <div class="s_pt_plan"><a href="{$list2.1.url}"><img src="{$list2.1.pic}"  width="306" height="218"><span>{$list2.1.title}</span></a></div>
+                    <div class="s_p_name"><span>表演者：</span>{$list2.1.title_name}</div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            
+            <!--三等奖-->
+            <div class="s_prize_three">
+                <div class="s_pt_title"><img src="__INDEX__Common/images/s_hz_icon.png">第三名</div>
+                <div class="s_pp_box">
+                    <div class="s_pt_plan"><a href="{$list3.0.url}"><img src="{$list3.0.pic}"  width="322" height="229"><span>{$list3.0.title}</span></a></div>
+                    <div class="s_p_name"><span>表演者：</span>{$list3.0.title_name}</div>
+                </div>
+                <div class="s_pp_box jn">
+                    <div class="s_pt_plan"><a href="{$list3.1.url}"><img src="{$list3.1.pic}"  width="322" height="229"><span>{$list3.1.title}</span></a></div>
+                    <div class="s_p_name"><span>表演者：</span>{$list3.1.title_name}</div>
+                </div>
+                <div class="s_pp_box">
+                    <div class="s_pt_plan"><a href="{$list3.2.url}"><img src="{$list3.2.pic}"  width="322" height="229"><span>{$list3.2.title}</span></a></div>
+                    <div class="s_p_name"><span>表演者：</span>{$list3.2.title_name}</div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            
+            <!--优秀奖-->
+            <div class="s_prize_fine">
+                <div class="s_pt_title"><img src="__INDEX__Common/images/s_hz_icon.png">优秀奖</div>
+                <div class="s_pp_box">
+                    <div class="s_pt_plan"><a href="{$list4.0.url}"><img src="{$list4.0.pic}"  width="237" height="168"><span>{$list4.0.title}</span></a></div>
+                    <div class="s_p_name"><span>表演者：</span>{$list4.0.title_name}</div>
+                </div>
+                <div class="s_pp_box">
+                    <div class="s_pt_plan"><a href="{$list4.1.url}"><img src="{$list4.1.pic}"  width="237" height="168"><span>{$list4.1.title}</span></div>
+                    <div class="s_p_name"><span>表演者：</span>{$list4.1.title_name}</div>
+                </div>
+                <div class="s_pp_box">
+                    <div class="s_pt_plan"><a href="{$list4.2.url}"><img src="{$list4.2.pic}"  width="237" height="168"><span>{$list4.2.title}</span></div>
+                    <div class="s_p_name"><span>表演者：</span>{$list4.2.title_name}</div>
+                </div>
+                <div class="s_pp_box n_jn">
+                    <div class="s_pt_plan"><a href="{$list4.3.url}"><img src="{$list4.3.pic}"  width="237" height="168"><span>{$list4.3.title}</span></div>
+                    <div class="s_p_name"><a href="{$list4.2.url}"><span>表演者：</span>{$list4.3.title_name}</div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+<include file="Common:foot" />
+<include file="Common:city_navigation" />
+<include file="Common:bottom" />

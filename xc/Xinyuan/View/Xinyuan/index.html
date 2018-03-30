@@ -1,0 +1,37 @@
+<include file="Admin@Public:page_head" />
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#">心愿管理</a></li>
+			<li><a href="{:U('Xinyuan/Xinyuan/add')}">添加心愿</a></li>
+		</ul>
+		<form method="post" class="J_ajaxForm" action="{:U('Xinyuan/Xinyuan/update_sort')}">
+		<div class="table-actions">
+					<button class="btn btn-primary btn-small" type="button" onclick="foreverdel();" data-action="{:U('Xinyuan/Xinyuan/foreverdelete')}" data-subcheck="true">删除</button>
+			</div>
+
+            <html:list  id="dataTable"
+                        style="table table-hover table-bordered table-list"
+                        name="list"
+                        checkbox="true"
+                        action="true"
+                        title="心愿墙"
+                        datasource="list"
+                        pagelist="{$page}"
+           show="id:ID
+          		,num:票数
+          		,name:姓名
+          		,age:年龄
+          		,city:城市
+          		,dream:心愿
+          		,pic|show_img:照片
+          		,is_effect|check_effect=$list['id']:是否显示
+                ,time|turn_time:添加时间"
+                actionlist="foreverdel:删除"/>
+		<div class="table-actions">
+					<button class="btn btn-primary btn-small" type="button" onclick="foreverdel();" data-action="{:U('Xinyuan/Xinyuan/foreverdelete')}" data-subcheck="true">删除</button>
+			</div>
+            <include file="Admin@Public:page" />
+		</form>
+	</div>
+
+<include file="Admin@Public:page_foot" />

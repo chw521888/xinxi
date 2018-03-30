@@ -1,0 +1,249 @@
+/* 
+ * 自定义CSS
+ */
+
+html, body, .form, .form-horizontal, .form-inline {
+    font-family: 微软雅黑;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+.btn {
+    height: 40px;
+    font-size: 14px; 
+}
+
+/* dropdown hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    text-align: center;
+}
+
+
+
+/* 右侧页面 */
+#main-content {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    margin: 0;
+    width: calc(100%-90px);
+    background-color: #fff;
+	padding-top:60px;
+    /*min-height: 0;*/
+}
+
+#content {
+    background-color: #fff;
+    min-height: 0;
+}
+
+    #content .well {
+        background-color: #fff;
+        border: none;
+        margin-bottom: -30px;
+    }
+
+/* box white */
+.box.border.white > .box-title {
+    background-color: #fff !important;
+}
+
+/* 右侧顶栏 topbar */
+#topbar {
+    padding: 13px 20px;
+    font-size: 28px;
+    height: 64px;
+    background-color: #fff;
+}
+
+    #topbar .tools a {
+        text-decoration: none;
+    }
+
+#tools {
+    padding: 20px 0 10px 0px;
+}
+
+    #tools .btn-group .btn {
+        height: 40px;
+        font-size: 14px;
+    }
+
+   /* #tools .input-group {
+        margin-right: -5px;
+    }
+*/
+        #tools .input-group input, #tools .input-group button {
+            height: 40px;
+            font-size: 14px;
+        }
+
+    #tools .col-lg-10 .input-group {
+        float: left;
+        padding-right: 20px;
+    }
+
+/* 选择产品页面 
+#Form input {
+    float: right;
+    margin-left: 20px;
+    height: 40px;
+}
+
+#Form button {
+    float: right;
+    padding: 5px;*/
+}
+*/
+#content .table {
+    margin: 0 5px;  
+}
+
+
+
+#content .table th, #content .table tr {
+    height: 50px;
+}
+
+#content .table > thead > tr > th,
+#content .table > tbody > tr > th,
+#content .table > tfoot > tr > th,
+#content .table > thead > tr > td,
+#content .table > tbody > tr > td,
+#content .table > tfoot > tr > td {
+    padding-top: 15px;
+    text-align: left;
+    border: 0px;
+   /*  border-bottom: 1px solid #e2e2e2;*/
+}
+
+#content .table > tbody > tr:hover,
+#content .table > tfoot > tr:hover,
+#content .table > tbody > tr:hover,
+#content .table > tfoot > tr:hover {
+    color: #5e87b0;
+    cursor: pointer;
+}
+
+#content .table > thead > tr > th,
+#content .table > thead > tr > td {
+    background-color: #fff !important;
+    border-bottom: 1px solid #cecece;
+    text-align: left;
+    font-size: 14px;
+}
+
+#content .table > tbody > tr > td {
+    font-size: 14px;
+}
+
+#content .table > thead > tr a {
+    color: #555;
+}
+
+#content .table td a {
+    text-decoration: none;
+    color: #333;
+	margin-right:5px;
+}
+
+    #content .table td a:hover {
+    }
+
+#content .table .active {
+    background-color: #dbcec5;
+}
+
+#content .table-striped > tbody > tr .active {
+    background-color: #dbcec5;
+}
+
+/* 应用模块 */
+.myapp {
+    width: 270px;
+}
+
+    .myapp a {
+        width: 90px;
+        height: 100px;
+        float: left;
+        padding-top: 8px !important;
+        padding-bottom: 20px !important;
+        text-decoration: none;
+        text-align: center;
+        outline: none !important;
+    }
+
+/* 分页 */
+.mypager {
+    position: relative;
+    text-align: center;
+}
+
+    .mypager .btn {
+        height: 40px;
+    }
+
+    .mypager .dropdown {
+        position: absolute;
+        top: 15px;
+        left: 5px;
+    }
+
+    .mypager .total {
+        position: absolute;
+        top: 20px;
+        left: 90px;
+        font-size: 14px;
+        margin-top: 8px;
+    }
+
+/* 弹出框 */
+.modal-title {
+    font-size: 22px;
+}
+
+.modal-content {
+    font-size: 16px;
+}
+
+.modal-md {
+    width: 900px;
+}
+
+.modal-lg {
+    width: 1200px;
+}
+
+.modal .modal-body .tip {
+    border: 1px solid red;
+}
+
+.modal .modal-body .tip-text {
+    font-size: 14px;
+    color: red;
+}
+
+#iframeModal .modal-body {
+    padding: 0 !important;
+}
+
+/* 处理中遮罩层 */
+.loading {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+    background: #fff url(../img/loaders/11.gif) no-repeat center;
+}
+
+.help-line {
+    font-size: 14px;
+    color: red;
+}

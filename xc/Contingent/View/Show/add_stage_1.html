@@ -1,0 +1,22 @@
+<include file="Admin@Public:page_head" />
+<html:editor type="UEDITOR_BEGIN"></html:editor>
+
+<div class="wrap J_check_wrap">
+  <ul class="nav nav-tabs">
+			<li><a href="{:U('Contingent/Show/index_stage_1')}">节目管理</a></li>
+			<li class="active"><a href="{:U('Contingent/Show/add_stage_1')}">添加节目</a></li>
+          </ul>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="50"></td>
+    <td><foreach name="location_list" item="v">&nbsp;&nbsp;&nbsp;<a href="{:U('Contingent/Show/add_show_stage_1',array('location_id'=>$v['id']))}">{$v.name}</a></foreach></td>
+  </tr>
+</table>
+</div>
+
+
+
+<script type="text/javascript" src="__TMPL__Common/js/common.js"></script>
+<script type="text/javascript" src="__TMPL__Common/js/content_addtop.js"></script>
+
+<include file="Admin@Public:page_foot" />

@@ -1,0 +1,273 @@
+<include file="Common:top" />
+<include file="Common:top_logo" />
+<include file="Common:menu" />
+<link rel="stylesheet" href="__INDEX__Common/lightbox/lightbox.min.css">
+
+<php>
+$list_10 = get_article(array('arctype_id'=>'10','limit'=>'5'));
+$list_11 = get_article(array('arctype_id'=>'11','limit'=>'5'));
+$list_2_10 = get_article(array('arctype_id'=>'10','where'=>'Archives.pic!=""','limit'=>'5'));
+$list_2_11 = get_article(array('arctype_id'=>'11','where'=>'Archives.pic!=""','limit'=>'5'));
+$list_31 = get_article(array('arctype_id'=>'31','where'=>'Archives.pic!=""','limit'=>'6'));
+$list_32 = get_article(array('arctype_id'=>'32','where'=>'Archives.pic!=""','limit'=>'6'));
+
+$list_26 = get_article(array('arctype_id'=>'26','where'=>'Archives.pic!=""','limit'=>'10'));
+</php>
+
+<div class="megagame-video">
+
+	<ul class="dsj_ts">
+    	<li></li>
+    </ul>
+    
+    <ul class="megagame">
+    <foreach name="info_list" item="v" key="k">
+        <li style="height: auto;">
+            <ul>
+                <li><a href="{:U('Index/index_show',array('id'=>$v['id']))}" target="_block"><img src="{$v.pic}" width="193" height="140" style="float: left;" alt=""/></a><p class="blackbg"><a href="{:U('Index/index_show',array('id'=>$v['id']))}" target="_block">{$v.id|show_city_over}</a></p></p></li>
+                <li class="vote">
+                节目名称：{$v.show_name}
+                    <br/>表演团队：{$v.contingent_id|show_ca_name}<br/>
+                    <span class="heart">{$v.num_vote_show}票</span>
+                    <if condition="$vo['time_vote_stat'] lt time() and $vo['time_vote_end'] gt time()">
+                    <input onclick="post_vote({$v.id});" type="button" value="我要投票" class="button" style="background:#ec0301;"/>
+                    <else />
+                    <input type="button" value="我要投票" class="button" style=" color:#ffffff;" />
+                    </if>
+                </li>
+            </ul>
+        </li>
+        </foreach>
+    </ul>
+</div>
+
+<div class="news2">
+    <ul class="news2-det">
+        <li class="tab1-video tab_h">
+        </li>
+        <ul class="tab2">
+
+            <span class="d1">
+
+                   <ul class="video">
+
+                       <div id="slideshow" class="box_skitter fn-clear">
+                           <ul>
+                           <foreach name="list_2_10" item="vo">
+                               <li><a href="{$vo.url}"><img alt="" class="cubeRandom" src="{$vo.pic}" /></a></li>
+                             </foreach>
+                           </ul>
+                       </div>
+
+                   </ul>
+
+                   <ul class="news-date">
+                        <li>
+                        <foreach name="list_10" item="vo">
+                            <a href="{$vo.url}">
+                                <span class="date">{$vo.time|turn_time_MY=0}<p>{$vo.time|turn_time_MY=1}</p><img src="__INDEX__Common/images/news-sj1.png" alt=""/></span>
+                                <span class="newsub-title">
+                                    <span>{$vo.title|getstr=28}</span>
+                                    <p>{$vo.resume}</p>
+                                </span>
+                            </a>
+                            </foreach>
+                        </li>
+                   </ul>
+            </span>
+
+            <span>
+                   <ul class="video">
+
+                       <div id="slideshow1" class="box_skitter fn-clear">
+                           <ul>
+                           <foreach name="list_2_11" item="vo">
+                               <li><a href="{$vo.url}"><img alt="" class="cubeRandom" src="{$vo.pic}" /></a></li>
+                             </foreach>
+                           </ul>
+                       </div>
+
+                   </ul>
+                   <ul class="news-date">
+                       <li>
+                        <foreach name="list_11" item="vo">
+                            <a href="{$vo.url}">
+                                <span class="date">{$vo.time|turn_time_MY=0}<p>{$vo.time|turn_time_MY=1}</p><img src="__INDEX__Common/images/news-sj1.png" alt=""/></span>
+                                <span class="newsub-title">
+                                    <span>{$vo.title|getstr=28}</span>
+                                    <p>{$vo.resume}</p>
+                                </span>
+                            </a>
+                            </foreach>
+                       </li>
+                   </ul>
+            </span>
+        </ul>
+    </ul>
+</div>
+
+<div class="rew">
+    <ul class="jd">
+        <li><a href="index.php?m=contingent&c=index_show&a=index_show&id={$data_list[0].id}"><img src="{$data_list[0].pic}" width="150" height="150" alt=""/><p>{$data_list[0].contingent_id|show_ca_name}</p></a></li>
+        <li><a href="index.php?m=contingent&c=index_show&a=index_show&id={$data_list[1].id}"><img src="{$data_list[1].pic}" width="150" height="150" alt=""/><p>{$data_list[1].contingent_id|show_ca_name}</p></a></li>
+        <li><a href="index.php?m=contingent&c=index_show&a=index_show&id={$data_list[2].id}"><img src="{$data_list[2].pic}" width="150" height="150" alt=""/><p>{$data_list[2].contingent_id|show_ca_name}</p></a></li>
+        <li><a href="index.php?m=contingent&c=index_show&a=index_show&id={$data_list[3].id}"><img src="{$data_list[3].pic}" width="150" height="150" alt=""/><p>{$data_list[3].contingent_id|show_ca_name}</p></a></li>
+        <li><a href="index.php?m=contingent&c=index_show&a=index_show&id={$data_list[4].id}"><img src="{$data_list[4].pic}" width="150" height="150" alt=""/><p>{$data_list[4].contingent_id|show_ca_name}</p></a></li>
+        <li><a href="index.php?m=contingent&c=index_show&a=index_show&id={$data_list[5].id}"><img src="{$data_list[5].pic}" width="150" height="150" alt=""/><p>{$data_list[5].contingent_id|show_ca_name}</p></a></li>
+    </ul>
+    <ul class="tp">
+        <li><div style="height:<php> echo (int)($data_list[0]['num_vote_show']/$data_list[0]['num_vote_show']*100) </php>%"></div><p>{$data_list[0].num_vote_show}票</p></li>
+        <li><div style="height:<php> echo (int)($data_list[1]['num_vote_show']/$data_list[0]['num_vote_show']*100) </php>%"></div><p>{$data_list[1].num_vote_show}票</p></li>
+        <li><div style="height:<php> echo (int)($data_list[2]['num_vote_show']/$data_list[0]['num_vote_show']*100) </php>%"></div><p>{$data_list[2].num_vote_show}票</p></li>
+        <li><div style="height:<php> echo (int)($data_list[3]['num_vote_show']/$data_list[0]['num_vote_show']*100) </php>%"></div><p>{$data_list[3].num_vote_show}票</p></li>
+        <li><div style="height:<php> echo (int)($data_list[4]['num_vote_show']/$data_list[0]['num_vote_show']*100) </php>%"></div><p>{$data_list[4].num_vote_show}票</p></li>
+        <li><div style="height:<php> echo (int)($data_list[5]['num_vote_show']/$data_list[0]['num_vote_show']*100) </php>%"></div><p>{$data_list[5].num_vote_show}票</p></li>
+    </ul>
+</div>
+
+
+<div class="ds">
+    <div>
+    <php>
+    $list_xinyuan = M('Xinyuan')->order('id desc')->select();
+    </php>
+    <p onclick="window.location='index.php?m=Contingent&c=Xinyuan&a=index';" class="xyq">
+        <img src="{$list_xinyuan.0.pic}" alt="">
+        <span><b>{$list_xinyuan.0.name}：{$list_xinyuan.0.age}岁-{$list_xinyuan.0.city}</b><br/>{$list_xinyuan.0.dream}</span>
+    </p>
+    <p onclick="window.location='index.php?m=Contingent&c=Xinyuan&a=index';" class="xyq1">
+        <img src="{$list_xinyuan.1.pic}" alt="">
+        <span><b>{$list_xinyuan.1.name}：{$list_xinyuan.1.age}岁-{$list_xinyuan.1.city}</b><br/>{$list_xinyuan.1.dream}</span>
+    </p>
+    <p onclick="window.location='index.php?m=Contingent&c=Xinyuan&a=index';" class="xyq2">
+        <img src="{$list_xinyuan.2.pic}" alt="">
+        <span><b>{$list_xinyuan.2.name}：{$list_xinyuan.2.age}岁-{$list_xinyuan.2.city}</b><br/>{$list_xinyuan.2.dream}</span>
+    </p>
+    <p onclick="window.location='index.php?m=Contingent&c=Xinyuan&a=index';" class="xyq3">
+        <img src="{$list_xinyuan.3.pic}" alt="">
+        <span><b>{$list_xinyuan.3.name}：{$list_xinyuan.3.age}岁-{$list_xinyuan.3.city}</b><br/>{$list_xinyuan.3.dream}</span>
+    </p>
+    </div>
+</div>
+
+
+<div class="photo">
+    <span>
+        <ul>
+            <li id="LeftArr"><img src="__INDEX__Common/images/photo-leftjt.png"  width="50" height="64" alt="" class="leftjt" style="cursor:pointer"/></li>
+        </ul>
+        <ul id="divAcrollPic1">
+        <foreach name="list_26" item="vo">
+            <li><a href="{$vo.pic}" data-lightbox="example-set" data-title="{$vo.title}"><img src="{$vo.pic}" width="320" height="230" alt=""/><p class="whitebg">{$vo.title|getstr=30}</p></a></li>
+        </foreach>
+        </ul>
+         <ul>
+             <li id="RightArr"><img src="__INDEX__Common/images/photo-rightjt.png" alt="" class="rightjt" style="cursor:pointer" /></li>
+         </ul>
+        <div class="clear"></div>
+         <ul><a href="index.php?m=Archives&c=IndexArctype&a=index&t_id=6"><li class="more-more">MORE</li></a></ul>
+         
+         
+        <script type="text/javascript">
+		//合作机构滚动效果
+		var scrollPic1 = new ScrollPic();scrollPic1.scrollContId   = "divAcrollPic1"; //内容容器ID
+		scrollPic1.arrLeftId      = "LeftArr";//左箭头ID
+		scrollPic1.arrRightId     = "RightArr"; //右箭头ID
+		scrollPic1.frameWidth     = 990;//显示框宽度
+		scrollPic1.pageWidth      = 990; //翻页宽度
+		scrollPic1.speed          = 20; //移动速度(单位毫秒，越小越快)
+		scrollPic1.space          = 50; //每次移动像素(单位px，越大越快)
+		scrollPic1.autoPlay       = false; //自动播放
+		scrollPic1.autoPlayTime   = 2; //自动播放间隔时间(秒)
+		scrollPic1.initialize(); //初始化// 左右点击滚动结束
+        </script>
+    </span>
+</div>
+<div class="zbf">
+    <span>
+<php>
+$info_29 = get_arctype_info(29);
+</php>
+        <ul>
+            <a href="{$info_29.url}"><img src="{$info_29.pic}" width="469" height="140" alt=""/></a>
+            <li>{$info_29.resume}<a href="{$info_29.url}">详细</a></li>
+        </ul>
+<php>
+$info_33 = get_arctype_info(33);
+</php>
+         <ul>
+            <a href="{$info_33.url}"><img src="{$info_33.pic}" width="469" height="140" alt=""/></a>
+            <li>{$info_33.resume}<a href="{$info_33.url}">详细</a></li>
+         </ul>
+    </span>
+    <!-- 地图-->
+    <div class="map">
+        <div><img src="__INDEX__Common/images/map.png" width="851" height="705" usemap="#Map" border="0">
+          <map name="Map" id="Map">
+            <area shape="rect" coords="590,237,640,262" href="index.php?m=Contingent&c=IndexShow&a=index_street&location_id=1" />
+            <area shape="rect" coords="426,471,474,495" href="index.php?m=Contingent&c=IndexShow&a=index_street&location_id=3" />
+            <area shape="rect" coords="581,423,633,448" href="index.php?m=Contingent&c=IndexShow&a=index_street&location_id=4" />
+            <area shape="rect" coords="683,406,733,430" href="index.php?m=Contingent&c=IndexShow&a=index_street&location_id=5" />
+            <area shape="rect" coords="555,333,605,358" href="index.php?m=Contingent&c=IndexShow&a=index_street&location_id=6" />
+            <area shape="rect" coords="612,374,662,399" href="index.php?m=Contingent&c=IndexShow&a=index_street&location_id=7" />
+            <area shape="rect" coords="502,401,551,425" href="index.php?m=Contingent&c=IndexShow&a=index_street&location_id=8" />
+            <area shape="rect" coords="637,578,687,603" href="index.php?m=Contingent&c=IndexShow&a=index_street&location_id=9" />
+            <area shape="rect" coords="451,268,531,294" href="index.php?m=Contingent&c=IndexShow&a=index_street&location_id=10" />
+            <area shape="rect" coords="693,138,743,164" href="index.php?m=Contingent&c=IndexShow&a=index_street&location_id=11" />
+          </map>
+        </div>
+    </div>
+</div>
+
+<include file="Common:foot" />
+<include file="Common:city_navigation" />
+<script src="__INDEX__Common/lightbox/lightbox-plus-jquery.min.js"></script>
+<script src="__INDEX__Common/js/slideshow.js"></script>
+<include file="Common:bottom" />
+<script>
+    $(function(){
+            $(".tab1>span:nth-child(1) img").css({display:"block"});
+            $(".tab1>span").click(function(){
+                var a=$(this).index();
+                $(this).children().css({display:"block"});
+                $(this).siblings().children().css({display:"none"});
+                fun1(a);
+            });
+            fun1(0);
+        });
+        function fun1(a){
+            $(".tab1>span").css({backgroundColor:"#d1d0d0",color:"#636363"});
+            $(".tab1 span:nth-child("+(a+1)+")").css({backgroundColor:"#ca192b",color:"#ffffff"});
+            $(".tab2>span").css({display:"none"});
+            $(".tab2>span:nth-child("+(a+1)+")").fadeIn(500);
+            $(".tab1>img").css({dispay:"none"});
+        }
+
+
+</script>
+<script type="text/javascript" charset="utf-8">
+    $(function(){
+        if(!flux.browser.supportsTransitions)
+            alert("Flux Slider requires a browser that supports CSS3 transitions");
+
+        window.f = new flux.slider('#slider', {
+            transitions: ['bars']
+        });
+    });
+    $(function(){
+        if(!flux.browser.supportsTransitions)
+            alert("Flux Slider requires a browser that supports CSS3 transitions");
+
+        window.f = new flux.slider('#slider1', {
+            transitions: ['bars']
+        });
+    });
+</script>
+
+<script type="text/javascript" charset="utf-8">
+		
+    $(".right_eq span").click(function(){
+    	$(".right_eq").hide();
+    });
+    
+</script>

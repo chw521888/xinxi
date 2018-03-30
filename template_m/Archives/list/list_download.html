@@ -1,0 +1,27 @@
+<include file="Index@Common:top" />
+<div class="logo6"></div>
+<include file="Index@Common:menu" />
+<include file="Index@Common:menu_son" />
+<!-- 二级小导航结束-->
+<div class="z-content">
+    <!--二级小导航开始-->
+    <div class="l-nr">
+    	<ul class="l-nr-1">
+        <foreach name="list" item="vo">
+        	<li>
+            	<a href="{$vo.download}">
+            	<p>{$vo.title}</p>
+            	<img src="__INDEX__Common/images/yd_login_03.jpg" width="130" height="90" />
+                </a>
+            </li>
+            </foreach>
+		</ul>
+
+    </div>
+        <div class="page_list">{$page}</div>
+
+</div>
+
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />

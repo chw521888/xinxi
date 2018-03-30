@@ -1,0 +1,35 @@
+<include file="Index@Common:top" />
+<include file="Index@Common:top_logo" />
+<!--<div class="logo3" style="background: url('{$info.pic_banner}') center no-repeat;"></div>-->
+<include file="Index@Common:menu" />
+<div class="z-content">
+  <div class="z-content-1">
+        <ul class="z-nav">
+        <foreach name="location_list" item="v">
+            <li class="z-nav-l <eq name="_GET['location_id']" value="$v['id']">active</eq>">
+                <a href="{:U('index_xiu',array('location_id'=>$v['id']))}" <eq name="_GET['location_id']" value="$v['id']">class="active"</eq>>{$v.name}</a>
+                <p></p>
+            </li>
+            </foreach>
+        </ul>
+    </div>
+</div>
+<!-- 二级小导航结束-->
+<div class="z-rideo">
+    <ul>
+        <foreach name="list" item="vo">
+            <a href="{:U('index_xiu_show',array('id'=>$vo['id']))}">
+                <li class="cl-current">
+                    <img src="{$vo.pic}" width="240" height="170" />
+                    <span>{$vo.title}</span>
+                </li>
+            </a>
+        </foreach>
+    </ul>
+</div>
+<div class="clear"></div>
+<div class="scott">{$page}</div>
+
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />

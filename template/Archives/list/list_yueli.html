@@ -1,0 +1,55 @@
+<include file="Index@Common:new_top" />
+  
+<include file="Index@Common:new_banner" />
+        
+<include file="Index@Common:new_menu" />
+		
+		
+		<div class="warp">
+			
+
+			<div class="list_item_box">
+				<div class="list_city_ti">月历</div>
+			</div>
+			
+			
+			<div class="clearfix">
+				<div class="month_box">
+				<foreach name="list" item="v">
+					<div class="month">{$v.title}</div>
+					<php>
+						$pic_list = json_decode($v['pic_list'],true);
+					</php>
+					<ul class="month_style clearfix">
+					<foreach name="pic_list" item="vv">
+						<li>
+							<a href="{:U('Index/Index/yueli_show',array('img'=>$vv['url']))}" target="_black">
+								<img src="{$vv.url}">
+								<span>{$vv.name}</span>
+							</a>
+						</li>
+					</foreach>
+					</ul>
+				</foreach>
+				</div>
+				<div class="month_right">
+					下载你喜欢的一幅中草药图片，在空白处进行涂色。关注“心系健康家庭秀”，可在“儿童绘画赛”专区参加比赛哦！
+					<img src="__INDEX__NewCommon/images/yl_img_1.jpg">
+				</div>
+			</div>
+			
+			
+		</div>
+		<include file="Index@Common:foot" />
+	</body>
+</html>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/jquery.newsticker.js" ></script>
+<script>
+  $("#nav li").hover(function(){
+    $(this).find(".second_nav").slideToggle();
+  })
+  
+</script>

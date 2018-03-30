@@ -1,0 +1,4 @@
+<?php
+//000000000060a:1:{i:0;a:22:{s:2:"id";s:4:"1096";s:10:"arctype_id";s:2:"10";s:5:"title";s:91:"首届“宝宝药箱”儿童绘画征集活动开始啦！为宝贝的梦想插上翅膀~";s:9:"seo_title";s:0:"";s:8:"keywords";s:0:"";s:3:"att";s:1:"a";s:6:"source";s:0:"";s:6:"resume";s:198:"“宝宝药箱”首届儿童绘画征集活动开启了！如果您家的“小画家”已经完成了画作，
+就快快上传吧！把这份独特的天真与创造力分享给更多的朋友~";s:3:"url";s:56:"/index.php?m=archives&c=index_archives&a=index&a_id=1096";s:3:"pic";s:49:"/jtjk/upload/other/image/20180326152202563146.png";s:8:"pic_list";s:2:"[]";s:7:"pubdate";s:10:"2018-03-26";s:8:"admin_id";s:1:"6";s:4:"hits";s:1:"0";s:9:"is_effect";s:1:"1";s:9:"is_delete";s:1:"0";s:4:"sort";s:1:"0";s:4:"time";s:10:"1522025534";s:8:"end_time";s:1:"0";s:8:"typename";s:12:"新闻资讯";s:16:"template_article";s:15:"article_article";s:14:"channeltype_id";s:1:"2";}}
+?>

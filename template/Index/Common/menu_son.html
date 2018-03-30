@@ -1,0 +1,15 @@
+<php>
+$menu_son_list = get_level_channel();
+</php>
+<div class="z-content">
+	<div class="z-content-1">
+        <ul class="z-nav">
+        <foreach name="menu_son_list" item="v">
+            <li class="z-nav-l <if condition="$v['is_now_parent'] eq true">active</if>">
+                <a href="{$v.url}">{$v.typename}</a>
+                <p></p>
+            </li>
+            </foreach>
+        </ul>
+   	</div>
+</div>

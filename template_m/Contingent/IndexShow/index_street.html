@@ -1,0 +1,212 @@
+<php>
+$page_head_info=array(
+   'title'   => show_street_name($s_id,$location_id)
+);
+</php>
+<include file="Index@Common:top" />
+<include file="Index@Common:top_script" />
+<style type="text/css">
+  .top-menu{    position: fixed;    top: 20em;    left: 0;  } 
+  .count>ul{    padding-top: 0;  }
+  /*.count>ul{    padding-top: 9em !important;  }*/
+  .roll-nav{
+    margin-top: 54px;
+  }
+</style>
+
+<script type="text/javascript" src="__INDEX_M__Common/js/jquery.bxslider.js"></script>
+<link href="__INDEX_M__Common/css/jquery.bxslider.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__INDEX_M__Common/js/touche.js"></script>
+<script type="text/javascript" src="__INDEX_M__Common/js/p-pull-refresh.js"></script>
+
+
+<!--头部开始-->
+  <div class="loading-warp">
+<div class="box box_top_ad" style="height: 0px; overflow: hidden;">
+          <div>
+            <div class="list_sm_plan"><img src="__INDEX_M__Common/images/list_tp.jpg"></div>
+          </div>
+  </div>
+  <div class="content">
+    
+  
+<div class="top-menu" style="clear: both; top:0em; z-index:9999999">
+       <a href="javascript:history.go(-1)" class="back" style="top:0.3em;"><img src="__INDEX_M__Common/images/top_left.png"></a>        <a href="#" class="name" style="margin-bottom: 0px; height: 44px; line-height: 44px; margin-top: 0px;">{$s_id|show_street_name=$location_id}</a>     
+        <!-- <a class="top-save"><img src="__INDEX_M__Common/images/fsq.png" width="21" height="27"> -->
+        <a class="top-save">赛区&gt</a> 
+  </div>
+  <!--导航开始--> 
+  <div class="roll-nav" style="float: left;"> 
+      <div class="nav-none">  
+          <table> 
+              <tr>  
+                    <td><a href="index.php?m=Contingent&c=IndexShow&a=index_street&location_id={$info_list.0.location_id}&s_id={$info_list.0.id}&street_id=99">儿童组</a></td>
+                  <foreach name="info_list" item="vo" key="k">  
+                      <td><a href="index.php?m=Contingent&c=IndexShow&a=index_street&location_id={$vo.location_id}&s_id={$vo.id}&street_id={$k}">{$vo.name}</a></td>
+			<if condition="$k eq 1 or $k eq 3">
+				</tr>
+				<tr>
+			</if>
+                  </foreach>  
+              </tr>
+          </table>  
+      </div>  
+  </div>  
+  <!--导航结束--></div>
+<!--头部结束-->
+<div class="clear"></div>
+
+<!--内容区域开始-->
+<div class="count">
+    <ul>
+    <foreach name="child_list" item="v">
+            <eq name="street_id" value="99">
+                <li> <a href="{:U('IndexShow/index_show',array('id'=>$v['id']))}"><img src="{$v.pic}" width="100%" height="150px"></a>
+                    <p class="mb1">{$v.show_name}</p>
+                    <a onclick="post_vote({$v.id},1);">
+                        <p><img src="__INDEX_M__Common/images/praise.png" width="17" height="17"><span>投票（{$v.num_vote_show}票）</span></p>
+                    </a>
+                </li>
+              </eq>
+    </foreach>
+    <foreach name="info_list" item="vo" key="k">
+        <foreach name="vo.value" item="v">
+            <eq name="k" value="$street_id">
+                <li> <a href="{:U('IndexShow/index_show',array('id'=>$v['id']))}"><img src="{$v.pic}" width="100%" height="150px"></a>
+                    <p class="mb1">{$v.show_name}</p>
+                    <a onclick="post_vote({$v.id},1);">
+                        <p><img src="__INDEX_M__Common/images/praise.png" width="17" height="17"><span>投票（{$v.num_vote_show}票）</span></p>
+                    </a>
+                </li>
+              </eq>
+          </foreach>
+    </foreach>
+    </ul>
+</div>
+</div>
+
+</div>
+<script> 
+function show_ad(){
+    var ad_height=$('.box_top_ad img').height();
+    $('.box_top_ad').animate({height: ad_height});
+    $('.top-menu').animate({top: ad_height});
+}
+function hide_ad(){
+    var ad_height=$('.box_top_ad img').height();
+    $('.box_top_ad').animate({height: 0});
+    $('.top-menu').animate({top: 0});
+}
+
+function getTopDistance() {
+            return document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+}
+    $(document).ready(function(){ 
+        show_ad();
+        var last_scroll_top=0;  
+        document.addEventListener('touchmove', function(e) {
+              $('.box_top_ad').css({height: 0});
+              $('.top-menu').css({top: 0});
+        });
+        document.addEventListener('touchmove', function(e) {
+          if (getTopDistance() <= -10) {
+              location.reload();
+          }
+        });
+
+
+        $(window).scroll(function(){      
+          var h=$("body").scrollTop();      
+          /**
+          if (h>1) {
+          };
+          **/
+                if ($(document).scrollTop() <= 0 && last_scroll_top>=2) {
+                  /**
+                    console.log("滚动条已经到达顶部为0,上一次滚动"+last_scroll_top);
+                    $(".top-menu").css('top','20em');       
+                    $(".list_sm_plan").show();        
+                    $(".count").css("padding-top:","0px");
+                    **/
+                  //location.reload();
+                }
+                if ($(document).scrollTop() >10){
+                  hide_ad();
+                }
+
+                if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+                    //console.log("滚动条已经到达底部为" + $(document).scrollTop());
+                }
+                last_scroll_top=$(document).scrollTop();
+
+          }); 
+    });
+</script>
+<script> 
+    var startTop=0;
+    var endTop=0;
+     /**$(document).ready(function(){ 
+     
+     $(window).touchstart(function(){  
+        startTop=$("body").clientX();  
+        console.log('aaa');
+      });
+
+     $(window).touchend(function(){  
+        endTop=$("body").clientY();  
+        console.log(endTop);
+     });
+     
+     $(window).scroll(function(){      
+      var h=$("body").scrollTop();  
+      //console.log(h);
+      if (h<0) {
+          console.log('aaaaa');
+              $(".top-menu").animate({top:'20em'});        
+              $(".list_sm_plan").show();        
+              $(".count").css("padding-top:","0px")                               
+        };    
+      });
+     });
+    **/
+</script>
+<script type="text/javascript">
+  /**
+  var $statu = $('.loading-warp .text');
+
+  console.log( $statu);
+  var pullRefresh = $('.count').pPullRefresh({
+    $el: $('body'),
+    $loadingEl: $('.loading-warp'),
+    sendData: null,
+    url: 'http://89.jingchengidea.com/index.php?m=Contingent&c=IndexShow&a=index_street&location_id=1',
+    autoHide: true,
+    callbacks: {
+      pullStart: function(){
+        location.reload(true);  
+        console.log('松开开始刷新');
+        // $statu.text('松开开始刷新');
+      },
+      start: function(){
+        console.log('数据刷新中···');
+        // $statu.text('数据刷新中···');
+      },
+      success: function(response){
+        console.log('数据刷新成功！');
+        // $statu.text('数据刷新成功！');
+      },
+      end: function(){
+        console.log('下拉刷新结束');
+        // $statu.text('下拉刷新结束');
+      },
+      error: function(){
+        console.log('找不到请求地址,数据刷新失败');
+        // $statu.text('找不到请求地址,数据刷新失败');
+      }
+    }
+  });
+  **/
+</script>
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />

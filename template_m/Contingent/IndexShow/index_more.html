@@ -1,0 +1,106 @@
+<include file="Index@Common:top" />
+<include file="Index@Common:top_script" />
+
+
+<script type="text/javascript" src="__INDEX_M__Common/js/jquery.bxslider.js"></script>
+<link href="__INDEX_M__Common/css/jquery.bxslider.css" rel="stylesheet" type="text/css">
+
+
+<div class="s_top">赛事集锦</div>
+<div class="s_nav">
+	<ul class="s_nav_box w94">
+		<li>赛级</li>
+		<li>赛区</li>
+	</ul>
+	<div class="s_sec_nav">
+		<ul style="display: none;">
+			<a <eq name="_GET['stage']" value="">class="active"</eq> href="{:U('index',array('stage'=>'','location_id'=>$_GET['location_id'],'type'=>$_GET['type']))}">全部</a>
+					<a <eq name="_GET['stage']" value="1">class="active"</eq> href="{:U('index',array('stage'=>1,'location_id'=>$_GET['location_id'],'type'=>$_GET['type']))}">城市赛</a>
+					<a <eq name="_GET['stage']" value="2">class="active"</eq> href="{:U('index',array('stage'=>2,'location_id'=>$_GET['location_id'],'type'=>$_GET['type']))}">街道赛</a>
+					<a <eq name="_GET['stage']" value="3">class="active"</eq> href="{:U('index',array('stage'=>3,'location_id'=>$_GET['location_id'],'type'=>$_GET['type']))}">社区赛</a>
+		</ul>
+		<ul style="display: none;">
+			<a <eq name="_GET['location_id']" value="">class="active"</eq> href="{:U('index',array('stage'=>$_GET['stage'],'location_id'=>'','type'=>$_GET['type']))}">全部</a>
+			<foreach name="location_list" item="v">
+			<a <eq name="_GET['location_id']" value="$v['id']">class="active"</eq> href="{:U('index',array('stage'=>$_GET['stage'],'location_id'=>$v['id'],'type'=>$_GET['type']))}">{$v.name}</a>
+			</foreach>
+		</ul>
+	</div>
+	<script>
+		$(document).ready(function(){
+			$(".s_nav_box li").click(function(){
+				$(this).addClass('active').siblings().removeClass('active');
+				$(".s_sec_nav ul").hide();
+				$(".s_sec_nav ul").eq($(this).index()).show();
+			});
+		});
+	</script>
+	<if condition="$_GET['type'] eq 1">
+	<div class="s_jc_tit">
+		<span>视频</span>
+	</div>
+	
+	<ul class="s_jc_list">
+		<foreach name="list" item="v">
+		<li>
+			<a href="{:U('Contingent/IndexShow/index_show',array('id'=>$v['id']))}">
+			<div class="f_cite">
+				<img src="{$v.pic}"/>
+				<i>{$v.stage|show_stage}-{$v.location_id|show_location_name}</i>
+			</div>
+			<span>{$v.contingent_id|show_ca_name}</span>
+			<span>{$v.show_name}</span></a>
+		</li>
+		</foreach>
+		<div class="clear"></div>
+	</ul>
+	<div class="page">{$page}</div>
+	</if>
+	<if condition="$_GET['type'] eq 2">
+	<div class="s_jc_tit">
+		<span>花絮</span>
+	</div>
+	
+	<ul class="s_jc_list">
+		<foreach name="list" item="v">
+			<li>
+			<a href="{:U('Contingent/IndexShow/index_xiu_show',array('id'=>$v['id']))}">
+				<div class="f_cite">
+					<img src="{$v.pic}"/>
+					<i>{$v.location_id|show_location_name}</i>
+				</div>
+				<span>{$v.title}</span></a>
+			</li>
+			
+		</foreach>
+		<div class="clear"></div>
+	</ul>
+	<div class="page">{$page}</div>
+	</if>
+	<if condition="$_GET['type'] eq 3">
+	<div class="s_jc_tit">
+		<span>照片</span>
+	</div>
+	
+	<ul class="s_jc_list">
+		<foreach name="list" item="v">
+			<li>
+			<a href="{:U('Contingent/IndexShow/index_xiu_show',array('id'=>$v['id']))}">
+				<div class="f_cite">
+					<img src="{$v.pic}"/>
+					<i>{$v.location_id|show_location_name}</i>
+				</div>
+				<span>{$v.title}</span></a>
+			</li>
+		</foreach>
+		
+		<div class="clear"></div>
+	</ul>
+	<div class="page">{$page}</div>
+	</if>
+</div>
+
+
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />

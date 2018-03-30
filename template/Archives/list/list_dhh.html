@@ -1,0 +1,75 @@
+<include file="Index@Common:new_top" />
+  
+<include file="Index@Common:new_banner" />
+        
+<include file="Index@Common:new_menu" />
+		
+		
+		<div class="child_paint">
+			<div class="warp">
+
+				<php>
+					$stage = $_GET['stage'];
+					$huihua_type = C('HUIHUA_TYPE');
+				</php>
+				<div class="list_item_box paint clearfix">
+					<div class="list_city_ti">儿童绘画赛</div>
+					<ul class="match clearfix">
+						<if condition="$huihua_type egt 7">
+						<li><a href="{:U('Huihua/IndexHuihua/index',array('stage'=>4))}">绘画总决赛</a></li>
+					</if>
+					<if condition="$huihua_type egt 5">
+						<li><a href="{:U('Huihua/IndexHuihua/index',array('stage'=>3))}">第三阶段赛</a></li>
+					</if>
+					<if condition="$huihua_type egt 3">
+						<li><a href="{:U('Huihua/IndexHuihua/index',array('stage'=>2))}">第二阶段赛</a></li>
+					</if>
+					<if condition="$huihua_type egt 1">
+						<li><a href="{:U('Huihua/IndexHuihua/index',array('stage'=>1))}">第一阶段赛</a></li>
+					</if>
+						<li <if condition="$_GET['t_id'] eq 74">class="active"</if>><a href="{:U('archives/index_arctype/index',array('t_id'=>74))}">获奖作品公布</a></li>
+						<li <if condition="$_GET['t_id'] eq 75">class="active"</if>><a href="{:U('archives/index_arctype/index',array('t_id'=>75))}">绘画比赛规则</a></li>
+					</ul>
+					<div class="seach">
+						<form action="{:U('Huihua/IndexHuihua/index')}" method="get">
+						<input type="hidden" value="Huihua" name="m" />
+			            <input type="hidden" value="IndexHuihua" name="c" />
+			            <input type="hidden" value="index" name="a" />
+							<input name="keywords" type="text" class="seach_txt" value="" placeholder="请输入ID/昵称">
+							<input type="submit" class="seach_but" name="" value=" ">
+						</form>
+					</div>
+				</div>
+
+
+
+				<div class="match_list_top">
+					<div class="match_top">
+						<a href="{:U('archives/index_arctype/index',array('t_id'=>72))}">我要参赛</a>
+					</div>
+
+
+					<div class="public_index_204">
+						<div id="wrapper">{$info.content|htmlspecialchars_decode}</div>
+						
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+		<include file="Index@Common:foot" />
+	</body>
+</html>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/jquery.newsticker.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/cascade.js" ></script>
+<script>
+  $("#nav li").hover(function(){
+    $(this).find(".second_nav").slideToggle();
+  })
+  
+</script>

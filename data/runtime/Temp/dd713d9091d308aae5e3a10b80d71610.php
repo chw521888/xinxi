@@ -1,0 +1,3 @@
+<?php
+//000000000060a:1:{i:0;a:22:{s:2:"id";s:4:"1099";s:10:"arctype_id";s:2:"54";s:5:"title";s:61:"您是睡眠“困难户”吗？7招教您一觉到天明！";s:9:"seo_title";s:0:"";s:8:"keywords";s:0:"";s:3:"att";s:1:"a";s:6:"source";s:0:"";s:6:"resume";s:222:"我们1/3的生命在睡眠中度过，人体的大部分自我修复工作都需要在睡眠中进行，想要有个好身体，必须先有好睡眠。好睡眠的标准有哪些呢？来看看你的睡眠质量如何？";s:3:"url";s:56:"/index.php?m=archives&c=index_archives&a=index&a_id=1099";s:3:"pic";s:49:"/jtjk/upload/other/image/20180328152220950812.jpg";s:8:"pic_list";s:2:"[]";s:7:"pubdate";s:10:"2018-03-28";s:8:"admin_id";s:1:"6";s:4:"hits";s:1:"0";s:9:"is_effect";s:1:"1";s:9:"is_delete";s:1:"0";s:4:"sort";s:1:"0";s:4:"time";s:10:"1522208992";s:8:"end_time";s:1:"0";s:8:"typename";s:12:"养生知识";s:16:"template_article";s:15:"article_article";s:14:"channeltype_id";s:1:"2";}}
+?>

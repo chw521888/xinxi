@@ -1,0 +1,105 @@
+<div class="sidebar" id="sidebar"> <!-- <div class="sidebar-shortcuts" id="sidebar-shortcuts"> </div> -->
+    	<div id="nav_wraper">
+        	<ul class="nav nav-list">
+            
+            
+            <li> <a href="#" class="dropdown-toggle"> <i class="fa fa-cogs normal"></i>
+                <span class="menu-text normal">城市及街道</span><b class="arrow fa fa-angle-right normal"></b>
+                <i class="fa fa-reply back"></i>
+                <span class="menu-text back">返回</span> </a>
+                	<ul  class="submenu">
+                        <li> <a href="javascript:openapp('{:U('Contingent/Location/index')}','','城市及街道');"> <i class="fa fa-caret-right"></i>
+                        <span class="menu-text">城市及街道</span> </a> </li>
+               		</ul>
+              	</li>
+            
+               <li> <a href="#" class="dropdown-toggle"> <i class="fa fa-cogs normal"></i>
+                <span class="menu-text normal">队伍管理</span><b class="arrow fa fa-angle-right normal"></b>
+                <i class="fa fa-reply back"></i>
+                <span class="menu-text back">返回</span> </a>
+                	<ul  class="submenu">
+                        <li> <a href="javascript:openapp('{:U('Contingent/Contingent/index')}','','队伍管理');"> <i class="fa fa-caret-right"></i>
+                        <span class="menu-text">队伍管理</span> </a> </li>
+               		</ul>
+              	</li>
+            
+            
+               
+               <li> <a href="#" class="dropdown-toggle"> <i class="fa fa-cogs normal"></i>
+                <span class="menu-text normal">节目管理</span><b class="arrow fa fa-angle-right normal"></b>
+                <i class="fa fa-reply back"></i>
+                <span class="menu-text back">返回</span> </a>
+                	<ul  class="submenu">
+                        <li> <a href="javascript:openapp('{:U('Contingent/Show/index_stage_0')}','','全国比赛节目');"> <i class="fa fa-caret-right"></i>
+                        <span class="menu-text">全国比赛节目</span> </a> </li>
+                        <li> <a href="javascript:openapp('{:U('Contingent/Show/index_stage_1')}','','城市比赛节目');"> <i class="fa fa-caret-right"></i>
+                        <span class="menu-text">城市比赛节目</span> </a> </li>
+                        <li> <a href="javascript:openapp('{:U('Contingent/Show/index_stage_2')}','','街道比赛节目');"> <i class="fa fa-caret-right"></i>
+                        <span class="menu-text">街道比赛节目</span> </a> </li>
+               		</ul>
+              	</li>
+            
+                <if condition="check_auth('Archives') eq 1">
+            	<li> <a href="#" class="dropdown-toggle"> <i class="fa fa-cogs normal"></i>
+                <span class="menu-text normal">栏目</span><b class="arrow fa fa-angle-right normal"></b>
+                <i class="fa fa-reply back"></i>
+                <span class="menu-text back">返回</span> </a>
+                	<ul  class="submenu">
+                        <li> <a href="javascript:openapp('{:U('Archives/Arctype/index')}','','栏目管理');"> <i class="fa fa-caret-right"></i>
+                        <span class="menu-text">栏目管理</span> </a> </li>
+                        <if condition="C('SYSTEM_DEBUG') eq true">
+                        <li> <a href="javascript:openapp('{:U('Archives/ArctypeChannel/index')}','','模型管理');"> <i class="fa fa-caret-right"></i>
+                        <span class="menu-text">模型管理</span> </a> </li>
+                        </if>
+               		</ul>
+              	</li>
+                </if>
+                
+                		<if condition="check_auth('Content') eq 1">
+                        <li> <a href="#" class="dropdown-toggle"> <i class="fa fa-group normal"></i>
+                        <span class="menu-text normal">内容</span> <b class="arrow fa fa-angle-right normal"></b> <i class="fa fa-reply back"></i>
+                        <span class="menu-text back">返回</span> </a>
+                        <ul  class="submenu">
+                           <li><a href="javascript:openapp('{:U('Archives/Archives/dy_index')}','','单页栏目');"> <i class="fa fa-caret-right"></i>
+                        <span class="menu-text">单页栏目</span> </a> </li>
+                            
+                            <foreach name="arctype_channel_list" item="vo">
+                           <li><a href="javascript:openapp('{:U('Archives/Archives/index',array('channeltype_id'=>$vo['id']))}','','{$vo.name}管理');"> <i class="fa fa-caret-right"></i>
+                        <span class="menu-text">{$vo.name}管理</span> </a> </li>
+                           </foreach>
+                        
+                           <li><a href="javascript:openapp('{:U('Message/Message/index')}','','报名管理');"> <i class="fa fa-caret-right"></i>
+                        <span class="menu-text">报名管理</span> </a> </li>
+                        
+                           <li><a href="javascript:openapp('{:U('Xinyuan/Xinyuan/index')}','','心愿管理');"> <i class="fa fa-caret-right"></i>
+                        <span class="menu-text">心愿管理</span> </a> </li>
+
+                         <li><a href="javascript:openapp('{:U('AdImages/AdImages/index')}','','手机端广告位');"><i class="fa fa-caret-right"></i>
+                         <span class="menu-text">手机端广告111位</span> </a></li>
+                                                 
+                        </ul>
+                        </li>
+                        </if>
+                        
+                        
+                        
+                        <if condition="check_auth('Conf') eq 1">
+                        <li> <a href="#" class="dropdown-toggle"> <i class="fa fa-cloud normal"></i>
+                        <span class="menu-text normal">系统</span> <b class="arrow fa fa-angle-right normal"></b> <i class="fa fa-reply back"></i> <span class="menu-text back">返回</span> </a>
+                        <ul  class="submenu">
+                           <li><a href="javascript:openapp('{:U('Admin/Conf/index')}','','系统设置');"><i class="fa fa-caret-right"></i>
+                        <span class="menu-text">系统设置</span></a></li>
+                           <li><a href="javascript:openapp('{:U('Admin/Admin/index')}','','管理员管理');"><i class="fa fa-caret-right"></i>
+                        <span class="menu-text">管理员管理</span></a></li>
+                           <li><a href="javascript:openapp('{:U('Admin/Log/index')}','','操作日志');"><i class="fa fa-caret-right"></i>
+                        <span class="menu-text">操作日志</span></a></li>
+                           <li><a href="javascript:openapp('{:U('Admin/Backup/index')}','','备份管理');"><i class="fa fa-caret-right"></i>
+                        <span class="menu-text">备份管理</span></a></li>
+                        </ul>
+                        </li>
+                        </if>
+                        
+                        
+                        </ul>
+                        </div>
+                        </div>

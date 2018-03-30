@@ -1,0 +1,44 @@
+<include file="Admin@Public:page_head" />
+
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#">管理员管理</a></li>
+			<li><a href="{:U('Admin/Admin/add')}">添加管理员</a></li>
+			<li><a href="{:U('Admin/Admin/index_auth_group')}">管理员分组</a></li>
+		</ul>
+        <form method="post" class="J_ajaxForm" action="#">
+		<div class="table-actions">
+					<button class="btn btn-primary btn-small" type="button" onclick="foreverdel();" data-action="{:U('Admin/Admin/foreverdelete')}" data-subcheck="true">删除</button>
+			</div>
+                    <html:list
+                        id="dataTable"
+                        style="table table-hover table-bordered table-list"
+                        name="list"
+                        checkbox="true"
+                        action="true"
+                        title="上线项目"
+                        datasource="list"
+                        pagelist="{$page}"
+                        show="id:{$Think.lang.ID}
+		,login_name:账号
+		,chinese_name:中文姓名
+		,auth_group_id|show_authgroup_title:分组
+		,tel:电话
+		,address:地址
+		,qq:QQ
+		,email:email
+		,login_ip:上次登录IP
+		,login_time|turn_time:上次登录时间
+		,is_effect|get_array_key_value=C('IS_NO'):是否有效"
+                        actionlist="edit:修改, foreverdelete:删除" />
+       <div class="table-actions">
+					<button class="btn btn-primary btn-small" type="button" onclick="foreverdel();" data-action="{:U('Admin/Admin/foreverdelete')}" data-subcheck="true">删除</button>
+			</div>
+            <include file="Admin@Public:page" />
+		</form>
+</div>
+<!--高级搜索-->
+
+
+
+<include file="Public:page_foot" />

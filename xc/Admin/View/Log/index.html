@@ -1,0 +1,29 @@
+<include file="Public:page_head" />
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Admin/Log/index')}">操作日志</a></li>
+		</ul>
+		<form method="post" class="J_ajaxForm" action="{:U('Link/listorders')}">
+        <div class="table-actions">
+				<button class="btn btn-primary btn-small" type="button" onclick="foreverdel();" data-action="{:U('Admin/Log/foreverdelete')}" data-subcheck="true">删除</button>
+			</div>
+
+            <html:list  id="dataTable"
+                        style="table table-hover table-bordered table-list"
+                        name="list"
+                        checkbox="true"
+                        action="true"
+                        title="上线项目"
+                        datasource="list"
+                        pagelist="{$page}"
+                        show="log_time|turn_time:操作时间
+                ,admin_chinese_name:操作人
+		        ,log_info:详细信息
+		        ,log_ip:IP"  actionlist="foreverdel:删除"/>      
+        <div class="table-actions">
+				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="/index.php?g=Admin&m=link&a=toggle&hide=1" data-subcheck="true">删除</button>
+			</div>
+            <include file="Public:page" />
+		</form>
+	</div>
+<include file="Public:page_foot" />

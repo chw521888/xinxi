@@ -1,0 +1,22 @@
+<div class="navbar">
+<div class="navbar-inner">
+<div class="container-fluid">
+<a href="/" class="brand"><small><img src="__TMPL__Common/img/logo-18.png">JCCMS</small></a>
+<div class="pull-left nav_shortcuts" >
+<a class="btn btn-small btn-warning" href="/" title="前台首页" target="_blank"><i class="fa fa-home"></i> </a>
+<a class="btn btn-small btn-success" href="javascript:openapp('{:U('Archives/Arctype/index')}','','栏目管理');" title="栏目管理"> <i class="fa fa-th"></i> </a>
+<a class="btn btn-small btn-info" href="javascript:openapp('{:U('Archives/Archives/index',array('channeltype_id'=>2))}','','文章管理');" title="文章管理"> <i class="fa fa-pencil"></i> </a>
+<a class="btn btn-small btn-danger" href="javascript:openapp('{:U('Admin/Setting/clearcache')}','','清除缓存');" title="清除缓存"> <i class="fa fa-trash-o"></i> </a>
+</div>
+    <ul class="nav simplewind-nav pull-right">
+        <li class="light-blue"> <a data-toggle="dropdown" href="#" class="dropdown-toggle"> <img class="nav-user-photo" src="__TMPL__Common/img/logo-18.png" alt="admin"> <span class="user-info"> <small>欢迎,</small>admin</span> <i class="fa fa-caret-down"></i> </a>
+            <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+                <li><a href="javascript:openapp('{:U('Admin/Conf/index')}','','站点管理');"><i class="fa fa-cog"></i> 站点管理</a></li>
+                <li><a href="javascript:openapp('{:U('Admin/Admin/edit_password')}','','修改密码');"><i class="fa fa-user"></i> 修改密码</a></li>
+                <li><a href="{:U('Admin/Public/do_loginout')}"><i class="fa fa-sign-out"></i> 退出</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</div>
+</div>

@@ -1,0 +1,67 @@
+<include file="Index@Common:new_top" />
+  
+<include file="Index@Common:new_banner" />
+        
+<include file="Index@Common:new_menu" />
+
+		<!-- 内容     开始-->
+		<div class="details">
+			<div class="ti">{$info.title}</div>
+			<div class="data">
+				<span>{$info.time|turn_time=1}</span>
+			</div>
+			<div class="audio">
+                    <p class="weixinAudio">
+                        <audio src="{$info.uploadfile}" id="media" width="1" height="1" preload=""></audio>
+                        <span id="audio_area" class="db audio_area">
+                          <span class="audio_wrp db">
+                            <span class="audio_play_area">
+                              <i class="icon_audio_default"></i>
+                              <i class="icon_audio_playing"></i>
+                            </span>
+                            
+                            <span class="db audio_info_area">
+                              <strong class="db audio_title">{$info.title}</strong>
+                              <span class="audio_source tips_global">{$info.title}</span>
+                              <span class="audio_progress_box">
+                                <span class="playBall" id="audio_playBall"></span>
+                                <span id="audio_progress" class="progress_bar" ></span>
+                              </span>
+
+                              <span class="audio_length_box">
+                                <span id="audio_timenow" class="audio_time_now tips_global">00:00</span>
+                                <span id="audio_length" class="audio_length tips_global">00:30</span>
+                              </span>
+                            </span>
+
+                          </span>
+                        </span>
+                    </p>
+                </div>
+			<div class="txt">{$info.content|htmlspecialchars_decode}</div>
+
+		</div>
+		<!-- 内容     End-->
+
+	</body>
+</html>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX_M__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX_M__NewCommon/js/jquery.newsticker.js" ></script>
+<script type="text/javascript" src="__INDEX_M__NewCommon/js/weixinAudio.js" ></script>
+<script type="text/javascript" src="__INDEX_M__NewCommon/js/Audio.js" ></script>
+
+<script>
+	$(".show_tab li").hover(function(){
+		$(this).addClass("active").siblings().removeClass("active");
+		$(".show_city_list").hide();
+		$(".show_city_list").eq($(this).index()).show();
+		
+	})
+</script>
+<script>
+	$("#nav li").hover(function(){
+		$(this).find(".second_nav").slideToggle();
+	})
+</script>

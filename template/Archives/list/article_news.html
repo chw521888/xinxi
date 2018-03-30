@@ -1,0 +1,66 @@
+<include file="Index@Common:top" />
+<include file="Index@Common:menu" />
+<include file="Index@Common:top_logo" />
+<!----------banner开始---------->
+<php>
+    $banner=get_arctype_info(1);
+</php>
+<div class="banner_n"><img src="{$banner.banner}" /></div>
+
+<!------------内容区域开始------------>
+<div class="xxcont">
+
+    <include file="Index@Common:service" />
+
+
+    <ul  class="cp-xx">
+        <div class="cp-dbj">
+            <p class="cp-p">招聘会通知</p>
+            <span class="cp-shx"></span>
+            <div class="cp-pic">
+                <img src="images/gylr.jpg">
+                <img src="images/gynv.jpg">
+                <img src="images/gykh.jpg">
+                <img src="images/gynv.jpg">
+            </div>
+            <div class="cp-font">
+                <p>近年来,以老龄化加速为背景,中国需要完善以养老护理为代表的生活支援服务。日本是养老护理的先进国家,其领先企业“日医学馆”与深入当地、深得信赖的各地“生活支援企业”建立合作伙伴关系,构建了汇集双方信誉的“日中协作”的合作体系。 </p>
+                <p>“日医学馆”融合中国文化和习俗,运用通过人才培养和服务积累的专有知识,以“新中日式”的方法,推进优质、高效生活支援服务的普及和健康的护理市场的形成。这是我们为全中国提供服务的理想模式。</p>
+                <p>近年来,以老龄化加速为背景,中国需要完善以养老护理为代表的生活支援服务。日本是养老护理的先进国家,其领先企业“日医学馆”与深入当地、深得信赖的各地“生活支援企业”建立合作伙伴关系,构建了汇集双方信誉的“日中协作”的合作体系。</p>
+                <p>“日医学馆”融合中国文化和习俗,运用通过人才培养和服务积累的专有知识,以“新中日式”的方法,推进优质、高效生活支援服务的普及和健康的护理市场的形成。这是我们为全中国提供服务的理想模式。</p>
+                <p>近年来,以老龄化加速为背景,中国需要完善以养老护理为代表的生活支援服务。日本是养老护理的先进国家,其领先企业“日医学馆”与深入当地、深得信赖的各地“生活支援企业”建立合作伙伴关系,构建了汇集双方信誉的“日中协作”的合作体系。</p>
+            </div>
+
+            <ul class="cp-img">
+                <li>分享：</li>
+                <li><img src="images/gkj.jpg"></li>
+                <li><img src="images/gsh.jpg"></li>
+                <li><img src="images/gwb.jpg"></li>
+                <li><img src="images/gkx.jpg"></li>
+                <li><img src="images/grr.jpg"></li>
+                <li><img src="images/gj.png"></li>
+            </ul>
+
+        </div>
+    </ul>
+    <!------------其他服务提供------------>
+    <ul class="gzcont-ul3">
+        <li class="mcont-r">
+            <ul>
+                <li class="myl"></li>
+                <li class="my2 fz24">其他的提供服务</li>
+                <li class="mxl3"></li>
+            </ul>
+        </li>
+        <include file="Index@Common:service_bottom" />
+    </ul>
+</div>
+<!------------底部开始------------>
+<include file="Index@Common:foot" />
+<include file="Index@Common:bottom" />
+<!------------底部结束------------>
+<script>
+    $("#nav li").hover(function(){
+        $(this).find(".second_nav").slideToggle();
+    })
+</script>

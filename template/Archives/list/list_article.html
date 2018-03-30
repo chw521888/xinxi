@@ -1,0 +1,45 @@
+<include file="Index@Common:top" />
+<include file="Index@Common:top_logo" />
+<!--
+<if condition="$_GET['t_id']=='59'">
+<div style="width:100%;height:505px;background: url('__INDEX__Common/images/bj_bwg.jpg') center no-repeat;"></div>
+<else />
+<div class="logo6">
+    <eq name="_GET['t_id']" value="58">
+        <ul class="float">
+            <li><img src="__INDEX__Common/images/ewm_shop.png"></li>
+        </ul>
+    </eq>
+</div>
+</if>-->
+<include file="Index@Common:menu" />
+<include file="Index@Common:menu_son" />
+<!-- 二级小导航结束-->
+<div class="z-new">
+    <foreach name="list" item="vo">
+        <ul class="z-new-l">
+            <li>
+                <a href="{$vo.url}"><img src="{$vo.pic}" width="165" height="115" /></a>
+                <a href="{$vo.url}">
+                    <p>{$vo.title|getstr=30}</p>
+                    <span>{$vo.resume}</span>
+                    <p class="date">{$vo.time|turn_time=1}</p>
+
+                </a>
+            </li>
+        </ul>
+    </foreach>
+
+</div>
+<div class="clear"></div>
+<div class="scott">{$page}</div>
+
+
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />
+<script>
+    $("#nav li").hover(function(){
+        $(this).find(".second_nav").slideToggle();
+    })
+</script>

@@ -1,0 +1,61 @@
+<include file="Admin@Public:page_head" />
+<html:editor type="UEDITOR_BEGIN"></html:editor>
+
+<div class="wrap J_check_wrap">
+          <ul class="nav nav-tabs">
+			<li><a href="{:U('Contingent/Show/index_stage_0')}">节目管理</a></li>
+			<li class="active"><a href="{:U('Contingent/Show/add_show_stage_0')}">添加节目</a></li>
+          </ul>
+  <form class="form-horizontal J_ajaxForm" name="myform" id="myform" action="{:U('Contingent/Show/insert_show_stage0')}" method="post">
+			<div class="tabbable">
+		        <div class="tab-content">
+		          <div class="tab-pane active">
+                  
+		          		<table cellpadding="2" cellspacing="2" width="370" style="margin-bottom:20px; margin-right:20px; float:left;">
+							<tbody>
+						     <tr>
+                             	  <td width="60">队伍名称:</td>
+								  <td><select name="contingent_id">
+                                  <option value="">---请选择---</option>
+                                  <foreach name="contingent_list" item="vo">
+								    <option value="{$vo.id}">{$vo.name}</option>
+                                    </foreach>
+							   </select></td>
+							  </tr>
+								<tr>
+									<td>作品名称:</td>
+								  <td><input type="text" class="input" name="show_name" value="" required="required" /></td>
+							  </tr>
+								<tr>
+									<td>缩略图:</td>
+								    <td><html:imgUpload name='pic' id="pic" /></td>
+							  </tr>
+                              <tr>
+									<td>视频地址:</td>
+								  <td><input type="text" class="input" name="video" value="" /></td>
+							  </tr>
+							  <tr>
+									<td>乐视云ID:</td>
+								  <td><input type="text" class="input" name="video2" value="" /></td>
+							  </tr>
+								<tr>
+									<td>排序:</td>
+								  <td><input type="text" class="input" name="sort" value="0" /></td>
+							  </tr>
+							</tbody>
+						</table>
+                        
+				</div>
+                  <div style="clear:both"></div>
+		     <div class="form-actions">
+		           <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+		      		<a class="btn" href="{:U('Contingent/Show/index_stage_0')}">返回</a>
+		      </div>
+		</form>
+</div>
+
+
+<script type="text/javascript" src="__TMPL__Common/js/common.js"></script>
+<script type="text/javascript" src="__TMPL__Common/js/content_addtop.js"></script>
+
+<include file="Admin@Public:page_foot" />

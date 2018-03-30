@@ -1,0 +1,61 @@
+<include file="Index@Common:top" />
+<include file="Index@Common:top_logo" />
+<!--
+<if condition="$info['arctype_id']=='59'">
+<div style="width:100%;height:505px;background: url('__INDEX__Common/images/bj_bwg.jpg') center no-repeat;"></div>
+<else />
+<div class="logo6"></div>
+</if>
+-->
+<include file="Index@Common:menu" />
+
+<div class="clear"></div>
+<!-- 二级小导航结束-->
+<div class="main">
+    <div>
+        <ul class="border-bottom">
+            <li class="fy1">当前位置：<a href="/">首页</a> &gt; <a href="#">{$info.typename}</a> <span>&lt;<a href="javascript:history.go(-1);">返回新闻列表</a></span></li>
+            <li class="fy-title">{$info.title}</li>
+            <li class="fy-date">{$info.time|turn_time=1}</li>
+        </ul>
+    </div>
+    <div>
+        <!--<ul class="dx"><img src="{$info.pic}" alt=""/></ul>-->
+        <ul class="border-bottom">
+        <if condition="$info['arctype_id'] == 27 or $info['arctype_id'] == 65 or $info['arctype_id'] == 76 or $info['arctype_id'] == 77">
+          <li><video width="995" height="600" src="{$info.tv_url}" type="video/mp4"
+                   id="player1" poster="{$info.pic}"
+                   controls="controls" preload="none">
+            <object data="videoplayer.swf" type="application/x-shockwave-flash">
+                <param name="movie" value="video.swf"/>
+            </object>
+        </video></li>
+        </if>
+          <li class="fz14">{$info.content|htmlspecialchars_decode}</li>
+        </ul>
+        <ul class="dx"><li><div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></li></ul>
+    </div>
+    <ul class="more">
+        <li class="more-read">更多阅读</li>
+<php>
+$tag=array('arctype_id' => $info['arctype_id'],limit=>5);
+$list = get_article($tag);
+</php>        
+<foreach name="list" item="vo">
+        <li class="more1"><a href="{$vo.url}"><img src="{$vo.pic}" width="164" height="115" alt=""/></a>
+            <p><a href="{$vo.url}">{$vo.title}</a></p></li>
+        </foreach>
+    </ul>
+</div>
+
+
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />
+<script>
+    $("#nav li").hover(function(){
+        $(this).find(".second_nav").slideToggle();
+    })
+</script>
+

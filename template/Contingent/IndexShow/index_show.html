@@ -1,0 +1,109 @@
+<include file="Index@Common:top" />
+<script language="javascript" src="__INDEX__Common/html5media/html5media.min.js"></script>
+<include file="Index@Common:top_logo" />
+<!--<div class="logo4" style="background: url('{$info.pic_banner}') center no-repeat;"></div>-->
+<include file="Index@Common:menu" />
+<div class="main">
+    <div>
+        <ul class="column">
+            <li class="fy">您现在的位置：<a href="/">首页</a> > <a href="javascript:history.go(-1);">{$info.location_id|show_l2_name}</a> >  {$info.show_name}</li>
+        </ul>
+    </div>
+    <ul class="video-name"><li>{$info.show_name}</li></ul>
+    <ul class="video1">
+        <li style="text-align:center">
+        <if condition="$info['video2'] neq ''">
+        <embed src="http://yuntv.letv.com/bcloud.swf" allowFullScreen="true" quality="high"  width="1000" height="700" align="middle" allowScriptAccess="always" flashvars="uu=uilcwncrnf&vu={$info.video2}&pu=1348d387b0&auto_play=0&gpcflag=1&width=1000&height=700" type="application/x-shockwave-flash"></embed>
+        <else />
+        <video id="hellofitvideo" width="1000" height="700" controls="controls" src="{$info.video}" poster="{$info.pic}">
+<source src="{$info.video}" type='video/mp4; codecs="avc1.42E01E,MP4a.40.2"' />
+</video>
+        </if>
+        </li>
+        <li class="gename">
+
+                <span class="votes">
+                当前已获得 <p>{$info.num_vote_show}</p> 票
+                </span>
+            <input onclick="post_vote({$info.id});" type="button" value="投  票" class="obutton"/>
+            <!--<input type="button" value="往期视频" class="gbutton"/>-->
+        </li>
+        <li>
+            <table border="1" cellpadding="0" cellspacing="0">
+                <tr>
+                    <th>街道名称</th>
+                    <td>{$info.location_id|show_l2_name}</td>
+                    <th>参赛人数</th>
+                    <td>{$info2.num_competition|show_str}</td>
+                </tr>
+                <tr>
+                    <th>社区名称</th>
+                    <td>{$info2.community_name}</td>
+                    <th>节目名称</th>
+                    <td>{$info.show_name}</td>
+                </tr>
+                <tr>
+                    <th>队伍名称</th>
+                    <td>{$info2.name}</td>
+                    <th>平均年龄</th>
+                    <td>{$info2.age|show_str}</td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+	<php> if($info2['resume'] != ''){ </php>
+    <ul class="team">
+        <li></li>
+    </ul>
+    <ul style="width:1000px; margin:auto;">
+        <li style="padding:10px; padding-bottom:20px; line-height:25px;">{$info2.resume|make_textarea}</li>
+    </ul>
+    <php> } </php>
+    <!--
+    <ul class="team-main">
+        <li class="experience">
+            <span class="list-img"></span>
+            <p><span>成长经历</span>{$info2.content_1}</p>
+            <span class="exp"><img src="{$info2.content_pic_1}" width="133" height="133" alt=""/></span>
+        </li>
+    </ul>
+    <ul class="team-main">
+        <li class="personnel">
+            <span class="list-imgr"></span>
+            <p><span>团队人员组成</span>{$info2.content_2}</p>
+            <span class="expl"><img src="{$info2.content_pic_2}" width="133" height="133" alt=""/></span>
+        </li>
+    </ul>
+    <ul class="team-main">
+        <li class="experience">
+            <span class="list-img"></span>
+            <p><span>获得奖项</span>{$info2.content_3}</p>
+            <span class="exp"><img src="{$info2.content_pic_3}" width="133" height="133" alt=""/></span>
+        </li>
+    </ul>
+    <ul class="team-main">
+        <li class="personnel">
+            <span class="list-imgr"></span>
+            <p><span>参加过重大活动或比赛</span>{$info2.content_4}</p>
+            <span class="expl"><img src="{$info2.content_pic_4}" width="133" height="133" alt=""/></span>
+        </li>
+    </ul>
+    <ul class="team-main">
+        <li class="experience">
+            <span class="list-img"></span>
+            <p><span>节目创作故事</span>{$info2.content_5}</p>
+            <span class="exp"><img src="{$info2.content_pic_5}" width="133" height="133" alt=""/></span>
+        </li>
+    </ul>
+    -->
+</div>
+
+
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />
+<script>
+    $("#nav li").hover(function(){
+        $(this).find(".second_nav").slideToggle();
+    })
+</script>

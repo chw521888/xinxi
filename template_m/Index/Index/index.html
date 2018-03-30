@@ -1,0 +1,81 @@
+<include file="Common:top" />
+<include file="Common:menu" />
+<!--内容区域开始-->
+<!--banner开始-->
+
+
+</style>
+<div class="banner">
+    <img src="__INDEX_M__Common/images/banner.jpg" width="100%" height="auto">
+</div>
+<!--banner结束-->
+
+<!--点击测试 开始-->
+
+<div class="m_index_newslist">
+	<div class="m_inl_thumb"><a href="{:U('Index/Dati/index')}"><img src="__INDEX_M__Common/images/dati_img.png" width="100%"></a></div>
+	<if condition="C('IS_START_COUNTRY') eq 1">
+	<div class="count1">
+	<ul>
+    <foreach name="et_list" item="v" key="k">
+		<li><a href="{:U('Index/index_show',array('id'=>$v['id']))}"><img src="{$v.pic}" width="100%" height="150px"></a>
+            <p class="mb1">{$v.show_name}</p>
+            <a onclick="post_vote({$v.id},1);">
+                <p><img src="/template_m/Index/Common/images/praise.png" width="17" height="17"><span>投票（{$v.num_vote_show}票）</span></p>
+            </a>
+        </li>
+    </foreach>
+    </ul>
+	</div>
+
+	<div class="count1">
+	<ul>
+    <foreach name="cr_list" item="v" key="k">
+		<li><a href="{:U('Index/index_show',array('id'=>$v['id']))}"><img src="{$v.pic}" width="100%" height="150px"></a>
+            <p class="mb1">{$v.show_name}</p>
+            <a onclick="post_vote({$v.id},1);">
+                <p><img src="/template_m/Index/Common/images/praise.png" width="17" height="17"><span>投票（{$v.num_vote_show}票）</span></p>
+            </a>
+        </li>
+    </foreach>
+    </ul>
+	</div>
+	</if>
+</div>
+<if condition="C('IS_START_COUNTRY') lt 1">
+<!--城市  开始-->
+<div class="s_ind_city">
+	<ul>
+	<foreach name="city_list" item="vv">
+	<php>
+		$str = "#this";
+		if($vv['shequ'] == 1){
+            $str = U('Contingent/IndexShow/index_shequ',array('location_id'=>$vv['id']));
+        }
+        if($vv['is_effect']==1){
+			$str = U('Contingent/IndexShow/index_street',array('location_id'=>$vv['id']));
+		}
+		if($vv['status']==1){
+			$str = U('Contingent/IndexShow/index_city',array('location_id'=>$vv['id']));
+		}
+	</php>
+		<li>
+		<a href="{$str}"><img src="{$vv.pic}" width="100%" height="132"/><span>{$vv.name}</span></a>
+		</li>
+	</foreach>
+	</ul>
+	<div class="clear"></div>
+</div>
+</if>
+
+<!--底部二维码  开始-->
+<div class="s_ind_eq"><img src="__INDEX_M__Common/images/ind_eq.png" width="100%" height="auto" /></div>
+<include file="Common:foot" />
+<include file="Common:city_navigation" />
+<include file="Common:bottom" />
+<style>
+	.top-menu {
+	 
+	 margin-top:0 ;
+}
+</style>

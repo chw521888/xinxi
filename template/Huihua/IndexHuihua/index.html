@@ -1,0 +1,152 @@
+<include file="Index@Common:new_top" />
+ 
+
+<!--banner    开始-->
+        <div class="warp">
+           	<if condition="$stage eq 1">
+			<div class="banner"><img src="{:C('HUIHUA_1_BANNER')}"></div>
+			</if>
+			<if condition="$stage eq 2">
+			<div class="banner"><img src="{:C('HUIHUA_2_BANNER')}"></div>
+			</if>
+			<if condition="$stage eq 3">
+			<div class="banner"><img src="{:C('HUIHUA_3_BANNER')}"></div>
+			</if>
+			<if condition="$stage eq 4">
+			<div class="banner"><img src="{:C('HUIHUA_4_BANNER')}"></div>
+			</if>
+        </div>
+        <!--banner    End-->
+        
+<include file="Index@Common:new_menu" />
+		
+		
+		<div class="child_paint">
+			<div class="warp">
+
+				<php>
+					
+				</php>
+				<div class="list_item_box paint clearfix">
+					<div class="list_city_ti">儿童绘画赛</div>
+					<ul class="match clearfix">
+					<if condition="$huihua_type egt 7">
+						<li <if condition="$stage eq 4">class="active"</if>><a href="{:U('Huihua/IndexHuihua/index',array('stage'=>4))}">绘画总决赛</a></li>
+					</if>
+					<if condition="$huihua_type egt 5">
+						<li <if condition="$stage eq 3">class="active"</if>><a href="{:U('Huihua/IndexHuihua/index',array('stage'=>3))}">第三阶段赛</a></li>
+					</if>
+					<if condition="$huihua_type egt 3">
+						<li <if condition="$stage eq 2">class="active"</if>><a href="{:U('Huihua/IndexHuihua/index',array('stage'=>2))}">第二阶段赛</a></li>
+					</if>
+					<if condition="$huihua_type egt 1">
+						<li <if condition="$stage eq 1">class="active"</if>><a href="{:U('Huihua/IndexHuihua/index',array('stage'=>1))}">第一阶段赛</a></li>
+					</if>
+						<li><a href="{:U('archives/index_arctype/index',array('t_id'=>74))}">获奖作品公布</a></li>
+						<li><a href="{:U('archives/index_arctype/index',array('t_id'=>75))}">绘画比赛规则</a></li>
+					</ul>
+					<div class="seach">
+						<form action="?" method="get">
+						<input type="hidden" value="{$Think.const.MODULE_NAME}" name="m" />
+			            <input type="hidden" value="{$Think.const.CONTROLLER_NAME}" name="c" />
+			            <input type="hidden" value="<php>echo ACTION_NAME;</php>" name="a" />
+			            <input type="hidden" value="{$_GET['stage']}" name="stage" />
+							<input name="keywords" type="text" class="seach_txt" value="{$_GET['keywords']}" placeholder="请输入ID、昵称">
+							<input type="submit" class="seach_but" name="" value=" ">
+						</form>
+					</div>
+				</div>
+
+
+				<div class="match_list_top">
+					<div class="match_top clearfix">
+						<a href="{:U('archives/index_arctype/index',array('t_id'=>72))}">我要参赛</a>
+						<if condition="$stage eq 1">
+						<img src="{:C('HUIHUA_1_IMG')}">
+						</if>
+						<if condition="$stage eq 2">
+						<img src="{:C('HUIHUA_2_IMG')}">
+						</if>
+						<if condition="$stage eq 3">
+						<img src="{:C('HUIHUA_3_IMG')}">
+						</if>
+						<if condition="$stage eq 4">
+						<img src="{:C('HUIHUA_4_IMG')}">
+						</if>
+					</div>
+
+
+					<div class="public_index_204">
+						<div id="wrapper">
+					        <!-- 儿童绘画赛列表开始 -->
+					        <div class="brand-list">
+					            <div class="brand-bd cle" id="brand-waterfall">
+					                <!-- 循环字母模块 item -->
+					                <foreach name="list" item="v">
+					                <div class="item">
+					                    <div class="brand_img"><a href="{:U('show',array('id'=>$v['id']))}"><img src="{$v.pic}" style="width:100%;"></a></div>
+					                    <div class="brand_txt">
+					                    	<a class="capt">{$v.title}</a>
+					                    	<div class="num_btn">
+					                    		<span class="num">票数 ({$v.num_view})</span>
+					                    		<span class="btn post_vote_huihua" onclick="post_vote_huihua({$v.id},0);">投票</span>
+					                    	</div>
+					                    	<div class="data">
+					                    		<img src="{$v.pic}" style="border-radius:18px;">
+					                    		<i class="id">{$v.user_name}</i>
+					                    		<i>ID:{$v.id}</i>
+					                    	</div>
+					                    </div>
+					                </div>
+					                </foreach>
+					            </div>
+					        </div>
+					        <!-- 儿童绘画赛列表 end -->
+					        <div class="public_pagination_154">
+						        <!-- PC 分页  -->
+						        <div class="pagination_pc">{$page}</div>
+						    </div>
+					    </div>
+						
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+		<script>
+			var post_vote_huihua=function(huihua_id,type){
+				var post_data={"huihua_id":huihua_id,"type":type};
+				//ajax 提交form
+		    $.ajax({
+		        url : "{:U('Huihua/IndexHuihua/post_vote')}",
+		        type : "POST",
+		        data : "huihua_id="+huihua_id+"&type="+type,
+		        success:function(data){
+		        	alert(data.info);
+		        	location.reload();
+		        },
+		        error:function(data){
+		        	alert("error!");
+		        }
+		        
+		    });
+			}
+		</script>
+		<include file="Index@Common:foot" />
+		
+	</body>
+</html>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/jquery.newsticker.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/cascade.js" ></script>
+
+<script>
+  $("#nav li").hover(function(){
+    $(this).find(".second_nav").slideToggle();
+  })
+  
+</script>

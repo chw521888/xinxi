@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh_CN" style="overflow: hidden;">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+<meta charset="utf-8">
+<title>网站管理系统</title>
+<meta name="description" content="This is page-header (.page-header &gt; h1)">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="__TMPL__Common/css/theme.min.css" rel="stylesheet">
+<link href="__TMPL__Common/css/simplebootadmin.css" rel="stylesheet">
+<link href="__TMPL__Common/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="__TMPL__Common/css/font-awesome-ie7.min.css">
+<![endif]-->
+<link rel="stylesheet" href="__TMPL__Common/css/simplebootadminindex.min.css?">
+<!--[if lte IE 8]>
+<link rel="stylesheet" href="__TMPL__Common/css/simplebootadminindex-ie.css?" />
+<![endif]-->
+<style>.navbar .nav_shortcuts .btn{margin-top: 5px;}
+
+/*-----------------导航hack--------------------*/
+.nav-list>li.open{position: relative;}
+.nav-list>li.open .back {display: none;}
+.nav-list>li.open .normal {display: inline-block !important;}
+.nav-list>li.open a {padding-left: 7px;}
+.nav-list>li .submenu>li>a {background: #fff;}
+.nav-list>li .submenu>li a>[class*="fa-"]:first-child{left:20px;}
+.nav-list>li ul.submenu ul.submenu>li a>[class*="fa-"]:first-child{left:30px;}
+/*----------------导航hack--------------------*/
+</style>
+</head>
+<body style="min-width:900px;" screen_capture_injected="true">
+<div id="loading">
+<i class="loadingicon">
+</i><span>正在加载...</span></div>
+<div id="right_tools_wrapper">
+<!--<span id="right_tools_clearcache" title="清除缓存" onclick="javascript:openapp('/thinkcmf/index.php?g=admin&m=setting&a=clearcache','right_tool_clearcache','清除缓存');"><i class="fa fa-trash-o right_tool_icon"></i></span>-->
+<span id="refresh_wrapper" title="刷新当前页" ><i class="fa fa-refresh right_tool_icon"></i></span> </div>
+<include file="Index:menu_top" />
+<div class="main-container container-fluid">
+	<include file="Index:menu_left" />
+                        <div class="main-content"> <div class="breadcrumbs" id="breadcrumbs"> <a id="task-pre" class="task-changebt">←</a> <div id="task-content"> <ul class="macro-component-tab" id="task-content-inner"> <li class="macro-component-tabitem noclose" app-id="0" app-url="/thinkcmf/index.php?g=admin&m=main&a=index" app-name="首页"> <span class="macro-tabs-item-text">首页</span> </li> </ul> <div style="clear:both;"></div> </div> <a id="task-next" class="task-changebt">→</a> </div> <div class="page-content" id="content">
+                        <iframe src="{:U('Index/page')}" style="width:100%;height: 100%;" frameborder="0" id="appiframe-0" class="appiframe"></iframe>
+                        </div> </div> </div> 
+						<script src="__TMPL__Common/js/jquery.js"></script>
+                        <script src="__TMPL__Common/js/bootstrap.min.js"></script>
+                        <script>
+	var ismenumin = $("#sidebar").hasClass("menu-min");
+	$(".nav-list").on( "click",function(event) {
+		var closest_a = $(event.target).closest("a");
+		if (!closest_a || closest_a.length == 0) {
+			return
+		}
+		if (!closest_a.hasClass("dropdown-toggle")) {
+			if (ismenumin && "click" == "tap" && closest_a.get(0).parentNode.parentNode == this) {
+				var closest_a_menu_text = closest_a.find(".menu-text").get(0);
+				if (event.target != closest_a_menu_text && !$.contains(closest_a_menu_text, event.target)) {
+					return false
+				}
+			}
+			return
+		}
+		var closest_a_next = closest_a.next().get(0);
+		if (!$(closest_a_next).is(":visible")) {
+			var closest_ul = $(closest_a_next.parentNode).closest("ul");
+			if (ismenumin && closest_ul.hasClass("nav-list")) {
+				return
+			}
+			closest_ul.find("> .open > .submenu").each(function() {
+						if (this != closest_a_next && !$(this.parentNode).hasClass("active")) {
+							$(this).slideUp(150).parent().removeClass("open")
+						}
+			});
+		}
+		if (ismenumin && $(closest_a_next.parentNode.parentNode).hasClass("nav-list")) {
+			return false;
+		}
+		$(closest_a_next).slideToggle(150).parent().toggleClass("open");
+		return false;
+	});
+	</script>
+	<script src="__TMPL__Common/js/md5.js"></script>
+	<script src="__TMPL__Common/js/index.js"></script> </body> </html>

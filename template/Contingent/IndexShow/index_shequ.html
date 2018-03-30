@@ -1,0 +1,50 @@
+<include file="Index@Common:new_top" />
+  
+<include file="Index@Common:new_banner" />
+        
+<include file="Index@Common:new_menu" />
+<script type="text/javascript" src="__INDEX__NewCommon/js/ScrollPic.js" ></script>
+<link rel="stylesheet" href="__INDEX__NewCommon/css/lightbox.min.css">    
+
+    <div class="warp">
+      <div class="list_item_box">
+        <div class="list_city_ti">{$info.name}</div>
+      </div>
+      
+      
+      <ul class="list_city_team clearfix">
+      <foreach name="list" item="v">
+        <li>
+          <a href="{$v.pic}" data-lightbox="example-set" data-title="{$v.title}">
+            <div><img src="{$v.pic}" /></div>
+            <p>{$v.title}</p>
+          </a>
+        </li>
+      </foreach>
+      </ul>
+
+      
+      <div class="public_pagination_154">
+            <!-- PC 分页  -->
+            <div class="pagination_pc">{$page}</div>
+        </div>
+      
+    </div>
+    <include file="Index@Common:foot" />
+  </body>
+</html>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/jquery.newsticker.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/lightbox-plus-jquery.min.js" ></script>
+
+
+
+
+<script>
+  $("#nav li").hover(function(){
+    $(this).find(".second_nav").slideToggle();
+  })
+  
+</script>

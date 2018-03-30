@@ -1,0 +1,30 @@
+<include file="Index@Common:top" />
+<include file="Index@Common:top_logo" />
+<!--<div class="logo12" style="background: url('{$info.pic_banner}') center no-repeat;"></div>-->
+<include file="Index@Common:menu" />
+<include file="Index@Common:menu_son" />
+<link rel="stylesheet" href="__INDEX__Common/lightbox/lightbox.min.css">
+<!-- 二级小导航结束-->
+<div class="z-rideo">
+    <ul>
+        <foreach name="list" item="vo">
+            <a href="{$vo.pic}" data-lightbox="example-set" data-title="{$vo.title}">
+                <li class="cl-current">
+                    <img src="{$vo.pic}" width="240" height="170" />
+                    <span>{$vo.title|getstr=28}</span>
+                </li></a>
+        </foreach>
+    </ul>
+</div>
+<div class="clear"></div>
+<div class="scott">{$page}</div>
+
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<script src="__INDEX__Common/lightbox/lightbox-plus-jquery.min.js"></script>
+<include file="Index@Common:bottom" />
+<script>
+    $("#nav li").hover(function(){
+        $(this).find(".second_nav").slideToggle();
+    })
+</script>

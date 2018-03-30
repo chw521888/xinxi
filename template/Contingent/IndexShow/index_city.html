@@ -1,0 +1,227 @@
+<include file="Index@Common:new_top" />
+  
+<include file="Index@Common:new_banner" />
+        
+<include file="Index@Common:new_menu" />
+    
+
+<foreach name="info_list" item="vo" key="k">
+<script>
+  var show_{$k}_name =[];
+  var show_{$k}_num =[];
+  <foreach name="vo.value" item="v" key="key">
+      show_{$k}_name[{$key}] = '{$v.show_name}';
+      show_{$k}_num[{$key}] = {$v.num_vote_show};
+  </foreach>
+    
+</script>
+<if condition="$vo['id'] eq $location_id">
+    <div class="child_group_top city_top">
+      <div class="warp clearfix">
+        <div class="crumbs"><a href="/">首页</a> &gt <a href="#this">分赛区</a> &gt  <a href="#this">{$vo.name}</a> &gt <a href="#this">市级赛</a> </div>
+        <div class="explain">说明：各城市市级赛仅成人组参加网络投票，儿童组节目将在比赛现场由评委直接评出，不参加网络投票。</div>
+        <div>
+          <p class="number">
+
+            <span><i>{$vo.name}</i></span>
+          </p>
+          <p class="histogram">比赛:{$vo.time_sport_stat|turn_time=1|show_time_s}-{$vo.time_sport_end|turn_time=1|show_time_s} 
+            <span class="do_zx" onclick="show_chat_vote(show_{$k}_name,show_{$k}_num);">柱状图</span>
+            <i>投票:{$vo.time_vote_stat|turn_time=1|show_time_s}-{$vo.time_vote_end|turn_time=1|show_time_s}</i>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="group_vote warp">
+      <div class="game clearfix">
+      <foreach name="vo.value" item="v">
+        <ul>
+          <li>
+            <a href="{:U('IndexShow/index_show',array('id'=>$v['id']))}"><img src="{$v.pic}" width="224" height="168" style="float: left;" alt=""></a>
+            <p class="blackbg">
+              <a href="{:U('IndexShow/index_show',array('id'=>$v['id']))}">{$v.show_name}</a>
+            </p>
+          </li>
+          <li class="vote1">
+                表演者：{$v.contingent_id|show_ca_name}
+            <br>
+            <span class="heart1">{$v.num_vote_show}票</span>
+            <if condition="$vo['time_vote_stat'] lt time() and $vo['time_vote_end'] gt time()">
+            <input onclick="post_vote({$v.id});" type="button" value="我要投票" class="button" style="background:#ec0301;"/>
+            <else />
+            <input type="button" value="我要投票" class="button" style=" color:#ffffff;" />
+            </if>
+          </li>
+        </ul>
+      </foreach>
+      </div>
+    </div>
+</if>
+</foreach>
+
+ <include file="Index@Common:foot" />
+  </body>
+</html>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/jquery.newsticker.js" ></script>
+<script type="text/javascript" src="__INDEX__Common/js/vote.js" ></script>
+
+
+<script>
+  $("#nav li").hover(function(){
+    $(this).find(".second_nav").slideToggle();
+  })
+  
+</script>
+
+
+
+
+<div class="theme-popover">
+    <div>
+        <div id="main" style="height:500px;width:1000px;"></div>
+    </div>
+</div>
+<div class="theme-popover-mask"></div>
+<style type="text/css">
+.theme-popover-mask {
+  z-index: 9999998;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#000;
+  opacity:0.4;
+  filter:alpha(opacity=40);
+  display:none
+}
+.theme-popover {
+  z-index:9999999;
+  position:fixed;
+  top:50%;
+  left:50%;
+  width:1000px;
+  height:500px;
+  margin:-250px 0 0 -500px;
+  border-radius:5px;
+  border:solid 2px #666;
+  background-color:#fff;
+  display:none;
+  box-shadow: 0 0 10px #666;
+}
+</style>
+    <script src="__INDEX__../Common/plugin/chart/echarts.js"></script>
+    <script src="__INDEX__Common/js/slideshow.js"></script>
+  <script>
+  
+  function show_chat_vote(vote_name,vote_chat){  
+	 $('.theme-popover-mask').fadeIn(100);
+     $('.theme-popover').slideDown(200);
+     
+	// Step:3 conifg ECharts's path, link to echarts.js from current page.
+    // Step:3 为模块加载器配置echarts的路径，从当前页面链接到echarts.js，定义所需图表路径
+    require.config({
+        paths: {
+            echarts: '__INDEX__../Common/plugin/chart'
+        }
+    });
+    
+    // Step:4 require echarts and use it in the callback.
+    // Step:4 动态加载echarts然后在回调函数中开始使用，注意保持按需加载结构定义图表路径
+    require(
+        [
+            'echarts',
+            'echarts/chart/bar',
+        ],
+        function (ec) {
+            //--- 折柱 ---
+            var myChart = ec.init(document.getElementById('main'));
+            myChart.setOption({
+			title: {
+                 x: 'center',
+               text: '队伍投票统计'
+       },
+    toolbox: {
+        show: true,
+    },
+    grid: {
+        borderWidth: 0
+    },
+    xAxis: [
+        {
+            type: 'category',
+            show: false,
+            data: vote_name
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            show: false
+        }
+    ],
+    series: [
+        {
+            name: 'ECharts',
+            type: 'bar',
+            itemStyle: {
+                normal: {
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = [
+                          '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+                           '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+                           '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+                        ];
+                        return colorList[params.dataIndex]
+                    },
+                    label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{b}\\n{c}'
+                    }
+                }
+            },
+            data: vote_chat,
+            markPoint: {
+                tooltip: {
+                    trigger: 'item',
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    formatter: function(params){}
+                },
+                data:[]
+            }
+        }
+    ]
+				
+				
+				
+            });
+			
+			
+			
+			
+			
+			
+            
+            // --- 地图 ---
+           
+        }
+    );
+	 
+	 
+  }
+</script>
+<script>
+jQuery(document).ready(function($) {
+  $('.theme-popover-mask').click(function(){
+    $('.theme-popover-mask').fadeOut(100);
+    $('.theme-popover').slideUp(200);
+  })
+
+})
+</script>

@@ -1,0 +1,171 @@
+<php>
+$page_head_info=array(
+   'title'   => $info['show_name']
+);
+</php>
+<include file="Index@Common:top" />
+
+
+<div class="box box_top_ad" style="height: 0px; overflow: hidden;">
+          <div>
+            <div class="list_sm_plan"><img src="__INDEX_M__Common/images/list_tp.jpg"></div>
+          </div>
+  </div>
+<!--
+<script type="text/javascript" src="__INDEX_M__Common/js/jquery.bxslider.js"></script>
+<link href="__INDEX_M__Common/css/jquery.bxslider.css" rel="stylesheet" type="text/css">
+<div class="slider8">
+    <php>
+    $list_g = M('Ggao')->order(' sort asc ')->select();
+    </php>
+    <foreach name="list_g" item="vo">
+    <div class="slide"><img src="{$vo.pic}"></div>
+    </foreach>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('.slider8').bxSlider({ 
+        slideWidth:1200,
+        auto: true,
+        mode: 'horizontal',
+        pause:2000,
+        adaptiveHeight: true,
+        startSlides: 0, 
+        slideMargin: 0
+      });
+    });
+</script>
+
+-->
+<!------------头部开始------------>
+<script> 
+
+function show_ad(){
+    var ad_height=$('.box_top_ad img').height();
+    $('.box_top_ad').animate({height: ad_height});
+    $('.top-menu').animate({top: ad_height});
+}
+function hide_ad(){
+    var ad_height=$('.box_top_ad img').height();
+    $('.box_top_ad').animate({height: 0});
+    $('.top-menu').animate({top: 0});
+}
+
+
+    $(document).ready(function(){ 
+        show_ad();
+        var last_scroll_top=0; 
+        document.addEventListener('touchmove', function(e) {
+              $('.box_top_ad').css({height: 0});
+              $('.top-menu').css({top: 0});
+        });
+        $(window).scroll(function(){      
+          var h=$("body").scrollTop();      
+          /**
+          if (h>1) {
+          };
+          **/
+                if ($(document).scrollTop() <= 0 && last_scroll_top>=2) {
+                  /**
+                    console.log("滚动条已经到达顶部为0,上一次滚动"+last_scroll_top);
+                    $(".top-menu").css('top','20em');       
+                    $(".list_sm_plan").show();        
+                    $(".count").css("padding-top:","0px");
+                    **/
+                  //location.reload();
+                }
+                if ($(document).scrollTop() >10){
+                    console.log("离开顶部了");
+                    /**
+                    $(".top-menu").css("top","0px");
+                    //$(".top-menu").animate({top:'0'});        
+                    $(".list_sm_plan").hide();        
+                    $(".count").css("padding-top","10px");
+                    **/
+                    hide_ad();
+                }
+
+                if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+                    //console.log("滚动条已经到达底部为" + $(document).scrollTop());
+                }
+                last_scroll_top=$(document).scrollTop();
+
+          }); 
+    });
+</script>
+<div class="top-menu" style="clear: both; top:0em; z-index:9999999">
+    <a href="javascript:history.go(-1)" class="back"><img src="__INDEX_M__Common/images/top_left.png"></a>
+    <a href="#" class="name">{$info.show_name}</a>
+    <a class="top-save" style="margin-top: 8px;"><img src="__INDEX_M__Common/images/fsq.png" width="21" height="27"></a>
+    </div>
+<!------------内容区域开始-------->
+<!---视频---->
+<div class="video">
+<div style="position:relative; z-index:1">
+<if condition="$info['video2'] neq ''">
+<script type="text/javascript"> var letvcloud_player_conf =  {"uu":"uilcwncrnf","vu":"<php>echo $info['video2']; </php>","pu":"1348d387b0","auto_play":0,"gpcflag":1,"width":'100%',"height":290};</script><script type="text/javascript" src="http://yuntv.letv.com/bcloud.js"></script>
+<else />
+        <video id="hellofitvideo" width="100%" height="290" controls="controls" src="{$info.video}" poster="{$info.pic}">
+<source src="{$info.video}" type='video/mp4; codecs="avc1.42E01E,MP4a.40.2"' />
+</video>
+        </if>
+    <p>{$info.show_name}</p>
+    </div>
+</div>
+<!---投票---->
+<div class="vote">
+    <ul>
+        <li>
+            <p>{$info.location_id|show_l2_name}</p>
+            <p>参赛人数：{$info2.num_competition}人 </p>
+        </li>
+        <li class="tp praise" onclick="post_vote({$info.id},1);">我要投票（{$info.num_vote_show}票）</li>
+    </ul>
+</div>
+<php> if($info2['resume'] != ''){ </php>
+<!---团队介绍---->
+<div class="team">
+    <ul>
+        <li>
+            <span> 团队介绍</span>
+            <p>{$info2.resume|make_textarea}</p>
+        </li>
+    </ul>
+</div>
+<php> } </php>
+<!--<div class="team">
+    <ul>
+        <li>
+            <span> 团队人员组成</span>
+            <p>{$info2.content_2}</p>
+        </li>
+    </ul>
+</div>
+<div class="team">
+    <ul>
+        <li>
+            <span> 获得奖项</span>
+            <p>{$info2.content_3}</p>
+        </li>
+    </ul>
+</div>
+<div class="team">
+    <ul>
+        <li>
+            <span> 参加重大活动比赛</span>
+            <p>{$info2.content_4}</p>
+        </li>
+    </ul>
+</div>
+<div class="team">
+    <ul>
+        <li>
+            <span> 节目创作故事</span>
+            <p>{$info2.content_5}</p>
+        </li>
+    </ul>
+</div>-->
+
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />

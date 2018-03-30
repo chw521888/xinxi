@@ -1,0 +1,119 @@
+<include file="Index@Common:top" />
+<include file="Index@Common:top_logo" />
+<!--<div class="logo3" style="background: url('{$info.pic_banner}') center no-repeat;"></div>-->
+<include file="Index@Common:menu" />
+
+	<div class="screen_box">
+		<ul class="screen w1000">
+			<li>
+				<span>赛程：</span>
+				<p id="sel_item">
+					<a <eq name="_GET['stage']" value="">class="active"</eq> href="{:U('index',array('stage'=>'','location_id'=>$_GET['location_id'],'type'=>$_GET['type']))}">全部</a>
+					<a <eq name="_GET['stage']" value="3">class="active"</eq> href="{:U('index',array('stage'=>3,'location_id'=>$_GET['location_id'],'type'=>$_GET['type']))}">社区赛</a>
+					<a <eq name="_GET['stage']" value="2">class="active"</eq> href="{:U('index',array('stage'=>2,'location_id'=>$_GET['location_id'],'type'=>$_GET['type']))}">街道赛</a>
+					<a <eq name="_GET['stage']" value="1">class="active"</eq> href="{:U('index',array('stage'=>1,'location_id'=>$_GET['location_id'],'type'=>$_GET['type']))}">城市赛</a>
+				</p>
+				<div class="clear"></div>
+			</li>
+			<li>
+				<span>赛区：</span>
+				<p id="sel_item">
+					<a <eq name="_GET['location_id']" value="">class="active"</eq> href="{:U('index',array('stage'=>$_GET['stage'],'location_id'=>'','type'=>$_GET['type']))}">全部</a>
+					<foreach name="location_list" item="v">
+					<a <eq name="_GET['location_id']" value="$v['id']">class="active"</eq> href="{:U('index',array('stage'=>$_GET['stage'],'location_id'=>$v['id'],'type'=>$_GET['type']))}">{$v.name}</a>
+					</foreach>
+				</p>
+				<div class="clear"></div>
+			</li>
+			<li>
+				<span>内容：</span>
+				<p id="sel_item">
+					<a <eq name="_GET['type']" value="">class="active"</eq> href="{:U('index',array('stage'=>$_GET['stage'],'location_id'=>$_GET['location_id'],'type'=>''))}">全部</a>
+					<a <eq name="_GET['type']" value="1">class="active"</eq> href="{:U('index',array('stage'=>$_GET['stage'],'location_id'=>$_GET['location_id'],'type'=>1))}">视频</a>
+					<a <eq name="_GET['type']" value="2">class="active"</eq> href="{:U('index',array('stage'=>$_GET['stage'],'location_id'=>$_GET['location_id'],'type'=>2))}">花絮</a>
+					<a <eq name="_GET['type']" value="3">class="active"</eq> href="{:U('index',array('stage'=>$_GET['stage'],'location_id'=>$_GET['location_id'],'type'=>3))}">照片</a>
+				</p>
+				<div class="clear"></div>
+			</li>
+		</ul>
+	</div>
+		<script>
+			$(document).ready(function(){
+				$('#sel_item a').click(function(){
+					$(this).addClass('active').siblings().removeClass('active');
+				});
+			});
+		</script>
+		
+	<!--视频-->
+	<div class="w1000 s_main">
+	<if condition="$_GET['type'] eq 1 or $_GET['type'] eq ''">
+		<div class="s_ssjj_viode">
+			<div><img src="__INDEX__Common/images/s_ssjj_it.jpg"/></div>
+			<div class="s_sj_list">
+				<ul>
+				<foreach name="list1" item="v">
+					<li>
+						<a href="{:U('Contingent/IndexShow/index_show',array('id'=>$v['id']))}">
+							<img src="{$v.pic}" width="240" height="170"/>
+							<span>{$v.stage|show_stage}-{$v.location_id|show_location_name}</span>
+							<i>{$v.contingent_id|show_ca_name}</i>
+							<i>{$v.show_name}</i>
+						</a>
+					</li>
+				</foreach>
+					<div class="clear"></div>
+				</ul>
+				<div class="s_sj_more"><a href="{:U('index_more',array('type'=>1,'location_id'=>$_GET['location_id'],'stage'=>$_GET['stage']))}">更多>></a></div>
+			</div>
+		</div>
+	</if>
+	<if condition="$_GET['type'] eq 2 or $_GET['type'] eq ''">
+		<div class="s_ssjj_viode">
+			<div><img src="__INDEX__Common/images/s_ssjj_it_01.jpg"/></div>
+			<div class="s_sj_list">
+				<ul>
+					<foreach name="list2" item="v">
+					<li>
+						<a href="{:U('Contingent/IndexShow/index_xiu_show',array('id'=>$v['id']))}">
+							<img src="{$v.pic}"  width="240" height="170"/>
+							<span>{$v.location_id|show_location_name}</span>
+							<i>{$v.title}</i>
+						</a>
+					</li>
+				</foreach>
+					<div class="clear"></div>
+				</ul>
+				<div class="s_sj_more"><a href="{:U('index_more',array('type'=>2,'location_id'=>$_GET['location_id'],'stage'=>$_GET['stage']))}">更多>></a></div>
+			</div>
+		</div>
+	</if>
+	<if condition="$_GET['type'] eq 3 or $_GET['type'] eq ''">
+		<div class="s_ssjj_viode">
+			<div><img src="__INDEX__Common/images/s_ssjj_it_02.jpg"/></div>
+			<div class="s_sj_list">
+				<ul>
+					<foreach name="list3" item="v">
+					<li>
+						<a href="{:U('Contingent/IndexShow/index_xiu_show',array('id'=>$v['id']))}">
+							<img src="{$v.pic}"  width="240" height="170"/>
+							<span>{$v.location_id|show_location_name}</span>
+							<i>{$v.title}</i>
+						</a>
+					</li>
+				</foreach>
+					<div class="clear"></div>
+				</ul>
+				<div class="s_sj_more"><a href="{:U('index_more',array('type'=>3,'location_id'=>$_GET['location_id'],'stage'=>$_GET['stage']))}">更多>></a></div>
+			</div>
+		</div>
+	</if>
+	</div>
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />
+<script>
+    $("#nav li").hover(function(){
+        $(this).find(".second_nav").slideToggle();
+    })
+</script>

@@ -1,0 +1,37 @@
+<include file="Admin@Public:page_head" />
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('AdImages/AdImages/tt_index')}">广告位管理</a></li>
+            <if condition="C('SYSTEM_DEBUG') eq true">
+			<li><a href="{:U('AdImages/AdImages/tt_index_add')}">添加广告位</a></li>
+            </if>
+		</ul>
+		<form method="post" class="J_ajaxForm" action="#">
+		<div class="table-actions">
+<!--
+<button class="btn btn-primary btn-small" type="button" onclick="foreverdel();" data-action="{:U('AdImages/AdImages/foreverdelete')}" data-subcheck="true">删除</button>
+-->
+			</div>
+
+            <html:list  id="dataTable"
+                        style="table table-hover table-bordered table-list"
+                        name="list"
+                        checkbox="true"
+                        action="true"
+                        title="上线项目"
+                        datasource="list"
+                        pagelist="{$page}"
+           show="id:ID|5%
+          		,title:标题|70%
+                ,time|turn_time:添加时间|10%"
+                actionlist="edit:修改:id:tt_index_edit, foreverdel:删除"/>
+		<div class="table-actions">
+<!--
+					<button class="btn btn-primary btn-small" type="button" onclick="foreverdel();" data-action="{:U('AdImages/AdImages/foreverdelete')}" data-subcheck="true">删除</button>
+-->
+			</div>
+            <include file="Admin@Public:page" />
+		</form>
+	</div>
+
+<include file="Admin@Public:page_foot" />

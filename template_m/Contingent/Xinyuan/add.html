@@ -1,0 +1,79 @@
+<include file="Index@Common:top" />
+<include file="Index@Common:top_script" />
+<include file="Index@Common:menu" />
+
+<div style="width:100%; height:5em; margin:0 auto;"></div>
+<div style=" background:url('__INDEX_M__Common/images/heart_wallbg.png') center top no-repeat,url('__INDEX_M__Common/images/heart_wallbg1.png') center repeat-y; width:100%; margin:0 auto; padding-top:5em !important">
+
+<!------------内容区域开始-------->
+<script language="javascript">
+<!--
+function check_form(){
+	var pic=$('input[name=pic]').val();
+	var name=$('input[name=name]').val();
+	var age=$('select[name=age]').val();
+	var city=$('input[name=city]').val();
+	var dream=$('textarea[name=dream]').val();
+	
+	if(!pic || pic==''){
+		 //alert('错误');
+		alert('请上传您的照片！');return false;
+	}
+
+    if(!name || name==''){
+		 //alert('错误');
+		alert('请填写您的姓名！');return false;
+	}
+
+    if(!age || age==''){
+		 //alert('错误');
+		alert('请选择年龄！');return false;
+	}
+
+    if(!city || city==''){
+		 //alert('错误');
+		alert('请填写城市！');return false;
+	}
+
+    if(!dream || dream==''){
+		 //alert('错误');
+		alert('请填写您的心愿！');return false;
+	}
+	
+
+}
+-->
+</script>
+
+<div class="body-bg">
+    <div class="gw-data" style="padding-top:15em">
+        <form name="form" method="post" enctype="multipart/form-data" onSubmit="return check_form()" action="{:U('Contingent/Xinyuan/insert_xy')}">
+            <ul>
+                <li class="gw-li-3"><span>照片</span><div class="img-jt"><div class="img-jt1" style="position:relative"><input name="pic" value="" id="photo_img" type="file" style="width:5em; height:5em; filter:alpha(opacity=0);-moz-opacity:0;opacity:0; background:none; border:none; outline:none;-webkit-tap-highlight-color:rgba(0,0,0,0); position:absolute; right:1.7em; top:0.3em"><img src="__INDEX_M__Common/images/heart_tx.png" style="width:3em; height:2.5em;" id="photo_img_preview"></div></div></li>
+                <li class="gw-li-1"><span>姓名</span><div class="input"><input class="input-1" name="name" type="text" value="" placeholder="您的姓名"></div></li>
+                <li class="gw-li-1"><span>年龄</span><div class="input" style="position:relative"><select name="age" onChange="document.getElementById('a2').value=this.value" class="gw-select">
+                    <option value="">请选择年龄</option>
+                    <option value="16岁以下">16岁以下</option>
+                    <option value="16-20岁">16-20岁</option>
+                    <option value="20-26岁">20-26岁</option>
+                    <option value="26-32岁">26-32岁</option>
+                    <option value="32岁以上">32岁以上</option>
+                </select><input class="input-2" id="a2" name="" type="text" value="" placeholder="请选择年龄">
+
+                </div></li>
+                <li class="gw-li-1"><span>城市</span><div class="input"><input class="input-1" name="city" type="text" value="" placeholder="填写城市"></div></li>
+            </ul>
+            <ul>
+                <li class="gw-li-2"><span>许愿</span><textarea class="text2" name="dream" cols="" rows="" placeholder="请填写您的心愿"></textarea></li>
+            </ul>
+            <ul class="input-bg">
+               <input name="" type="submit" class="input-3" value="提交"/>
+            </ul>
+        </form>
+    </div>
+</div>
+<!------------内容区域结束-------->
+</div>
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />

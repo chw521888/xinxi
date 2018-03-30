@@ -1,0 +1,200 @@
+<include file="Index@Common:top" />
+<div class="logo12"></div>
+<style type="text/css">
+	.huig{
+		width: 94%;
+		margin: 20px auto 0;
+	}
+	.hg_ti{
+		color: #ca192b;
+		font-size: 1rem;
+		margin-bottom: 15px;
+		position: relative;
+	}
+	.hg_ti img{
+		vertical-align: middle;
+		margin-right: 10px;
+	}
+	.hg_box{
+		margin-bottom: 22px;
+	}
+	.hg_box div{
+		line-height: 0;
+		position: relative;
+	}
+	.hg_box div span{
+	    width: 100%;
+	    position: absolute;
+	    left: 0;
+	    bottom: 0;
+	    height: 48px;
+	    text-align: center;
+	    line-height: 48px;
+	    color: #fff;
+	    font-size: 0.93rem;
+	    overflow: hidden;
+	    background: rgba(0,0,0,0.6);
+	}
+	.hg_box h4{
+		color: #333;
+		font-size: 0.93rem;
+		margin-top: 14px;
+		text-align: center;
+	}
+	.hg_more{
+		width: 100%;
+		height: 49px;
+		line-height: 49px;
+		background: #ca192b;
+		text-align: center;
+	}
+	.hg_more a{
+		color: #fff;
+		font-size: 0.93rem;
+	}
+	.s_top span{
+		float: right;
+		font-size: 0.93rem;
+		margin-right: 14px;
+	}
+	.gdj{
+		display: none;
+		width: 100%;
+		left: 0;
+		background: #fff;
+		z-index: 32;		text-align: right;
+	}
+	.gdj li{
+	 	height: 30px;
+	    line-height: 30px;
+	    padding: 0 30px;
+	    border-bottom: 1px solid #f0f0f0;
+	}
+	.gdj li a{
+		font-size: 0.75rem;
+	}
+</style>
+
+<div class="st_box"><div class="s_top">{$review_type|show_C='REVIEW_TYPE'}<span>更多届</span></div></div>
+
+<ul class="gdj" >
+	<php>
+            $REVIEW_TYPE = C('REVIEW_TYPE');
+        </php>
+        <foreach name="REVIEW_TYPE" item="v">
+            <li>
+                <a href="{:U('index',array('review_type'=>$key))}">{$v}</a>
+            </li>
+            </foreach>
+</ul>
+
+<div class="huig">
+	<div class="hg_o">
+		<div class="hg_ti"><img src="__INDEX_M__Common/images/s_huizhang.png" width="21" height="20" />第一名</div>
+		<ul class="hg_list">
+			<li class="hg_box">
+				<a href="{$list1.0.url}"><div>
+					<img src="{$list1.0.pic}" width="100%" height="250" />
+					<span>{$list1.0.title}</span>
+				</div>
+				<h4>表演者：{$list1.0.title_name}</h4></a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="hg_o">
+		<div class="hg_ti"><img src="__INDEX_M__Common/images/s_huizhang.png" width="21" height="20" />第二名</div>
+		<ul class="hg_list">
+			<li class="hg_box">
+				<a href="{$list1.1.url}"><div>
+					<img src="{$list1.1.pic}" width="100%" height="250" />
+					<span>{$list1.1.title}</span>
+				</div>
+				<h4>表演者：{$list1.1.title_name}</h4></a>
+			</li>
+			<li class="hg_box">
+				<a href="{$list1.2.url}"><div>
+					<img src="{$list1.2.pic}" width="100%" height="250" />
+					<span>{$list1.2.title}</span>
+				</div>
+				<h4>表演者：{$list1.2.title_name}</h4></a>
+			</li>
+		</ul>
+	</div>
+
+
+	<div class="hg_o">
+		<div class="hg_ti"><img src="__INDEX_M__Common/images/s_huizhang.png" width="21" height="20" />第三名</div>
+		<ul class="hg_list">
+			<li class="hg_box">
+				<a href="{$list1.3.url}"><div>
+					<img src="{$list1.3.pic}" width="100%" height="250" />
+					<span>{$list1.3.title}</span>
+				</div>
+				<h4>表演者：{$list1.3.title_name}</h4></a>
+			</li>
+			<li class="hg_box">
+				<a href="{$list1.4.url}"><div>
+					<img src="{$list1.4.pic}" width="100%" height="250" />
+					<span>{$list1.4.title}</span>
+				</div>
+				<h4>表演者：{$list1.4.title_name}</h4></a>
+			</li>
+			<li class="hg_box">
+				<a href="{$list1.5.url}"><div>
+					<img src="{$list1.5.pic}" width="100%" height="250" />
+					<span>{$list1.5.title}</span>
+				</div>
+				<h4>表演者：{$list1.5.title_name}</h4></a>
+			</li>
+		</ul>
+	</div>
+	
+
+	<div class="hg_o">
+		<div class="hg_ti"><img src="__INDEX_M__Common/images/s_huizhang.png" width="21" height="20" />优秀奖</div>
+		<ul class="hg_list">
+			<li class="hg_box">
+				<a href="{$list1.6.url}"><div>
+					<img src="{$list1.6.pic}" width="100%" height="250" />
+					<span>{$list1.6.title}</span>
+				</div>
+				<h4>表演者：{$list1.6.title_name}</h4></a>
+			</li>
+			<li class="hg_box">
+				<a href="{$list1.7.url}"><div>
+					<img src="{$list1.7.pic}" width="100%" height="250" />
+					<span>{$list1.7.title}</span>
+				</div>
+				<h4>表演者：{$list1.7.title_name}</h4></a>
+			</li>
+			<li class="hg_box">
+				<a href="{$list1.8.url}"><div>
+					<img src="{$list1.8.pic}" width="100%" height="250" />
+					<span>{$list1.8.title}</span>
+				</div>
+				<h4>表演者：{$list1.8.title_name}</h4></a>
+			</li>
+			<li class="hg_box">
+				<a href="{$list1.9.url}"><div>
+					<img src="{$list1.9.pic}" width="100%" height="250" />
+					<span>{$list1.9.title}</span>
+				</div>
+				<h4>表演者：{$list1.9.title_name}</h4></a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="hg_more"><a href="{:U('huigu')}">更多精彩</a></div>
+
+<script>
+	$(document).ready(function(){
+		$(".s_top span").click(function(){
+			$(".gdj").slideToggle();
+		});
+	});
+</script>
+
+<include file="Common:foot" />
+<include file="Common:city_navigation" />
+<include file="Common:bottom" />

@@ -1,0 +1,3 @@
+<?php
+//000000086400a:15:{s:2:"id";s:1:"3";s:4:"name";s:6:"贵阳";s:3:"pic";s:49:"/jtjk/upload/other/image/20170609149697332131.jpg";s:10:"pic_banner";s:44:"/upload/other/image/20160226145646668739.jpg";s:11:"location_id";s:1:"0";s:15:"time_sport_stat";s:10:"1494777601";s:14:"time_sport_end";s:10:"1495209599";s:14:"time_vote_stat";s:10:"1499443201";s:13:"time_vote_end";s:10:"1500739199";s:6:"status";s:1:"0";s:17:"win_contingent_id";s:0:"";s:4:"sort";s:1:"2";s:9:"is_effect";s:1:"0";s:5:"shequ";s:1:"0";s:3:"xiu";s:1:"0";}
+?>

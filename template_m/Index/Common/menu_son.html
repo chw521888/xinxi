@@ -1,0 +1,12 @@
+<php>
+$menu_son_list = get_level_channel();
+</php>
+<div class="roll-nav">
+    <div class="nav-none">
+        <table>
+            <tr>
+                <td valign="center"><foreach name="menu_son_list" item="v"><a href="{$v.url}">{$v.typename}</a>&nbsp;&nbsp;&nbsp;</foreach></td>
+            </tr>
+        </table>
+    </div>
+</div>

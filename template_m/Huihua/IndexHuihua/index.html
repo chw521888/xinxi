@@ -1,0 +1,160 @@
+<include file="Index@Common:new_top" />
+<include file="Index@Common:banner" />
+<style>
+	.match {
+	    padding: 0 0.26rem;
+	    background-color: #fff;
+	    padding-top: 0.3rem;
+	}
+	.match li {
+    font-size: 0.32rem;
+    background-color: #e6e6e6;
+    float: left;
+    margin-right: 0.2rem;
+    margin-bottom: 0.3rem;
+    padding: 0 0.3rem;
+    border-radius: 0.3rem;
+    line-height: 0.6rem;
+	}
+	.match li.active{
+		background-color: #c72f56;
+	}
+	.match li a,.match li a:hover{
+		display: block;
+		color: #333;
+	}
+	.match li.active a,.match li.active a:hover{
+		color: #fff;
+	}
+	.post_vote_huihua{
+		line-height: 0.7rem;
+    background-color: #ca192b;
+    text-align: center;
+    color: #fff;
+    border-radius: 0.1rem;
+    font-size: 0.38rem;
+	}
+	.brand-list .brand-bd {
+	    position: relative;
+	    margin-top: 0.2rem;
+	}
+	.item input.search_btn_m{
+		background: transparent;
+    width: 0.5rem;
+    position: absolute;
+    right: 3rem;
+    border: none;
+	}
+</style>
+		<!-- 内容     开始-->
+		<div class="warp">
+			
+			<div class="item">
+				<div class="item_name">儿童绘画赛</div>
+				<form action="?" method="get">
+				<input type="hidden" value="{$Think.const.MODULE_NAME}" name="m" />
+	            <input type="hidden" value="{$Think.const.CONTROLLER_NAME}" name="c" />
+	            <input type="hidden" value="<php>echo ACTION_NAME;</php>" name="a" />
+	            <input type="hidden" value="{$_GET['stage']}" name="stage" />
+							<input type="text" name="keywords" placeholder="请搜索ID、昵称">
+							<input type="submit" class="search_btn_m">
+				</form>
+			</div>
+
+			<div class="list">
+				<ul class="match clearfix">
+					<if condition="$huihua_type egt 7">
+						<li <if condition="$stage eq 4">class="active"</if>><a href="{:U('Huihua/IndexHuihua/index',array('stage'=>4))}">绘画总决赛</a></li>
+					</if>
+					<if condition="$huihua_type egt 5">
+						<li <if condition="$stage eq 3">class="active"</if>><a href="{:U('Huihua/IndexHuihua/index',array('stage'=>3))}">第三阶段赛</a></li>
+					</if>
+					<if condition="$huihua_type egt 3">
+						<li <if condition="$stage eq 2">class="active"</if>><a href="{:U('Huihua/IndexHuihua/index',array('stage'=>2))}">第二阶段赛</a></li>
+					</if>
+					<if condition="$huihua_type egt 1">
+						<li <if condition="$stage eq 1">class="active"</if>><a href="{:U('Huihua/IndexHuihua/index',array('stage'=>1))}">第一阶段赛</a></li>
+					</if>
+						<li><a href="{:U('archives/index_arctype/index',array('t_id'=>74))}">获奖作品公布</a></li>
+						<li><a href="{:U('archives/index_arctype/index',array('t_id'=>75))}">绘画比赛规则</a></li>
+				</ul>
+			</div>
+			
+			
+			<div class="public_index_204">
+				<div id="wrapper">
+					<!-- 儿童绘画赛列表开始 -->
+					<div class="brand-list clearfix">
+						<div class="brand-bd cle" id="brand-waterfall" style="height: 732px;">
+						<foreach name="list" item="v">
+							<!-- 循环字母模块 item -->
+							<div class="item" id="brand-a">
+                  <div class="brand_img"><a href="{:U('show',array('id'=>$v['id']))}"><img src="{$v.pic}" style="width:100%;"></a></div>
+                  <div class="brand_txt">
+                  	<div class="num_z">
+	                  	<i>ID:{$v.id}</i> 
+	                  	<!-- <i class="n"> <img src="__INDEX_M__NewCommon/images/zan.png" alt=""> {$v.num_view}</i> -->
+                  	</div>
+                  	<a class="capt" href="{:U('show',array('id'=>$v['id']))}">{$v.title}</a>
+                  	<div class="post_vote_huihua" onclick="post_vote_huihua({$v.id},1);">投票({$v.num_view})</div>
+                  	<div class="data">
+                  		<img src="{$v.pic}" style="border-radius:18px;">
+                  		<i class="id">{$v.user_name}</i>
+                  	</div>
+                  </div>
+              </div>
+			      </foreach>
+						</div>
+						<!-- 儿童绘画赛列表 end -->
+					</div>
+				</div>
+			</div>
+			<!-- 内容     End-->
+		
+
+		<div class="public_pagination_154">
+		  <!--Mbolie 分页 -->
+		  <div class="m_pagination">
+		   <div class="fenye">{$page_m}</div>
+		  </div> 
+		</div>
+ 
+
+		<!--底部         开始-->
+		<div class="footer">
+			@2016-2017 中国梦 家庭药箱进万家 版权所有 <br /> 技术支持：<a href="http://www.jc2006.com/">京橙科技</a>
+		</div>
+		<!--底部         End-->
+
+
+		<!-- 上传      开始 -->
+		<div class="upload"><a href="{:U('Huihua/IndexHuihua/up',array('id'=>$id,'stage'=>$stage_num))}"><img src="__INDEX_M__NewCommon/images/m_etzcy_icon_3.png" alt=""><if condition="$id eq 0">上 传<else />修改</if></a></div>
+		<!-- 上传      End -->
+	</body>
+</html>
+<script>
+			var post_vote_huihua=function(huihua_id,type){
+				var post_data={"huihua_id":huihua_id,"type":type};
+				//ajax 提交form
+		    $.ajax({
+		        url : "{:U('Huihua/IndexHuihua/post_vote')}",
+		        type : "POST",
+		        data : "huihua_id="+huihua_id+"&type="+type,
+		        success:function(data){
+		        	alert(data.info);
+		        	location.reload();
+		        },
+		        error:function(data){
+		        	alert("error!");
+		        }
+		        
+		    });
+			}
+		</script>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX_M__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX_M__NewCommon/js/jquery.newsticker.js" ></script>
+<script src="__INDEX_M__NewCommon/js/jquery.newsticker.js"></script>
+<script src="__INDEX_M__NewCommon/js/cascade.js"></script>
+<script src="__INDEX_M__NewCommon/js/page.js"></script>

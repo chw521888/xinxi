@@ -1,0 +1,22 @@
+<include file="Admin@Public:page_head" />
+<div class="wrap jj">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Archives/ArctypeChannel/index')}">模型管理</a></li>
+			<li><a href="{:U('Archives/ArctypeChannel/add')}">添加模型</a></li>
+		</ul>
+		<form method="post" class="J_ajaxForm" action="{:U('Archives/ArctypeChannel/listorders')}">
+			<html:list  id="dataTable"
+                        style="table table-hover table-bordered table-list"
+                        name="list"
+                        checkbox="false"
+                        action="true"
+                        datasource="list"
+                        pagelist="{$page}"
+                        show="id:ID
+                ,name:模型名称
+		        ,channel_table:模型表
+		        ,template_list:IP"  actionlist="edit:修改,foreverdel:删除"/>      
+            <include file="Public:page" />
+		</form>
+	</div>
+<include file="Admin@Public:page_foot" />

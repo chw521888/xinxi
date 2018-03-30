@@ -1,0 +1,192 @@
+<include file="Admin@Public:page_head" />
+<html:editor type="UEDITOR_BEGIN"></html:editor>
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#base" data-toggle="tab">基本信息</a></li>
+			<li><a href="#seo" data-toggle="tab">SEO设置</a></li>
+			<li><a href="#template" data-toggle="tab">模板页面</a></li>
+			<li><a href="#content" data-toggle="tab">详细内容</a></li>
+	    </ul>
+		<form class="form-horizontal J_ajaxForm" name="myform" id="myform" action="{:u('Arctype/insert')}" method="post">
+			<div class="tabbable">
+		        <div class="tab-content">
+		          <div class="tab-pane active" id="base">
+		          		<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+								<tr>
+									<td width="150">上级分类:</td>
+								  <td><html:select options="arctype_list" name="reid" /></td>
+							  </tr>
+								<tr>
+									<td width="150">分类名称:</td>
+								  <td><input type="text" class="input" name="typename" value="" /><span class="must_red">*</span></td>
+							  </tr>
+								<tr>
+									<td width="150">英文分类名称:</td>
+								  <td><input type="text" class="input" name="typename_en" value="" /></td>
+							  </tr>
+								<tr>
+									<td width="150">首页图片:</td>
+								    <td><html:imgUpload name='pic' id="pic" /></td>
+							  </tr>
+								<!-- <tr>
+									<td width="150">顶部banner图:</td>
+								    <td><html:imgUpload name='banner' id="banner" /></td>
+							  </tr> -->
+								<tr>
+									<td width="150">模型:<php>$INITIALIZE_MODEL=C('INITIALIZE_MODEL');</php></td>
+								  <td><html:select options="model_list" name="channeltype_id" change="select_feild();" selected="INITIALIZE_MODEL" /></td>
+							    </tr>
+                                <tr>
+									<td width="150">分页数量:</td>
+								  <td><input type="text" class="input" name="list_rows" value="30" /></td>
+							    </tr>
+								<tr>
+									<td width="150">描述:</td>
+								  <td><textarea name="resume" cols="45" rows="5"></textarea></td>
+							    </tr>
+                               
+                                <tr>
+									<td width="150">栏目属性:<php>$ARCTYPE_PART_TYPE=C('ARCTYPE_PART_TYPE');</php></td>
+								  <td><html:select options="ARCTYPE_PART_TYPE" name="is_part"  selected="is_part" /></td>
+							    </tr>
+                                <tr>
+									<td width="150">外部链接:</td>
+								  <td><input type="text" class="input" name="url" value="" placeholder="栏目属性为外部链接并填写网址" /></td>
+							    </tr>
+                                
+                                 <tr>
+									<td width="150">是否为顶部导航:</td>
+							    <td>
+                                  <input type="radio" name="is_menu_top" value="1" />&nbsp;是&nbsp;&nbsp;
+                                  <input name="is_menu_top" type="radio" value="0" checked="checked" />&nbsp;否                               
+                                  </td>
+						      </tr>
+                               <tr>
+									<td width="150">是否为底部栏目:</td>
+							    <td>
+                                  <input type="radio" name="is_menu_foot" value="1" />&nbsp;是&nbsp;&nbsp;
+                                  <input name="is_menu_foot" type="radio" value="0" checked="checked" />&nbsp;否                               
+                                  </td>
+						      </tr>
+                              <if condition="C('SYSTEM_DEBUG') eq true">
+                               <tr>
+									<td width="150">是否为系统栏目:</td>
+							    <td>
+                                  <input type="radio" name="is_system" value="1" />&nbsp;是&nbsp;&nbsp;
+                                  <input name="is_system" type="radio" value="0" checked="checked" />&nbsp;否                               
+                                  </td>
+						      </tr>
+                              </if>
+                               <tr>
+									<td width="150">是否显示:</td>
+							    <td>
+                                  <input type="radio" name="is_effect" value="1"  checked="checked"/>&nbsp;是&nbsp;&nbsp;
+                                  <input name="is_effect" type="radio" value="0" />&nbsp;否                               
+                                  </td>
+						      </tr>
+                              
+							</tbody>
+						</table>
+		          </div>
+                   <div class="tab-pane" id="seo">
+		          		<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+								<tr>
+									<td width="150">SEO标题:</td>
+								  <td><input type="text" class="input" name="seo_title" value="" /></td>
+							  </tr>
+								<tr>
+									<td width="150">SEO关键字:</td>
+								  <td><input type="text" class="input" name="seo_keywords" value="" /></td>
+							  </tr>
+								<tr>
+									<td width="150">SEO描述:</td>
+								    <td><textarea name="seo_description" cols="45" rows="5"></textarea></td>
+							  </tr>
+                              
+							</tbody>
+						</table>
+		          </div>
+                  
+                  <div class="tab-pane" id="template">
+		          		<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+								<tr>
+									<td width="150">首页模板:</td>
+								  <td>{:C('FOLDER_TEMPLET')}{:C('FOLDER_TEMPLET_ARCHIVES_INDEX')}<input type="text" class="input" name="template_index" value="" /></td>
+							  </tr>
+								<tr>
+									<td width="150">列表模板:</td>
+								  <td>{:C('FOLDER_TEMPLET')}{:C('FOLDER_TEMPLET_ARCHIVES_LIST')}<input type="text" class="input" name="template_list" value="" /></td>
+							  </tr>
+								<tr>
+							       <td width="150">详细页模板:</td>
+								  <td>{:C('FOLDER_TEMPLET')}{:C('FOLDER_TEMPLET_ARCHIVES_ARTICLE')}<input type="text" class="input" name="template_article" value="" /></td>
+							  </tr>
+								<tr>
+							       <td width="150">子栏目是否继承模板路径:</td>
+								  <td>
+                                  <input type="checkbox" name="checkbox" id="checkbox" /></td>
+							  </tr>
+							</tbody>
+						</table>
+		          </div>
+                  
+                  
+                  <div class="tab-pane" id="content">
+		          		<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+                            
+                              <tr>
+              <td>相册图集 </td>
+              <td>
+				<fieldset class="blue pad-10">
+                 <php>$value_array=json_decode($info['pic_list'],true);</php>
+				 <html:imgMultiUpload id='pic_list' name='pic_list' value="value_array"/>
+				</fieldset>
+			  </td>
+            </tr>
+								<tr>
+									<td width="150">电脑端内容:</td>
+								  <td>
+                                     <html:editor id="arctype_content" name="content" type="UEDITOR"  style="width:100%; height:300px;" ></html:editor>
+                                  </td>
+							  </tr>
+								<tr>
+									<td width="150">手机端内容:</td>
+								  <td>
+                                     <html:editor id="arctype_content_m" name="content_m" type="UEDITOR"  style="width:100%; height:300px;" ></html:editor>
+                                  </td>
+							  </tr>
+							</tbody>
+						</table>
+		          </div>
+                  
+                  
+                  
+                   <script language="javascript">
+						<!--
+						var temp_list={$temp_list|json_encode};
+						function select_feild(){
+							var model_id=$('select[name=channeltype_id]').val();
+							$('input[name=template_index]').val(temp_list[model_id]['0']);
+							$('input[name=template_list]').val(temp_list[model_id]['1']);
+							$('input[name=template_article]').val(temp_list[model_id]['2']);
+						}
+						$(document).ready(function(e) {
+                              select_feild();
+                        });
+						-->
+						</script>
+		          
+		        </div>
+		    </div>
+		     <div class="form-actions">
+		           <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+		      		<a class="btn" href="{:U('Arctype/index')}">返回</a>
+		      </div>
+		</form>
+	</div>
+
+<include file="Admin@Public:page_foot" />

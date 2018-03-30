@@ -1,0 +1,143 @@
+<include file="Admin@Public:page_head" />
+<html:editor type="UEDITOR_BEGIN"></html:editor>
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#base" data-toggle="tab">基本信息</a></li>
+			<li><a href="#feild" data-toggle="tab">字段信息</a></li>
+			<li><a href="#feild_add" data-toggle="tab">添加字段</a></li>
+	    </ul>
+		
+			<div class="tabbable">
+		        <div class="tab-content">
+                
+		          <div class="tab-pane active" id="base">
+                  <form class="form-horizontal J_ajaxForm" name="myform" id="myform" action="{:u('ArctypeChannel/update')}" method="post">
+                     <input name="id" type="hidden" value="{$info.id}" />
+		          		<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+								<tr>
+									<td width="150">模型名称:</td>
+								  <td>{$info.name}</td>
+							  </tr>
+								<tr>
+									<td>模型表:</td>
+									<td>{:C('DB_PREFIX')}archives_{$info.channel_table}</td>
+								</tr>
+								<tr>
+									<td>默认栏目封面模板:</td>
+									<td>{:C('FOLDER_TEMPLET')}{:C('FOLDER_TEMPLET_ARCHIVES_INDEX')}<input name="template_index" type="text" value="{$info.template_index}"  /></td>
+								</tr>
+								<tr>
+									<td>默认栏目列表模板:</td>
+									<td>{:C('FOLDER_TEMPLET')}{:C('FOLDER_TEMPLET_ARCHIVES_LIST')}<input name="template_list" type="text" value="{$info.template_list}"  /></td>
+								</tr>
+								<tr>
+									<td>默认栏目文章模板:</td>
+									<td>{:C('FOLDER_TEMPLET')}{:C('FOLDER_TEMPLET_ARCHIVES_ARTICLE')}<input name="template_article" type="text" value="{$info.template_article}"  /></td>
+								</tr>
+							</tbody>
+						</table>
+                        <div class="form-actions">
+		                      <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+		      		          <a class="btn" href="{:U('ArctypeChannel/index')}">返回</a>
+		                </div>
+                   </form>
+		          </div>
+                  
+                  <div class="tab-pane" id="feild">
+                  <form class="form-horizontal J_ajaxForm" name="myform" id="myform" action="{:u('ArctypeChannel/update_sort')}" method="post">
+                     <input name="id" type="hidden" value="{$info.id}" />
+		          		<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th>排序</th>
+						<th>字段中文名称</th>
+						<th>字段名称</th>
+						<th>字段类型</th>
+						<th>数据库字段类型</th>
+						<th>数据库字段长度</th>
+						<th>值域</th>
+					</tr>
+				</thead>
+				<tbody>
+					<php>
+                       $list=json_decode($info['channel_field'],true);
+                    </php>
+					<foreach name="list" item="vo" key="key">
+					<tr>
+						<td>{$key|set_sort_input}</td>
+						<td>{$vo.field_chinese_name}</td>
+						<td>{$vo.field_name}</td>
+						<td>{$vo.field_type|get_array_key_value=C('FEILD_ADD_ARRAY')}</td>
+						<td>{$vo.field_char}</td>
+						<td>{$vo.field_char_num}</td>
+						<td>{$vo.field_select}</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+                        <div class="form-actions">
+		                      <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+		      		          <a class="btn" href="{:U('ArctypeChannel/index')}">返回</a>
+		                </div>
+                        </form>
+		          </div>
+                  
+                   <div class="tab-pane" id="feild_add">
+                      <form class="form-horizontal J_ajaxForm" name="myform" id="myform2" action="{:u('ArctypeChannel/insert_field')}" method="post">
+                       <input type="hidden" name="id" value="{$info.id}" />
+<table cellpadding="2" cellspacing="2" width="100%">
+			  <tbody>
+								<tr>
+									<td width="150">字段中文名称:</td>
+								  <td><input type="text" class="input" name="field_chinese_name" value="" /><span class="must_red">*</span></td>
+							  </tr>
+								<tr>
+									<td>字段数据表名称:</td>
+									<td><input type="text" class="input" name="field_name" value="" /><span class="must_red">*</span></td>
+								</tr>
+								<tr>
+									<td>字段类型:</td>
+									<td><html:select options="FEILD_ADD_ARRAY" name="field_type" change="select_feild();" /></td>
+								</tr>
+								<tr>
+									<td>数据库字段类型:</td>
+									<td><input name="field_char" type="text" value=""  /></td>
+								</tr>
+								<tr>
+									<td>数据库字段长度:</td>
+									<td><input name="field_char_num" type="text" value=""  /></td>
+								</tr>
+								<tr>
+									<td>值域:</td>
+									<td><textarea name="field_select"></textarea>当为类型选择框时可以添加选择值,用|隔开</td>
+								</tr>
+							</tbody>
+						</table>
+                        <script language="javascript">
+						<!--
+						var FEILD_ADD_CHAR={$FEILD_ADD_CHAR|json_encode};
+						var FEILD_ADD_CHAR_NUM={$FEILD_ADD_CHAR_NUM|json_encode};
+						function select_feild(){
+						   var feild_value=$('select[name=field_type]').val();
+						   $('input[name=field_char]').val(FEILD_ADD_CHAR[feild_value]);
+						   $('input[name=field_char_num]').val(FEILD_ADD_CHAR_NUM[feild_value]);	
+						}
+						$(document).ready(function(e) {
+                              select_feild();
+                        });
+						-->
+						</script>
+                        <div class="form-actions">
+		                      <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+		      		          <a class="btn" href="{:U('ArctypeChannel/index')}">返回</a>
+		                </div>
+                     </form>
+		          </div>
+		          
+		        </div>
+		    </div>
+		     
+	</div>
+
+<include file="Admin@Public:page_foot" />

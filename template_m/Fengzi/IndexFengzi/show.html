@@ -1,0 +1,59 @@
+<include file="Index@Common:new_top" />
+
+		<!-- 内容     开始-->
+		<div class="details">
+			<div class="ti">{$info.title}</div>
+			<div class="data">
+				<span>id:{$info.id}</span>
+				<span><img src="{$info.pic}" style="border-radius:18px;">{$info.user_name}</span>
+			</div>
+			
+			<div class="txt">
+				<img src="{$info.pic}">
+				<img src="{$info.pic2}">
+			</div>
+			
+			<div class="vote" onclick="post_zan_fengzi({$info.id});">点赞（{$info.num_view}）</div>
+
+		</div>
+		<!-- 内容     End-->
+
+	</body>
+</html>
+<script>
+	var post_zan_fengzi=function(fengzi_id){
+				var post_data={"fengzi_id":fengzi_id};
+				//ajax 提交form
+		    $.ajax({
+		        url : "{:U('Fengzi/IndexFengzi/post_vote')}",
+		        type : "POST",
+		        data : "fengzi_id="+fengzi_id,
+		        success:function(data){
+		        	alert(data.info);
+		        	location.reload();
+
+		        },
+		        error:function(data){
+		        	alert("error!");
+		        }
+		        
+		    });
+			}
+</script>
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX_M__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX_M__NewCommon/js/jquery.newsticker.js" ></script>
+
+<script>
+	$(".show_tab li").hover(function(){
+		$(this).addClass("active").siblings().removeClass("active");
+		$(".show_city_list").hide();
+		$(".show_city_list").eq($(this).index()).show();
+		
+	})
+</script>
+<script>
+	$("#nav li").hover(function(){
+		$(this).find(".second_nav").slideToggle();
+	})
+</script>

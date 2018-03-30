@@ -1,0 +1,31 @@
+<include file="Index@Common:new_top" />
+  
+<include file="Index@Common:new_banner" />
+        
+<include file="Index@Common:new_menu" />
+		
+		
+		<div class="warp">
+			
+			<div class="list_item_box">
+				<div class="list_city_ti">{$info.typename}</div>
+				
+			</div>
+			
+			<div class="stroy_details">
+				<div class="txt">{$info.content|htmlspecialchars_decode}</div>	
+			</div>
+			
+		</div>
+		<include file="Index@Common:foot" />
+	</body>
+</html>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/jquery.newsticker.js" ></script>
+<script>
+    $("#nav li").hover(function(){
+        $(this).find(".second_nav").slideToggle();
+    })
+</script>

@@ -1,0 +1,54 @@
+<include file="Admin@Public:page_head" />
+<div class="wrap jj">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Contingent/Show/index_stage_0')}">节目管理</a></li>
+			<li><a href="{:U('Contingent/Show/add_show_stage_0')}">添加节目</a></li>
+		</ul>
+        <form class="well form-search" method="get" action="__APP__">
+        
+            <input type="hidden" value="{$Think.const.MODULE_NAME}" name="m" />
+            <input type="hidden" value="{$Think.const.CONTROLLER_NAME}" name="c" />
+            <input type="hidden" value="<php>echo ACTION_NAME;</php>" name="a" />
+            <input type="hidden" value="{$channeltype_id}" name="channeltype_id" />
+			<div class="search_type cc mb10">
+				<div class="mb10">
+					<span class="mr20">关键字： 
+						<input type="text" name="keywords" style="width: 200px;" value="<php>echo $_GET['keywords']</php>" placeholder="请输入关键字...">
+						<input type="submit" class="btn btn-primary" value="搜索" />
+					</span>
+				</div>
+			</div>
+		</form>
+
+		<form method="post" class="J_ajaxForm" action="{:U('Archives/Archives/update_sort')}">
+        <div class="table-actions">
+				<!--<button class="btn btn-primary btn-small" type="button" onclick="del();" data-action="{:U('Contingent/Show/delete')}" data-subcheck="true">删除</button>
+        		<button type="submit" class="btn btn-primary btn-small btn_submit J_ajax_submit_btn">排序</button>-->
+			</div>
+
+            <html:list  id="dataTable"
+                        style="table table-hover table-bordered table-list"
+                        name="list"
+                        checkbox="false"
+                        action="true"
+                        title="上线项目"
+                        datasource="list"
+                        pagelist="{$page}"
+           show="id:ID
+          		,contingent_id|show_ca_name2:队伍名称
+          		,show_name:作品名称
+          		,video2:乐视ID
+          		,pic|show_img:缩略图
+          		,stage|show_stage:阶段
+          		,num_vote:实际得票数
+                ,num_vote_show:展示票数
+                ,is_win|show_is_win:是否晋级"
+                actionlist="edit:修改:id:edit_show_stage_0"/>
+        <div class="table-actions">
+				<!--<button class="btn btn-primary btn-small" type="button" onclick="foreverdel();" data-action="{:U('Contingent/Show/delete')}" data-subcheck="true">删除</button>
+        		<button type="submit" class="btn btn-primary btn-small btn_submit J_ajax_submit_btn">排序</button>-->
+			</div>
+            <include file="Admin@Public:page" />
+		</form>
+	</div>
+<include file="Admin@Public:page_foot" />

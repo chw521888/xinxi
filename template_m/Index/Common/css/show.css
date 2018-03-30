@@ -1,0 +1,46 @@
+/** 	 素材         **/
+#container{
+	position:relative;
+	width:100%;
+	margin:0 auto 25px;
+	padding-bottom: 10px;
+	
+}
+.grid{
+	background:url(../images/ban2.gif);
+	width:250px;
+	min-height:100px;
+	padding:5px;
+	background:#fff;
+	margin:8px;
+	font-size:14px;
+	float:left;
+	box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+	-moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+	-webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+	-webkit-transition: top 1s ease, left 1s ease;
+	-moz-transition: top 1s ease, left 1s ease;
+	-o-transition: top 1s ease, left 1s ease;
+	-ms-transition: top 1s ease, left 1s ease;
+}
+
+.grid strong {
+	border-bottom:1px solid #ccc;
+	margin:3px 0;
+	display:block;
+	padding:5px;
+	font-size:14px;
+}
+.grid .meta{
+	color:#777;
+	text-align:right
+}
+
+.grid .imgholder img{
+	width:100%;
+	max-width:100%;
+	background:#ccc;
+	display:block;
+}
+
+.xinyuan_bottom{width:100%; height:25px; font-weight:bold; background:#ec0301; text-align: center; font-weight:100;line-height:25px; color:#ffffff; font-size:15px;-moz-border-radius:5px;-webkit-border-radius: 5px;border-radius:5px;}

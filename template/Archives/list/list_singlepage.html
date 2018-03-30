@@ -1,0 +1,23 @@
+<include file="Index@Common:top" />
+<include file="Index@Common:top_logo" />
+<!--<div class="logo9" style="background: url('{$info.pic_banner}') center no-repeat;"></div>-->
+<include file="Index@Common:menu" />
+<include file="Index@Common:menu_son" />
+<!-- 二级小导航结束-->
+<div class="main">
+     <span class="span1">
+        <ul class="border-bottom">
+            <li>{$info.content|htmlspecialchars_decode}</li>
+        </ul>
+    </span>
+</div>
+
+<include file="Index@Common:foot" />
+<include file="Index@Common:city_navigation" />
+<include file="Index@Common:bottom" />
+
+<script>
+    $("#nav li").hover(function(){
+        $(this).find(".second_nav").slideToggle();
+    })
+</script>

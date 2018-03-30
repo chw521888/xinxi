@@ -1,0 +1,36 @@
+<include file="Index@Common:new_top" />
+<include file="Index@Common:banner" />
+
+		
+		<!-- 内容     开始-->
+		<div class="warp direct">
+			
+			<div class="item">
+				<div class="item_name">{$info.typename}</div>
+			</div>
+			<foreach name="list" item="v">
+			<ul class="direct_list">
+				<li><a href="{$v.url}"><img src="{$v.pic}" alt=""></a></li>
+				<li class="t"><a href="#">{$v.title}</a></li>
+				<li>表演者：{$v.resume}</li>
+			</ul>
+			</foreach>
+			
+			<!-- 内容     End-->
+		
+
+		<!-- <div class="public_pagination_154">
+		  <div class="m_pagination">
+		   <div class="fenye">{$page_m}</div>
+		  </div> 
+		</div> -->
+
+	</body>
+</html>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX_M__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX_M__NewCommon/js/jquery.newsticker.js" ></script>
+<script src="__INDEX_M__NewCommon/js/jquery.newsticker.js"></script>
+<script src="__INDEX_M__NewCommon/js/cascade.js"></script>
+<script src="__INDEX_M__NewCommon/js/page.js"></script>

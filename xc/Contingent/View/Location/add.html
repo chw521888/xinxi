@@ -1,0 +1,84 @@
+<include file="Admin@Public:page_head" />
+<html:editor type="UEDITOR_BEGIN"></html:editor>
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Location/index')}">城市及街道</a></li>
+			<li class="active"><a href="{:U('Location/add')}">添加城市及街道</a></li>
+	    </ul>
+		<form class="form-horizontal J_ajaxForm" name="myform" id="myform" action="{:u('Location/insert')}" method="post">
+			<div class="tabbable">
+		        <div class="tab-content">
+		          <div class="tab-pane active">
+		          		<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+								<tr>
+									<td width="150">上级分类:</td>
+								  <td><html:select options="location_list" name="location_id" /></td>
+							  </tr>
+								<tr>
+									<td width="150">分类名称:</td>
+								  <td><input type="text" class="input" name="name" value="" required="required" /></td>
+							  </tr>
+								<tr>
+									<td width="150">比赛开始时间:</td>
+								  <td><input required="required" type="text" class="input" name="time_sport_stat" value="<php> echo date('Y-m-d H:m:s') </php>" /></td>
+							  </tr>
+								<tr>
+									<td width="150">比赛结束时间:</td>
+								  <td><input required="required" type="text" class="input" name="time_sport_end" value="<php> echo date('Y-m-d H:m:s') </php>" /></td>
+							  </tr>
+								<tr>
+									<td width="150">投票开始时间:</td>
+								  <td><input required="required" type="text" class="input" name="time_vote_stat" value="<php> echo date('Y-m-d H:m:s') </php>" /></td>
+							  </tr>
+								<tr>
+									<td width="150">投票结束时间:</td>
+								  <td><input required="required" type="text" class="input" name="time_vote_end" value="<php> echo date('Y-m-d H:m:s') </php>" /></td>
+							  </tr>
+							  <tr>
+									<td width="150">缩略图:</td>
+								    <td><html:imgUpload name='pic' id="pic" /></td>
+							  </tr>
+								<!-- <tr>
+									<td width="150">顶部banner图:</td>
+								    <td><html:imgUpload name='pic_banner' id="pic_banner" /></td>
+							  </tr> -->
+                               <tr>
+									<td width="150">是否显示:</td>
+							    <td>
+                                  <label><input type="radio" name="status" value="1" />&nbsp;是&nbsp;&nbsp;</label>
+                                  <label><input name="status" type="radio" value="0" checked="checked" />&nbsp;否</label>                               
+                                  </td>
+						      </tr>
+                               <!--<tr>
+									<td width="150">街道赛高亮:</td>
+							    <td>
+                                  <label><input type="radio" name="is_effect" value="1" />&nbsp;是&nbsp;&nbsp;</label>
+                                  <label><input name="is_effect" type="radio" value="0" checked="checked" />&nbsp;否</label>                               
+                                  </td>
+						      </tr>
+                              <tr>
+									<td width="150">社区赛高亮:</td>
+							    <td>
+                                  <label><input type="radio" name="shequ" value="1" />&nbsp;是&nbsp;&nbsp;</label>
+                                  <label><input name="shequ" type="radio" value="0" checked="checked" />&nbsp;否</label>                               
+                                  </td>
+						      </tr>
+						       <tr>
+									<td width="150">我的秀高亮:</td>
+							    <td>
+                                  <label><input type="radio" name="xiu" value="1" />&nbsp;是&nbsp;&nbsp;</label>
+                                  <label><input name="xiu" type="radio" value="0" checked="checked" />&nbsp;否</label>                               
+                                  </td>
+						      </tr> -->
+							</tbody>
+						</table>
+		          </div>
+		     <div class="form-actions">
+		           <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+		      		<a class="btn" href="{:U('Location/index')}">返回</a>
+		      </div>
+		</form>
+	</div>
+
+<include file="Admin@Public:page_foot" />

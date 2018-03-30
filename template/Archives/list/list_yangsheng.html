@@ -1,0 +1,50 @@
+<include file="Index@Common:new_top" />
+  
+<include file="Index@Common:new_banner" />
+        
+<include file="Index@Common:new_menu" />
+		
+		
+		<div class="warp">
+			
+			<div class="list_item_box">
+				<div class="list_city_ti">{$info.typename}</div>
+			</div>
+			
+			<div class="z-new clearfix">
+			<foreach name="list" item="v">
+				<ul class="z-new-l">
+					<li>
+						<a href="{$v.url}"><img src="{$v.pic}" width="165" height="115"></a>
+						<a href="{$v.url}">
+						<p>
+							{$v.title}
+						</p>
+						<span>{$v.resume}</span>
+						<p class="date">{$v.time|turn_time=1}</p>
+						</a>
+					</li>
+				</ul>
+			</foreach>
+			</div>
+			
+			
+			<div class="public_pagination_154">
+		        <!-- PC 分页  -->
+		        <div class="pagination_pc">{$page}</div>
+		    </div>
+			
+		</div>
+		<include file="Index@Common:foot" />
+	</body>
+</html>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/jquery.newsticker.js" ></script>
+<script>
+  $("#nav li").hover(function(){
+    $(this).find(".second_nav").slideToggle();
+  })
+  
+</script>

@@ -1,0 +1,99 @@
+<include file="Index@Common:new_top" />
+<style>
+	.post_zan_fengzi{
+		cursor: pointer;
+	}
+</style>
+  
+<include file="Index@Common:new_banner" />
+        
+<include file="Index@Common:new_menu" />
+		
+		
+		<div class="child_paint">
+			<div class="warp">
+
+
+				<div class="list_item_box paint clearfix">
+					<div class="list_city_ti">赛场风姿</div>
+					<a href="{:U('archives/index_arctype/index',array('t_id'=>73))}" class="up">我要上传</a>
+					<div class="seach">
+						<form action="?" method="get">
+							<input type="hidden" value="{$Think.const.MODULE_NAME}" name="m" />
+				            <input type="hidden" value="{$Think.const.CONTROLLER_NAME}" name="c" />
+				            <input type="hidden" value="<php>echo ACTION_NAME;</php>" name="a" />
+							<input name="keywords" type="text" class="seach_txt" value="" placeholder="请输入ID、昵称">
+							<input type="submit" class="seach_but" name="" value=" ">
+						</form>
+					</div>
+				</div>
+
+
+
+				<div class="match_list_top">
+					<div class="public_index_204">
+						<div id="wrapper">
+					        <!-- 儿童绘画赛列表开始 -->
+					        <div class="brand-list">
+					            <div class="brand-bd cle" id="brand-waterfall">
+					                <!-- 循环字母模块 item -->
+					                <foreach name="list" item="v">
+					                <div class="item">
+					                    <div class="brand_img"><a href="{:U('show',array('id'=>$v['id']))}"><img src="{$v.pic}" style="width:100%;"></a></div>
+					                    <div class="brand_txt">
+					                    	<div class="num_z post_zan_fengzi"  onclick="post_zan_fengzi({$v.id},0);">{$v.num_view}</div>
+					                    	<div class="data">
+					                    		<img src="{$v.pic}" style="border-radius:18px;">
+					                    		<i class="id">{$v.user_name}</i>
+					                    		<i>ID:{$v.id}</i>
+					                    	</div>
+					                    </div>
+					                </div>
+					                </foreach>
+					            </div>
+					        </div>
+					        <!-- 儿童绘画赛列表 end -->
+					    </div>
+						
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+        
+<include file="Index@Common:foot" />
+	</body>
+</html>
+<script>
+	var post_zan_fengzi=function(fengzi_id){
+				var post_data={"fengzi_id":fengzi_id};
+				//ajax 提交form
+		    $.ajax({
+		        url : "{:U('Fengzi/IndexFengzi/post_vote')}",
+		        type : "POST",
+		        data : "fengzi_id="+fengzi_id,
+		        success:function(data){
+		        	alert(data.info);
+		        	location.reload();
+		        },
+		        error:function(data){
+		        	alert("error!");
+		        }
+		        
+		    });
+			}
+</script>
+
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/jquery.newsticker.js" ></script>
+<script type="text/javascript" src="__INDEX__NewCommon/js/cascade.js" ></script>
+
+<script>
+  $("#nav li").hover(function(){
+    $(this).find(".second_nav").slideToggle();
+  })
+  
+</script>

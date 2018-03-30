@@ -1,0 +1,58 @@
+<include file="Admin@Public:page_head" />
+<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('AdImages/AdImages/index',array('category_id'=>$category_info['id']))}">{$category_info.name}管理</a></li>
+			<li><a href="{:U('AdImages/AdImages/add',array('category_id'=>$category_info['id']))}">添加{$category_info.name}</a></li>
+            <if condition="C('SYSTEM_DEBUG') eq true">
+			<li><a href="{:U('AdImages/AdImages/Category_index')}">分类管理</a></li>
+            </if>
+		</ul>
+        <form class="well form-search" method="get" action="__APP__">
+        
+            <input type="hidden" value="{$Think.const.MODULE_NAME}" name="m" />
+            <input type="hidden" value="{$Think.const.CONTROLLER_NAME}" name="c" />
+            <input type="hidden" value="<php>echo ACTION_NAME;</php>" name="a" />
+            <input type="hidden" value="{$channeltype_id}" name="channeltype_id" />
+            <input type="hidden" value="{$_GET.category_id}" name="category_id" />
+			<div class="search_type cc mb10">
+				<div class="mb10">
+					<span class="mr20">
+						关键字： 
+						<input type="text" name="keywords" style="width: 200px;" value="<php>echo $_GET['keywords']</php>" placeholder="请输入关键字...">
+						<input type="submit" class="btn btn-primary" value="搜索" />
+					</span>
+				</div>
+			</div>
+		</form>
+		<form method="post" class="J_ajaxForm" action="{:U('AdImages/AdImages/update_sort')}">
+		<div class="table-actions">
+					<button class="btn btn-primary btn-small" type="button" onclick="foreverdel();" data-action="{:U('AdImages/AdImages/foreverdelete')}" data-subcheck="true">删除</button>
+        			<button type="submit" class="btn btn-primary btn-small btn_submit J_ajax_submit_btn">排序</button>
+			</div>
+
+            <html:list  id="dataTable"
+                        style="table table-hover table-bordered table-list"
+                        name="list"
+                        checkbox="true"
+                        action="true"
+                        title="上线项目"
+                        datasource="list"
+                        pagelist="{$page}"
+           show="id:ID
+          		,sort|set_sort_input=$list['id']:排序号
+          		,pic|show_img:缩略图
+          		,title:标题
+          		,category_id|show_category_name:栏目
+          		,url:链接
+          		,is_effect:状态
+                ,time|turn_time:添加时间"
+                actionlist="edit:修改, foreverdel:删除"/>
+		<div class="table-actions">
+					<button class="btn btn-primary btn-small" type="button" onclick="foreverdel();" data-action="{:U('AdImages/AdImages/foreverdelete')}" data-subcheck="true">删除</button>
+        			<button type="submit" class="btn btn-primary btn-small btn_submit J_ajax_submit_btn">排序</button>
+			</div>
+            <include file="Admin@Public:page" />
+		</form>
+	</div>
+
+<include file="Admin@Public:page_foot" />

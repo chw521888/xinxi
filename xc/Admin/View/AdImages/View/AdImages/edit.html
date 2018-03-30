@@ -1,0 +1,120 @@
+<include file="Admin@Public:page_head" />
+<html:editor type="UEDITOR_BEGIN"></html:editor>
+<style type="text/css">
+.col-auto { overflow: auto; _zoom: 1;_float: left;}
+.col-right { float: right; width: 210px; overflow: hidden; margin-left: 6px; }
+.table th, .table td {vertical-align: middle;}
+.picList li{margin-bottom: 5px;}
+</style>
+<div class="wrap J_check_wrap">
+          <ul class="nav nav-tabs">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('AdImages/AdImages/index',array('category_id'=>$category_info['id']))}">{$category_info.name}管理</a></li>
+			<li class="active"><a href="#">修改{$category_info.name}</a></li>
+		</ul>
+          </ul>
+  <form name="myform" id="myform" action="{:U('AdImages/AdImages/update')}" method="post" class="form-horizontal J_ajaxForms" enctype="multipart/form-data">
+  <input name="id" type="hidden" value="{$info.id}" />
+  <div class="col-right">
+    <div class="table_full">
+      <table class="table table-bordered">
+         <tr>
+          <td><b>缩略图</b></td>
+        </tr>
+        <tr>
+          <td>
+          	<div  style="text-align: center;"><script>
+      //实例化编辑器
+	  var up_image_input="";
+      var o_ueditorupload_image_up = UE.getEditor("j_ueditorupload_image_up",
+      {
+        autoHeightEnabled:false
+      });
+      o_ueditorupload_image_up.ready(function ()
+      {
+	 
+	   o_ueditorupload_image_up.hide();//隐藏编辑器
+	   o_ueditorupload_image_up.execCommand("serverparam",{
+         "upload_type": 'other',
+         "upload_path_son": ''
+      });
+	
+	//监听图片上传
+	o_ueditorupload_image_up.addListener("beforeInsertImage", function (t,arg)
+	{
+          //alert("这是图片地址："+arg[0].src);
+		  document.getElementById(up_image_input).value=arg[0].src;
+		  document.getElementById('thumb_preview').src=arg[0].src;
+	});
+	
+      });
+      
+      //弹出图片上传的对话框
+      function upImage(input_name)
+      {
+	    up_image_input = input_name;
+        var myImage = o_ueditorupload_image_up.getDialog("insertimage");
+        myImage.open();
+      }
+    </script>
+	<script type="text/plain" id="j_ueditorupload_image_up" style="height:5px;display:none;" ></script>
+<input type='hidden' name='pic' id='image_up' value='{$info.pic}'><a href='javascript:void(0);' onClick="flashupload('thumb_images', '附件上传','thumb',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+            <if condition="empty($info['pic'])">
+				<img onClick="upImage('image_up')" src="__TMPL__Common/img/upload-pic.png" id='thumb_preview' width='135' height='113' style='cursor:hand' />
+			<else/>
+				<img onClick="upImage('image_up')" src="{$info.pic}" id='thumb_preview' width='135' height='113' style='cursor:hand' />
+			</if>
+            
+            </a>
+            <input type="button"  class="btn" onClick="$('#thumb_preview').attr('src','__TMPL__Common/img/upload-pic.png');$('#image_up').val('');return false;" value="取消图片">
+            </div>
+			</td>
+        </tr>
+        <tr>
+          <td><b>发布时间</b></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="time" id="time" value="{$info.time|turn_time}" size="21" class="input length_3 J_datetime" style="width: 160px;"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="col-auto">
+    <div class="table_full">
+      <table class="table table-bordered">
+            <tr>
+              <th width="80">栏目</th>
+              <td>
+				<html:select name="category_id" options="category_array" selected="info['category_id']" />
+              </td>
+            </tr>
+            <tr>
+              <th width="80">标题 </th>
+              <td>
+              	<input type="text" style="width:400px;" name="title" id="title"  required value="{$info.title}" class="input input_hd J_title_color" placeholder="请输入标题" onkeyup="strlen_verify(this, 'title_len', 160)" />
+              	<span class="must_red">*</span>
+              </td>
+            </tr>
+            <tr>
+              <th width="80">跳转链接</th>
+              <td><input type='text' name='url' id='url' value='{$info.url}' style='width:400px'   class='input' placeholder='http://'></td>
+            </tr>
+            <tr>
+              <th width="80">排序</th>
+              <td><input type='text' name='sort' id='sort' value='{$info.sort}' style='width:100px'   class='input' placeholder='0'></td>
+            </tr>
+            <tr><td height="68"></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="form-actions">
+        <button class="btn btn-primary btn_submit J_ajax_submit_btn"type="submit">提交</button>
+        <a class="btn" href="{:U('AdImages/AdImages/index',array('category_id'=>$category_info['id']))}">返回</a>
+  </div>
+ </form>
+</div>
+<script type="text/javascript" src="__TMPL__Common/js/common.js"></script>
+<script type="text/javascript" src="__TMPL__Common/js/content_addtop.js"></script>
+
+<include file="Admin@Public:page_foot" />

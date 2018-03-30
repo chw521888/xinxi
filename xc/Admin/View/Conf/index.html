@@ -1,0 +1,204 @@
+<include file="Public:page_head" />
+<html:editor type="UEDITOR_BEGIN"></html:editor>
+<div class="wrap J_check_wrap">
+
+		<ul class="nav nav-tabs">
+			<!-- <li><a href="#A1" data-toggle="tab">系统设置</a></li>
+			<li><a href="#A2" data-toggle="tab">邮件设置</a></li> -->
+			<li class="active"><a href="#A3" data-toggle="tab">前台设置</a></li>
+			<li><a href="#A4" data-toggle="tab">微信设置</a></li>
+			<li><a href="#A5" data-toggle="tab">短信设置</a></li>
+		</ul>
+
+		<form class="form-horizontal J_ajaxForms" name="myform" id="myform"	action="{:U('Conf/conf_update')}" method="post">
+			<fieldset>
+				<div class="tabbable">
+					<div class="tab-content">
+                    
+                    <foreach name="list" item="lt" key="key">
+						<div class="tab-pane <if condition="$key eq 3">active</if>" id="A{$key}">
+							<fieldset>
+                            <foreach name="lt" item="l" key="k">
+								<div class="control-group">
+									<label class="control-label" style="width:360px;">{$l.caption}<if condition="$l['is_array'] eq 1">(用|隔开)</if>：</label>
+									<div class="controls">
+										<if condition="$l['input_type'] eq 2">
+                                           <textarea name="{$l.name}" class="conf_input" style="height:100px;">{$l.value}</textarea>
+                                           <elseif condition="$l['input_type'] eq 3"/>
+                                           <html:imgUpload name="{$l.name}" value="{$l.value}" id="fileField_{$l.name}" style="width:50%; height:30px;" />
+                                           <elseif condition="$l['input_type'] eq 1"/>
+                                           <select name="{$l.name}">
+                                             <option value="0" <eq name="l['value']" value="0">selected="selected"</eq>>否</option>
+                                             <option value="1" <eq name="l['value']" value="1">selected="selected"</eq>>是</option>
+                                          </select>
+                                          <elseif condition="$l['input_type'] eq 8"/>
+                                           <select name="{$l.name}">
+                                             <option value="0" <eq name="l['value']" value="0">selected="selected"</eq>>未开始</option>
+                                             <option value="1" <eq name="l['value']" value="1">selected="selected"</eq>>第一阶段投票开始</option>
+                                             <option value="2" <eq name="l['value']" value="2">selected="selected"</eq>>第一阶段投票结束</option>
+                                             <option value="3" <eq name="l['value']" value="3">selected="selected"</eq>>第二阶段投票开始</option>
+                                             <option value="4" <eq name="l['value']" value="4">selected="selected"</eq>>第二阶段投票结束</option>
+                                             <option value="5" <eq name="l['value']" value="5">selected="selected"</eq>>第三阶段投票开始</option>
+                                             <option value="6" <eq name="l['value']" value="6">selected="selected"</eq>>第三阶段投票结束</option>
+                                             <option value="7" <eq name="l['value']" value="7">selected="selected"</eq>>总决赛投票开始</option>
+                                             <option value="8" <eq name="l['value']" value="8">selected="selected"</eq>>总决赛投票结束</option>
+                                          </select>
+											<else />
+                                           <input type="text" name="{$l.name}" value="{$l.value}" class="conf_input" />
+                                        </if>
+    <span class="must_red">* {$l.name}</span>
+										<input type="hidden" class="input" name="option_id" value="{$option_id}">
+									</div>
+								</div>
+                            </foreach>
+							</fieldset>
+						</div>
+                     </foreach>
+					</div>
+				</div>
+
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary btn_submit  J_ajax_submit_btn">提交</button>
+				</div>
+			</fieldset>
+		</form>
+
+	</div>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script>
+		/////---------------------
+		$(function(){
+			$("#urlmode-select").change(function(){
+				if($(this).val()==1){
+					alert("更改后，若发现前台链接不能正常访问，可能是您的服务器不支持PATHINFO，请先修改data/conf/config.php文件的URL_MODEL为0保证网站正常运行,在配置服务器PATHINFO功能后再更新为PATHINFO模式！");
+				}
+				
+				if($(this).val()==2){
+					alert("更改后，若发现前台链接不能正常访问，可能是您的服务器不支持REWRITE，请先修改data/conf/config.php文件的URL_MODEL为0保证网站正常运行，在开启服务器REWRITE功能后再更新为REWRITE模式！");
+				}
+			});
+		});
+		Wind.use('validate', 'ajaxForm', 'artDialog', function() {
+			//javascript
+			var form = $('form.J_ajaxForms');
+			//ie处理placeholder提交问题
+			if ($.browser.msie) {
+				form.find('[placeholder]').each(function() {
+					var input = $(this);
+					if (input.val() == input.attr('placeholder')) {
+						input.val('');
+					}
+				});
+			}
+			//表单验证开始
+			form.validate({
+				//是否在获取焦点时验证
+				onfocusout : false,
+				//是否在敲击键盘时验证
+				onkeyup : false,
+				//当鼠标掉级时验证
+				onclick : false,
+				//验证错误
+				showErrors : function(errorMap, errorArr) {
+					//errorMap {'name':'错误信息'}
+					//errorArr [{'message':'错误信息',element:({})}]
+					try {
+						$(errorArr[0].element).focus();
+						art.dialog({
+							id : 'error',
+							icon : 'error',
+							lock : true,
+							fixed : true,
+							background : "#CCCCCC",
+							opacity : 0,
+							content : errorArr[0].message,
+							cancelVal : '确定',
+							cancel : function() {
+								$(errorArr[0].element).focus();
+							}
+						});
+					} catch (err) {
+					}
+				},
+				//验证规则
+				rules : {
+					'options[site_name]' : {
+						required : 1
+					},
+					'options[site_host]' : {
+						required : 1
+					},
+					'options[site_root]' : {
+						required : 1
+					}
+				},
+				//验证未通过提示消息
+				messages : {
+					'options[site_name]' : {
+						required : '请输入网站名称！'
+					},
+					'options[site_host]' : {
+						required : '请输入网站域名！'
+					},
+					'options[site_root]' : {
+						required : '请输入安装路径！'
+					}
+				},
+				//给未通过验证的元素加效果,闪烁等
+				highlight : false,
+				//是否在获取焦点时验证
+				onfocusout : false,
+				//验证通过，提交表单
+				submitHandler : function(forms) {
+					$(forms).ajaxSubmit({
+						url : form.attr('action'), //按钮上是否自定义提交地址(多按钮情况)
+						dataType : 'json',
+						beforeSubmit : function(arr, $form, options) {
+
+						},
+						success : function(data, statusText, xhr, $form) {
+							if (data.status) {
+								setCookie("refersh_time", 1);
+								//添加成功
+								Wind.use("artDialog", function() {
+									art.dialog({
+										id : "succeed",
+										icon : "succeed",
+										fixed : true,
+										lock : true,
+										background : "#CCCCCC",
+										opacity : 0,
+										content : data.info,
+										button : [ {
+											name : '确定',
+											callback : function() {
+												return true;
+											},
+											focus : true
+										}, {
+											name : '关闭',
+											callback : function() {
+												return true;
+											}
+										} ]
+									});
+								});
+							} else {
+								alert(data.info);
+							}
+						}
+					});
+				}
+			});
+		});
+		////-------------------------
+	</script>
+    
+    
+
+
+
+<!-- Think 系统列表组件结束 -->
+ 
+
+<include file="Public:page_foot" />

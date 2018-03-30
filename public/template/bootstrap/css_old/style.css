@@ -1,0 +1,30 @@
+body{ font-family:"微软雅黑"}
+.fl{ float:left}
+.fr{ float:right}
+.pt_clear{ clear:both}
+.pt_ov{ overflow:hidden}
+.mt10{ margin-top:10px;}
+.mr10{ margin-right:10px;}
+/*.panel-body图标背景色*/
+.panel-body .bg_blue{ background-color:#27baff;}
+.panel-body .bg_orange{ background-color:#ff9900;}
+.panel-body .bg_pink{ background-color:#cc6699;}
+.panel-body .bg_yellow{ background-color:#ffd542;}
+.panel-body .bg_green{ background-color:#99cc99;}
+.fz14{ font-size:14px; font-family:"微软雅黑"}
+.dashbox .panel-left{ padding:0px; padding-top:10px}
+.dashbox .panel-right{ font-family:"微软雅黑"; font-size:16px;}
+.line50{border-left:1px solid #dddddd; height:50px; width:1px; float:left; margin:15px 8px 0px 8px;}
+.panel-body .w34{ width:33%}
+.panel-body .w45{ width:45%;}
+.panel-body .w55{ width:55%}
+
+.re-table{ width:100%; margin-top:0px; color:#626262; font-size:18px; font-weight:normal;font-family:"微软雅黑"}
+.re-table tr th{ border-bottom:1px solid #e8e8e8; padding:0px 10px 10px 40px;font-weight:normal;}
+.re-table tr td{ padding:10px 40px}
+
+.pt_tab_switch{width:18%; float:right}
+.sometime_choice{margin-top:5px;}
+.sometime_choice a{ height:50px; line-height:30px; }
+
+
